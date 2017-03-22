@@ -21,6 +21,8 @@ public class Store {
 
     @objid ("18b11b08-a6e0-468a-87b9-4282740bb581")
     public static void getInstance() {
+        if (singleton == null) singleton = new Store ();
+        return singleton;
     }
 
     @objid ("4d37acd8-3743-434b-9c62-a688ad24c99d")
