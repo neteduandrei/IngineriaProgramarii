@@ -1,0 +1,37 @@
+la fel ca google form
+
+
+generare rapoarte
+
+plus -> acel formular sa fie salvat extern
+
+
+submodule
+
+
+
+evaluarea -> punctaje diferite   punctaj pe echipa maxim 50p
+				   punctaj pe modul -> dupa perioada de implementare  
+				   nota modul-> acelasi pt toate persoanele din modul maxim 50p
+				   punctaj individual maxim 50p
+
+
+MODULE
+
+1.Administrare(2-3 persoane) :  Pregateste Git, pagina web:ideea de proitect descriere submodul, fisa cerinte, diagrame, link catre prezentare
+				Facilitate discutii
+		
+
+								
+2.Front end (4-5 p)
+
+
+
+3.Backend(4-5p)
+
+
+
+4.QA (2-3p)
+
+lista de module, lista de oameni, fisa de cerinte(completa)-nivel de utilizare numeroase, extensii
+diagrame clase la nivel 2 si 3, fiagrame use-case
