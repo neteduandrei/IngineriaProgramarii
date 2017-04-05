@@ -10,11 +10,13 @@ Luati Git Bash si urmariti pasii:
 
 2.Din Git Bash intra in folder
 
-3.Scrie in commander           git clone https://github.com/fistinflame/IngineriaProgramarii.git
+3.Scrie in commander
+0.                             git clone https://github.com/fistinflame/IngineriaProgramarii.git
 
                                git init
 
-4.Pentru a adauga fisierele pe Github:            git pull
+4.Pentru a adauga fisierele pe Github:            
+0.                                                git pull
 
                                                   git add .
                                                   
