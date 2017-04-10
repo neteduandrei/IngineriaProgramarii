@@ -12,9 +12,9 @@ Luati Git Bash si urmariti pasii:
 
 3.Scrie in commander
 
-                               git clone https://github.com/fistinflame/IngineriaProgramarii.git
-
-                               git init (pentru crearea repositorului local in folder-ul vostru curent)
+                                git init (pentru crearea repositorului local in folder-ul vostru curent)
+                                
+                                git clone https://github.com/fistinflame/IngineriaProgramarii.git                     
 
 4.Pentru a adauga fisierele pe Github:            
 
