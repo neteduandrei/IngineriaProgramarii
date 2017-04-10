@@ -14,7 +14,7 @@ Luati Git Bash si urmariti pasii:
 
                                git clone https://github.com/fistinflame/IngineriaProgramarii.git
 
-                               git init
+                               git init (pentru crearea repositorului local in folder-ul vostru curent)
 
 4.Pentru a adauga fisierele pe Github:            
 
@@ -24,4 +24,4 @@ Luati Git Bash si urmariti pasii:
                                                   
                                                   git commit -m "Descriere a modificarilor"
                                                   
-                                                  git push
+                                                  git push -u origin numele_branchului_vostru (scrieti git branch ca sa vedeti pe ce branch lucrati)
