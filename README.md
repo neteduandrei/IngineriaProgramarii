@@ -18,9 +18,9 @@ Luati Git Bash si urmariti pasii:
 
 4.Pentru a adauga fisierele pe Github:            
 
-                                                  git pull
+                                                  git pull (pentru a face update la repository-ul local)
 
-                                                  git add .
+                                                  git add numele_fisierului(pentru spatii in nume folositi \ inaintea spatiului)
                                                   
                                                   git commit -m "Descriere a modificarilor"
                                                   
