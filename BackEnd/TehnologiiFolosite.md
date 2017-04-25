@@ -14,7 +14,8 @@ Avantaje:
 * Ofera mapare directa intre clasele din Java si tabelele din baza de date.
 * Acces persistent la baza de date folosing functii de nivel inalt.
 * Persistenta idiomatica - ofera toate avantajele unui mediu de programare orientat obiect.
-* Lazy initialization - o valuare este calculata doar cand e nevoie de ea astfel se ofera performanta superiara fata de accesarea directa din Java* Scalabilitate - Este conceput pentru a servi zeci de mii de clienti.
+* Lazy initialization - o valuare este calculata doar cand e nevoie de ea astfel se ofera performanta superiara fata de accesarea directa din Java
+* Scalabilitate - Este conceput pentru a servi zeci de mii de clienti.
 * E foarte popular si e open source.
 
 
