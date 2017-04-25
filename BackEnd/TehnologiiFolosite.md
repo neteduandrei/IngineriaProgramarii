@@ -27,9 +27,9 @@ Avantaje:
 * Ofera indexare primara si secundara.
 * Se integreaza foarte bine cu Java si foloseste documente de tipul JSON.
 * Este o baza de date populara si e open source.
+* Preferat de majoritatea expertilor in cadrul aplicatiilor web.
 
 Dezavantaje:
 * Nu obliga o structura organizata, asadar pot aparea ambiguitati in structura.
 * Strucatura flexibila prezinta o pierdere in viteza de efecutare a query-urilor.
 * Are o reputatie negativa din pricina vulnerabilitatatilor care au fost descoperite in trecut.
-
