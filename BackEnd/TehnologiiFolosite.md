@@ -1,4 +1,4 @@
-Spring - Framework
+## Spring - Framework
 
 Avantaje:
 * Il folosim pentru a scrie serverul Java, care va comunica cu partea de front end si baza de date.
@@ -8,7 +8,7 @@ Avantaje:
 * Structura proiectelor Spring faciliteaza un proiect bine structurat, o coeziune buna si cuplaj redus.
 
 
-Hibernate - Object Relational Maping
+## Hibernate - Object Relational Maping
 
 Avantaje:
 * Ofera mapare directa intre clasele din Java si tabelele din baza de date.
@@ -18,7 +18,7 @@ Avantaje:
 * E foarte popular si e open source.
 
 
-MongoDB - Database
+## MongoDB - Database
 
 Avantaje:
 * Prezinta o structura flexibila.
