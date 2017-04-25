@@ -26,4 +26,10 @@ Avantaje:
 * Se pot efectua queriuri ad-hoc - ofera o varietate foarte larga asupra query posibile.
 * Ofera indexare primara si secundara.
 * Se integreaza foarte bine cu Java si foloseste documente de tipul JSON.
-* Este o baza de date foarte populara si e open source.
+* Este o baza de date populara si e open source.
+
+Dezavantaje:
+* Nu obliga o structura organizata, asadar pot aparea ambiguitati in structura.
+* Strucatura flexibila prezinta o pierdere in viteza de efecutare a query-urilor.
+* Are o reputatie negativa din pricina vulnerabilitatatilor care au fost descoperite in trecut.
+
