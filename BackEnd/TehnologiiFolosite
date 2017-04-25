@@ -1,9 +1,11 @@
 Spring - Framework
 
 Avantaje
-Il folosim pentru a scrie serverul Java, care va comunica cu partea de front end.
+Il folosim pentru a scrie serverul Java, care va comunica cu partea de front end si baza de date.
 Poate fi folosita in orice aplicatie Java, nu impune un anumit model de programare.
 E foarte popular si e open source.
+Respecta design pattern-ul MVC (Model View Controller) ce ofera o organizare mai buna si clara a proiectului.
+Structura proiectelor Spring faciliteaza un proiect bine structurat, o coeziune buna si cuplaj redus.
 
 
 Hibernate - Object Relational Maping
