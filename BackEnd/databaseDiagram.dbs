@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="formeditor" id="Project_7272c6a" template="Default" database="MongoDb" >
+	<comment><![CDATA[Database formeditor]]></comment>
+	<schema name="formeditor" schemaname="formeditor" >
+		<table name="Forms" >
+			<column name="id" type="integer" jt="4" mandatory="y" />
+			<column name="created_by" type="integer" jt="4" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" mandatory="y" />
+			<column name="title" type="string" jt="12" mandatory="y" />
+			<column name="description" type="string" jt="12" />
+			<column name="questions" type="array" jt="2003" />
+			<fk name="fk_forms_users" virtual="y" to_schema="formeditor" to_table="Users" >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+		</table>
+		<table name="Responses" >
+			<column name="id" type="integer" jt="4" mandatory="y" />
+			<column name="created_by" type="integer" jt="4" mandatory="y" />
+			<column name="created_at" type="timestamp" jt="93" mandatory="y" />
+			<column name="form_id" type="integer" jt="4" mandatory="y" />
+			<column name="answers" type="array" jt="2003" />
+			<fk name="fk_responses_users" virtual="y" to_schema="formeditor" to_table="Users" >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="fk_responses_forms" virtual="y" to_schema="formeditor" to_table="Forms" >
+				<fk_column name="form_id" pk="id" />
+			</fk>
+		</table>
+		<table name="Users" >
+			<column name="id" type="integer" jt="4" mandatory="y" />
+			<column name="email" type="string" jt="12" mandatory="y" />
+			<column name="name" type="string" jt="12" mandatory="y" />
+			<column name="nickname" type="string" jt="12" />
+			<column name="password" type="string" jt="12" mandatory="y" />
+			<column name="refresh_token" type="string" jt="12" />
+			<column name="access_token" type="string" jt="12" />
+			<column name="service" type="string" jt="12" />
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout_3068e5b3" show_relation="columns" >
+		<entity schema="formeditor" name="Users" color="c1d8ee" x="48" y="64" />
+		<entity schema="formeditor" name="Responses" color="c1d8ee" x="384" y="352" />
+		<entity schema="formeditor" name="Forms" color="c1d8ee" x="464" y="48" />
+	</layout>
+</project>
