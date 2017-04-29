@@ -1,6 +1,6 @@
-package repositories;
+package com.b2formeditor.repositories;
 
-import models.databasemodels.User;
+import com.b2formeditor.models.databasemodels.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

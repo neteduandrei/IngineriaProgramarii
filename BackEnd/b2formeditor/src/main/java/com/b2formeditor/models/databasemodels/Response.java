@@ -1,6 +1,5 @@
-package models.databasemodels;
+package com.b2formeditor.models.databasemodels;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,17 +8,14 @@ import java.util.Date;
 /**
  * Created by Dorneanu Dragos-Andrei on 29.04.2017.
  */
-@Document(collection = "Forms")
-public class Form {
+@Document(collection = "Responses")
+public class Response {
     @Id
     private Integer id;
     private String created_by;
     private Date created_at;
-
-    @NotBlank
-    private String title;
-    private String description;
-    private String[] questions;
+    private Integer form_id;
+    private Object[] answers;
 
     public Integer getId() {
         return id;
@@ -45,27 +41,19 @@ public class Form {
         this.created_at = created_at;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getForm_id() {
+        return form_id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setForm_id(Integer form_id) {
+        this.form_id = form_id;
     }
 
-    public String getDescription() {
-        return description;
+    public Object[] getAnswers() {
+        return answers;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String[] getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(String[] questions) {
-        this.questions = questions;
+    public void setAnswers(Object[] answers) {
+        this.answers = answers;
     }
 }

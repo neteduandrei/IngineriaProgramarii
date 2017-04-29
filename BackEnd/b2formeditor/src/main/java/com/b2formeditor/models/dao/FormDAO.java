@@ -1,8 +1,8 @@
-package models.dao;
+package com.b2formeditor.models.dao;
 
-import models.databasemodels.Form;
+import com.b2formeditor.models.databasemodels.Form;
 import org.springframework.beans.factory.annotation.Autowired;
-import repositories.FormRepository;
+import com.b2formeditor.repositories.FormRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package models.databasemodels;
+package com.b2formeditor.models.databasemodels;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
