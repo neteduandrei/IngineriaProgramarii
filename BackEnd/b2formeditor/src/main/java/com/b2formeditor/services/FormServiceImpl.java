@@ -39,7 +39,7 @@ public class FormServiceImpl implements FormService {
 
     @Override
     public List<ProcessedForm> getByUserId(Integer id) {
-        return (List<ProcessedForm>)(Object)this.repository.findByUserId(id);
+        return (List<ProcessedForm>)(Object)this.repository.findByCreatedBy(id);
     }
 
 }

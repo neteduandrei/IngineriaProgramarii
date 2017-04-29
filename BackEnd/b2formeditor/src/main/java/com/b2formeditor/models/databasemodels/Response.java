@@ -12,7 +12,7 @@ import java.util.Date;
 public class Response {
     @Id
     private Integer id;
-    private String createdBy;
+    private Integer createdBy;
     private Date createdAt;
     private Integer formId;
     private Object[] answers;
@@ -25,11 +25,11 @@ public class Response {
         this.id = id;
     }
 
-    public String getCreated_by() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
 

@@ -13,7 +13,7 @@ import java.util.Date;
 public class Form {
     @Id
     private Integer id;
-    private String createdBy;
+    private Integer createdBy;
     private Date createdAt;
 
     @NotBlank
@@ -29,11 +29,11 @@ public class Form {
         this.id = id;
     }
 
-    public String getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String created_by) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
 
