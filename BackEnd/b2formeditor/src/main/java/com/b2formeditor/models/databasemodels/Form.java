@@ -19,7 +19,7 @@ public class Form {
     @NotBlank
     private String title;
     private String description;
-    private String[] questions;
+    private Integer[] questions;
 
     public Integer getId() {
         return id;
@@ -61,11 +61,11 @@ public class Form {
         this.description = description;
     }
 
-    public String[] getQuestions() {
+    public Integer[] getQuestions() {
         return questions;
     }
 
-    public void setQuestions(String[] questions) {
+    public void setQuestions(Integer[] questions) {
         this.questions = questions;
     }
 }
