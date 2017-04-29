@@ -14,7 +14,7 @@ import java.util.List;
 public interface UserRepository extends MongoRepository<User, Integer> {
     List<User> findAll();
 
-    User findOne(Integer id);
+    User findOne(Long id);
 
     User save(User user);
 
