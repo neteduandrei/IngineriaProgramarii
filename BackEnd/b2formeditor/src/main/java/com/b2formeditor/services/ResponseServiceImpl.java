@@ -27,12 +27,12 @@ public class ResponseServiceImpl implements ResponseService {
     }
 
     @Override
-    public Response getById(Long id) {
+    public Response getById(Integer id) {
         return this.repository.findOne(id);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         this.repository.delete(id);
     }
 }

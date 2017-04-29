@@ -27,12 +27,12 @@ public class FormServiceImpl implements FormService {
     }
 
     @Override
-    public Form getById(Long id) {
+    public Form getById(Integer id) {
         return this.repository.findOne(id);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         this.repository.delete(id);
     }
 }

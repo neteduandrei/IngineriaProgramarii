@@ -11,12 +11,12 @@ import java.util.List;
 public interface FormRepository extends MongoRepository<Form, Integer> {
     List<Form> findAll();
 
-    Form findOne(Long id);
+    Form findOne(Integer id);
 
     List<Form> findByCreated_by(String created_by);
 
     List<Form> findByTitle(String title);
 
-    void delete(Long id);
+    void delete(Integer id);
 
 }
