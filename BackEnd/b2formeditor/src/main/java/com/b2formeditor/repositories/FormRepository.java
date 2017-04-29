@@ -17,6 +17,8 @@ public interface FormRepository extends MongoRepository<Form, Integer> {
 
     List<Form> findByTitle(String title);
 
+    List<Form> findByUserId(Integer id);
+
     void delete(Integer id);
 
 }

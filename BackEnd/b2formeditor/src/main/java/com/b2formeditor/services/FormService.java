@@ -4,7 +4,10 @@ package com.b2formeditor.services;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
-import com.b2formeditor.models.databasemodels.Form;
+import com.b2formeditor.models.responsemodels.ProcessedForm;
 
-public interface FormService extends CrudService<Form> {
+import java.util.List;
+
+public interface FormService extends CrudService<ProcessedForm> {
+    List<ProcessedForm> getByUserId(Integer id);
 }

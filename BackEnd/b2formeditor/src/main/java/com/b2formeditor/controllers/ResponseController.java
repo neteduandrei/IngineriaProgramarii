@@ -5,6 +5,7 @@ package com.b2formeditor.controllers;
  */
 
 import com.b2formeditor.models.databasemodels.Response;
+import com.b2formeditor.models.responsemodels.ProcessedResponse;
 import com.b2formeditor.services.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,17 +24,17 @@ public class ResponseController {
     private ResponseService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Response>> get(){
-        List<Response> forms = this.service.getAll();
+    public ResponseEntity<List<ProcessedResponse>> get(){
+        List<ProcessedResponse> forms = this.service.getAll();
         if (forms.isEmpty()){
-            return new ResponseEntity<List<Response>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<List<ProcessedResponse>>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<Response>>(forms, HttpStatus.OK);
+        return new ResponseEntity<List<ProcessedResponse>>(forms, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Response> addForm(@RequestBody Response response){
-        Response savedForm = this.service.save(response);
-        return new ResponseEntity<Response>(savedForm, HttpStatus.CREATED);
+    public ResponseEntity<ProcessedResponse> addForm(@RequestBody ProcessedResponse response){
+        ProcessedResponse savedForm = this.service.save(response);
+        return new ResponseEntity<ProcessedResponse>(savedForm, HttpStatus.CREATED);
     }
 }

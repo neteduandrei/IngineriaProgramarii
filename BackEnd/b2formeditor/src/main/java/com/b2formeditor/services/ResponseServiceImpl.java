@@ -4,7 +4,7 @@ package com.b2formeditor.services;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
-import com.b2formeditor.models.databasemodels.Response;
+import com.b2formeditor.models.responsemodels.ProcessedResponse;
 import com.b2formeditor.repositories.ResponseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,18 +17,18 @@ public class ResponseServiceImpl implements ResponseService {
     private ResponseRepository repository;
 
     @Override
-    public Response save(Response entity) {
-        return this.repository.save(entity);
+    public ProcessedResponse save(ProcessedResponse entity) {
+        return (ProcessedResponse)this.repository.save(entity);
     }
 
     @Override
-    public List<Response> getAll() {
-        return this.repository.findAll();
+    public List<ProcessedResponse> getAll() {
+        return (List<ProcessedResponse>)(Object)this.repository.findAll();
     }
 
     @Override
-    public Response getById(Integer id) {
-        return this.repository.findOne(id);
+    public ProcessedResponse getById(Integer id) {
+        return (ProcessedResponse) this.repository.findOne(id);
     }
 
     @Override
