@@ -12,9 +12,9 @@ import java.util.Date;
 public class Response {
     @Id
     private Integer id;
-    private String created_by;
-    private Date created_at;
-    private Integer form_id;
+    private String createdBy;
+    private Date createdAt;
+    private Integer formId;
     private Object[] answers;
 
     public Integer getId() {
@@ -26,27 +26,27 @@ public class Response {
     }
 
     public String getCreated_by() {
-        return created_by;
+        return createdBy;
     }
 
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Integer getForm_id() {
-        return form_id;
+    public Integer getFormId() {
+        return formId;
     }
 
-    public void setForm_id(Integer form_id) {
-        this.form_id = form_id;
+    public void setFormId(Integer formId) {
+        this.formId = formId;
     }
 
     public Object[] getAnswers() {

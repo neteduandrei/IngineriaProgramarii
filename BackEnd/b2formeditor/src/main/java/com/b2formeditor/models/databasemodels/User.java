@@ -29,8 +29,8 @@ public class User {
     @Size(min = 6)
     private String password;
 
-    private Object refresh_token;
-    private Object access_token;
+    private Object refreshToken;
+    private Object accessToken;
     private String service;
 
     public Integer getId() {
@@ -73,20 +73,20 @@ public class User {
         this.password = password;
     }
 
-    public Object getRefresh_token() {
-        return refresh_token;
+    public Object getRefreshToken() {
+        return refreshToken;
     }
 
-    public void setRefresh_token(Object refresh_token) {
-        this.refresh_token = refresh_token;
+    public void setRefreshToken(Object refresh_token) {
+        this.refreshToken = refreshToken;
     }
 
-    public Object getAccess_token() {
-        return access_token;
+    public Object getAccessToken() {
+        return accessToken;
     }
 
-    public void setAccess_token(Object access_token) {
-        this.access_token = access_token;
+    public void setAccessToken(Object accessToken) {
+        this.accessToken = accessToken;
     }
 
     public String getService() {

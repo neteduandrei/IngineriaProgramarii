@@ -13,7 +13,7 @@ public interface FormRepository extends MongoRepository<Form, Integer> {
 
     Form findOne(Integer id);
 
-    List<Form> findByCreated_by(String created_by);
+    List<Form> findByCreatedBy(String createdBy);
 
     List<Form> findByTitle(String title);
 

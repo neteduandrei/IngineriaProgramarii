@@ -17,9 +17,9 @@ public interface ResponseRepository extends MongoRepository<Response, Integer> {
 
     Response findOne(Integer id);
 
-    List<Response> findByCreated_by(String created_by);
+    List<Response> findByCreatedBy(String createdBy);
 
-    List<Response> findByForm_id(Integer form_id);
+    List<Response> findByFormId(Integer formId);
 
     void delete(Integer id);
 }
