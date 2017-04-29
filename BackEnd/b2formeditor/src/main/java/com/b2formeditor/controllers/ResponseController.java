@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/forms")
+@RequestMapping("/v1/responses")
 public class ResponseController {
     @Autowired
     private ResponseService service;
