@@ -1,5 +1,17 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-  <md-card color="primary">
-
+<div id="content" fxLayout="column" fxLayoutAlign="start center">
+  <md-card id="formContainer">
+    <md-card-title>
+      <md-input-container>
+        <input mdInput type="text" maxlength="64" placeholder="Title">
+      </md-input-container>
+    </md-card-title>
+    <md-card-subtitle>
+      <md-input-container>
+        <input mdInput type="text" maxlength="64" placeholder="Form description">
+      </md-input-container>
+    </md-card-subtitle>
+    <md-card-content>
+      <formy-field></formy-field>
+    </md-card-content>
   </md-card>
 </div>

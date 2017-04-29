@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%">
+  <span>From</span>
+  <md-select [(ngModel)]="selectedMinVal">
+    <md-option *ngFor="let minVal of minVals" [value]="minVal">{{minVal}}</md-option>
+  </md-select>
+  <span>to</span>
+  <md-select [(ngModel)]="selectedMaxVal">
+    <md-option *ngFor="let maxVal of maxVals" [value]="maxVal">{{maxVal}}</md-option>
+  </md-select>
+</div>

@@ -1,0 +1,20 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'shortText'">
+    <formy-type-short-text></formy-type-short-text>
+  </div>
+  <div *ngSwitchCase="'longText'">
+    <formy-type-long-text></formy-type-long-text>
+  </div>
+  <div *ngSwitchCase="'singleChoice'">
+    <formy-type-single-choice></formy-type-single-choice>
+  </div>
+  <div *ngSwitchCase="'multipleChoice'">
+    <formy-type-multiple-choice></formy-type-multiple-choice>
+  </div>
+  <div *ngSwitchCase="'date'">
+    <formy-type-date></formy-type-date>
+  </div>
+  <div *ngSwitchCase="'linearScale'">
+    <formy-type-linear-scale></formy-type-linear-scale>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<md-radio-group>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%" *ngFor="let radioValue of radioValues">
+    <md-radio-button [value]="radioValue" disabled></md-radio-button>
+    <md-input-container>
+      <input mdInput type="text" maxlength="64" value="{{radioValue}}">
+    </md-input-container>
+  </div>
+  <div id="newOption" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%" (click)="addOption()">
+  <md-radio-button [value]="''" disabled></md-radio-button>
+  <md-input-container class="cursorPointer">
+    <input mdInput value="Add new option" disabled>
+  </md-input-container>
+  </div>
+</md-radio-group>

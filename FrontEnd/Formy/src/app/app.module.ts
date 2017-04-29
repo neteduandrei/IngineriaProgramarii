@@ -8,6 +8,16 @@ import { AuthentificationComponent } from './components/authentification/authent
 import { UserFormsComponent } from './components/user-forms/user-forms.component';
 import { FillFormComponent } from './components/fill-form/fill-form.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { FieldComponent } from "./components/build-form/field/field.component";
+import { BuildFormComponent } from "./components/build-form/build-form.component";
+import { FieldOfTypeComponent } from './components/build-form/field/field-of-type/field-of-type.component';
+import { TypeShortTextComponent } from './components/build-form/field/field-of-type/type-short-text/type-short-text.component';
+import { TypeLongTextComponent } from './components/build-form/field/field-of-type/type-long-text/type-long-text.component';
+import { TypeSingleChoiceComponent } from './components/build-form/field/field-of-type/type-single-choice/type-single-choice.component';
+import { TypeMultipleChoiceComponent } from './components/build-form/field/field-of-type/type-multiple-choice/type-multiple-choice.component';
+import { TypeDateComponent } from './components/build-form/field/field-of-type/type-date/type-date.component';
+import { TypeLinearScaleComponent } from './components/build-form/field/field-of-type/type-linear-scale/type-linear-scale.component';
+
 
 
 
@@ -17,7 +27,16 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     AuthentificationComponent,
     UserFormsComponent,
     FillFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    FieldComponent,
+    BuildFormComponent,
+    FieldOfTypeComponent,
+    TypeShortTextComponent,
+    TypeLongTextComponent,
+    TypeSingleChoiceComponent,
+    TypeMultipleChoiceComponent,
+    TypeDateComponent,
+    TypeLinearScaleComponent
   ],
   imports: [
     AppRoutingModule

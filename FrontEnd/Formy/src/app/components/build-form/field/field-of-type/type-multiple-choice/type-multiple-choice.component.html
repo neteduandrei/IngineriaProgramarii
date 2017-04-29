@@ -1,0 +1,14 @@
+<div>
+  <div *ngFor="let checkValue of checkValues">
+    <md-checkbox [value]="checkValue" disabled></md-checkbox>
+    <md-input-container>
+      <input mdInput type="text" maxlength="64" value="{{checkValue}}">
+    </md-input-container>
+  </div>
+  <div (click)="addOption()">
+    <md-checkbox [value]="''" disabled></md-checkbox>
+    <md-input-container>
+      <input mdInput type="text" maxlength="64" value="Add option" disabled>
+    </md-input-container>
+  </div>
+</div>

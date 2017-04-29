@@ -1,0 +1,21 @@
+<md-card>
+  <md-card-title class="fieldChild" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="3%">
+    <md-input-container fxFlexAlign="80%" id="fieldTitle">
+      <input mdInput type="text" maxlength="64" placeholder="Question">
+    </md-input-container>
+    <md-select fxFlexAlign="20%" placeholder="Options" id="fieldOptions" [(ngModel)]="selectedOption">
+      <md-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</md-option>
+    </md-select>
+  </md-card-title>
+  <md-card-subtitle>
+    <md-input-container>
+      <input mdInput type="text" maxlength="64" placeholder="Description">
+    </md-input-container>
+  </md-card-subtitle>
+  <md-card-content>
+    <formy-field-of-type type={{selectedOption}}></formy-field-of-type>
+  </md-card-content>
+  <md-card-footer fxLayout="row" fxLayoutAlign="end center">
+    <md-slide-toggle labelPosition="before">Required</md-slide-toggle>
+  </md-card-footer>
+</md-card>
