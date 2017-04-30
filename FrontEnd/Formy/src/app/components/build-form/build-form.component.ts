@@ -22,4 +22,8 @@ export class BuildFormComponent implements OnInit {
     this.fields.push(new FieldComponent);
   }
 
+  public delete(index : number) {
+    this.fields.splice(index, 1);
+  }
+
 }

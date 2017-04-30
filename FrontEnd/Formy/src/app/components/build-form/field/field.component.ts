@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'formy-field',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./field.component.scss']
 })
 export class FieldComponent implements OnInit {
+
+  @Output() delete: EventEmitter<any> = new EventEmitter();
 
   public options: Option[] = [
     {value : 'shortText', viewValue: 'Short Text'},
@@ -22,6 +24,10 @@ export class FieldComponent implements OnInit {
 
   ngOnInit() {
     this.selectedOption = 'shortText';
+  }
+
+  public deleteItem() {
+    this.delete.emit(null);
   }
 
 }

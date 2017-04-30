@@ -11,8 +11,8 @@
       </md-input-container>
     </md-card-subtitle>
     <md-card-content fxLayout="column" fxLayoutGap="2%">
-      <div *ngFor="let field of fields">
-        <formy-field></formy-field>
+      <div *ngFor="let field of fields; let i = index">
+        <formy-field (delete)="delete(i)"></formy-field>
       </div>
     </md-card-content>
     <div fxLayout="row" fxLayoutAlign="end center">
