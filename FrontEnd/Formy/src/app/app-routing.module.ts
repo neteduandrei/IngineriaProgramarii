@@ -11,6 +11,8 @@ import { BuildFormComponent } from "./components/build-form/build-form.component
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
 import { UserFormsComponent } from "./components/user-forms/user-forms.component";
 
+import { AuthentificationComponent } from "./components/authentification/authentification.component";
+
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +29,10 @@ const routes: Routes = [
   {
     path: 'edit-password',
     component: EditPasswordComponent
+  },
+  {
+    path: 'authentification',
+    component: AuthentificationComponent
   }
 ];
 
