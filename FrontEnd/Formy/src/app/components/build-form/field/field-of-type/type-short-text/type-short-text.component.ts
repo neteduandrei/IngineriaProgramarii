@@ -38,7 +38,7 @@ export class TypeShortTextComponent implements OnInit, FormTransfer {
   public getJson() : Field {
     this.field.options = {
       regex : this.constraintRegexTemplate
-    }
+    };
     return this.field;
   }
 

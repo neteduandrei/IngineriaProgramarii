@@ -1,3 +1,74 @@
-<p>
-  authentification works!
-</p>
+<div id="content" fxLayout="column" fxLayoutAlign="center center">
+	<md-card>
+		<md-tab-group>
+		  <md-tab label="Login">
+		    <br>
+		    Login To Your Account
+		    <br>
+		    <form class="Login-Form">
+		      <br>
+		      <div class="container">
+		        <md-input-container>
+		          <input mdInput placeholder="Email" value="">
+		        </md-input-container>
+		      </div> 
+		      <div class="container">
+		            <md-input-container>
+		              <input mdInput placeholder="Password" value="" type="password"/>
+		            </md-input-container>
+		      </div> 
+		      <div class="CheckBox">
+		      <md-checkbox ng-model="isChecked" color="primary">
+		        Remember password!
+		      </md-checkbox>
+		      </div>
+		      <br>
+		      <div class="LoginButton">
+		        <a md-raised-button routerLink="." color="primary">LogIn</a>
+		      </div>
+		    </form>
+		    <br>
+		  </md-tab>
+		  <md-tab label="Register">
+		    <br>
+		    Register To Your Account
+		    <br>
+		    <form class="Login-Form">
+		    <br>
+		      <div class="container">
+		        <md-input-container>
+		          <input mdInput placeholder="Email" value="">
+		        </md-input-container>
+		      </div> 
+		      <div class="container">
+		        <md-input-container>
+		          <input mdInput placeholder="User Name" value="">
+		        </md-input-container>
+		      </div>
+		      <div class="container">
+		        <md-input-container>
+		          <input mdInput placeholder="Name" value="">
+		        </md-input-container>
+		      </div> 
+		      <div class="container">
+		            <md-input-container>
+		              <input mdInput placeholder="Password" value="" type="password"/>
+		            </md-input-container>
+		      </div> 
+		      <div class="RegisterButton">
+		        <a md-raised-button routerLink="." color="primary">Register</a>
+		      </div>
+		    </form>
+		    <br>
+		  </md-tab>
+		</md-tab-group>
+
+		<div id="socialLogIn" style="background-color: white;">
+		<div>
+			<p>Login With <a href="#">Facebook</a> | Login With <a href="#">Twiter</a></p>
+		</div>
+		</div>
+	</md-card>
+	
+
+</div>

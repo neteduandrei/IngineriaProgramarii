@@ -1,28 +1,58 @@
-# Formy
+# Format of FormTemplateGenerator
+### Used to send to the server a form's template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+- as classes: 
+```typescript
+class FormTemplateGenerator {
+  public owner: string;
+  public form : Form;
+}
 
-## Development server
+class Form {
+  public title : string;
+  public description : string;
+  public fields : Field[]
+}
+class Field {
+  title : string;
+  description : string;
+  type : string;
+  required : boolean;
+  value : any;
+  options: Object;
+}
+````
+- as JSON:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```json
+{
+  "owner" : "",
+  "form" : {
+    "title" : "",
+    "description" : "",
+    "fields" : [
+      {
+        "title" : "",
+        "description" : "",
+        "type" : "",
+        "required" : "",
+        "value" : "",
+        "options" : { }
+      }
+    ]
+  }
+}
+```
 
-## Code scaffolding
+### Explaining the fields:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- type : shortText, longText, singleChoice, multipleChoice, date, linearScale
+- required : true/false
+- value :
+  + shortText, longText, date : null
+  + singleChoice, multipleChoice: Array\<String\>;
+  + linearScale : Map\<Pair\<String, Integer\>\> (2 keys: min, max)
+- options :
+  + shortText : Pair\<String, String\> ("regex" : "")
+  + longText : Pair\<String, Integer\> ("maxLength" : Integer)
+  + date, singleChoice, multipleChoice : null

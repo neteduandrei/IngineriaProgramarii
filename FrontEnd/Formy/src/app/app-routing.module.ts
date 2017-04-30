@@ -11,6 +11,7 @@ import { BuildFormComponent } from "./components/build-form/build-form.component
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
 import { UserFormsComponent } from "./components/user-forms/user-forms.component";
 import { DialogDeleteComponent } from "./components/edit-password/edit-password.component";
+import { AuthentificationComponent } from "./components/authentification/authentification.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'dialog-delete',
     component: DialogDeleteComponent
+  },
+  {
+    path: 'authentification',
+    component: AuthentificationComponent
   }
 ];
 

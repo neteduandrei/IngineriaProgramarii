@@ -9,7 +9,6 @@ import {FormTransfer} from "../../../../../shared/interfaces/FormTransfer";
 })
 export class TypeDateComponent implements OnInit, FormTransfer {
 
-  public value : Date;
 
   private field : Field;
 
@@ -20,7 +19,6 @@ export class TypeDateComponent implements OnInit, FormTransfer {
   }
 
   public getJson() : Field {
-    this.field.value = this.value;
     return this.field;
   }
 
