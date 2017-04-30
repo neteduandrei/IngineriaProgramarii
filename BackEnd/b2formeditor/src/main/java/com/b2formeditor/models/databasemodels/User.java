@@ -38,63 +38,71 @@ public class User {
         return id;
     }
 
-    public void setId(String id) {
+    public User setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public User setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public User setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    public User setNickname(String nickname) {
         this.nickname = nickname;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public Object getRefreshToken() {
         return refreshToken;
     }
 
-    public void setRefreshToken(Object refresh_token) {
+    public User setRefreshToken(Object refresh_token) {
         this.refreshToken = refreshToken;
+        return this;
     }
 
     public Object getAccessToken() {
         return accessToken;
     }
 
-    public void setAccessToken(String accessToken) {
+    public User setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+        return this;
     }
 
     public String getService() {
         return service;
     }
 
-    public void setService(String service) {
+    public User setService(String service) {
         this.service = service;
+        return this;
     }
 }

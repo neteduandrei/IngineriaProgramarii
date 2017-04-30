@@ -4,11 +4,6 @@ import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.services.QuestionService;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
@@ -28,7 +23,7 @@ public class ProcessedForm extends Form {
         }
     }
 
-    public void commit (QuestionService questionService) {
+    public void commit(QuestionService questionService) {
         String[] scopeQuestionsIds = new String[questions.length];
 
         for (int i = 0; i < questions.length; i++) {
