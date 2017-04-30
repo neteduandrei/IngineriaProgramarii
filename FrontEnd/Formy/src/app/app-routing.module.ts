@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { BuildFormComponent } from "./components/build-form/build-form.component";
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
+import { UserFormsComponent } from "./components/user-forms/user-forms.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'build-form',
     component: BuildFormComponent
+  },
+  {
+    path: 'user',
+    component: UserFormsComponent
   },
   {
     path: 'edit-password',
