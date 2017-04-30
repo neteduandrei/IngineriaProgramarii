@@ -32,8 +32,8 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProcessedUser> addUser(@RequestBody ProcessedUser response) {
-        ProcessedUser savedForm = this.service.save(response);
-        return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
+    public ResponseEntity<ProcessedUser> addUser(@RequestBody ProcessedUser user) {
+        ProcessedUser savedUser = this.service.save(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 }
