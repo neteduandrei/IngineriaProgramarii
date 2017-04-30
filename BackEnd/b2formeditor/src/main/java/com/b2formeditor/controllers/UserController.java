@@ -26,14 +26,14 @@ public class UserController {
     public ResponseEntity<List<ProcessedUser>> get() {
         List<ProcessedUser> forms = this.service.getAll();
         if (forms.isEmpty()) {
-            return new ResponseEntity<List<ProcessedUser>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<ProcessedUser>>(forms, HttpStatus.OK);
+        return new ResponseEntity<>(forms, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProcessedUser> addForm(@RequestBody ProcessedUser response) {
-        ProcessedUser savedForm = this.service.save(response);
-        return new ResponseEntity<ProcessedUser>(savedForm, HttpStatus.CREATED);
+    public ResponseEntity<ProcessedUser> addUser(@RequestBody ProcessedUser user) {
+        ProcessedUser savedUser = this.service.save(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 }

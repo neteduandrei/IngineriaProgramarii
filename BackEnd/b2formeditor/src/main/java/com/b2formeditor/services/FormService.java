@@ -9,5 +9,5 @@ import com.b2formeditor.models.responsemodels.ProcessedForm;
 import java.util.List;
 
 public interface FormService extends CrudService<ProcessedForm> {
-    List<ProcessedForm> getByUserId(Integer id);
+    List<ProcessedForm> getByUserId(String id);
 }
