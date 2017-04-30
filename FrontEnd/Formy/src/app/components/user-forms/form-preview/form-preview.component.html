@@ -1,6 +1,10 @@
 <md-card>
-  <img md-card-image src="../../../../assets/images/mockupFormPreview">
-  <md-card-actions>
+  <img md-card-image src="../../../../assets/images/formCard.svg">
+  <md-card-title>Form Example</md-card-title>
+  <md-card-subtitle>
+    Apr 30, 13.37 KB
+  </md-card-subtitle>
+  <md-card-footer fxLayout="row" fxLayoutAlign="end center">
     <md-menu #formMore="mdMenu">
       <button md-menu-item>
         <md-icon>share</md-icon>
@@ -12,7 +16,7 @@
       </button>
       <button md-menu-item>
         <md-icon>label</md-icon>
-          Add Label
+        Add Label
       </button>
       <button md-menu-item>
         <md-icon>delete</md-icon>
@@ -20,8 +24,8 @@
       </button>
     </md-menu>
 
-    <button md-icon-button [mdMenuTriggerFor]="formMore">
+    <button class="formMoreButton" md-icon-button [mdMenuTriggerFor]="formMore">
       <md-icon>more_horiz</md-icon>
     </button>
-  </md-card-actions>
+  </md-card-footer>
 </md-card>
