@@ -2,11 +2,10 @@ package com.b2formeditor.models.responsemodels;
 
 import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
-import com.b2formeditor.repositories.QuestionRepository;
 import com.b2formeditor.services.QuestionService;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,12 @@ import java.util.List;
 public class ProcessedForm extends Form {
     private Question[] questions;
 
+    public ProcessedForm() {
+        // default constructor for json
+    }
+
     public ProcessedForm(QuestionService questionService, Form baseForm) {
-        Integer[] base_questions = baseForm.getQuestionIds();
+        ObjectId[] base_questions = baseForm.getQuestionIds();
         questions = new Question[base_questions.length];
 
         for (int i = 0; i < base_questions.length; i++) {
@@ -25,11 +28,20 @@ public class ProcessedForm extends Form {
         }
     }
 
-    void commit (QuestionService questionService) {
-        Arrays.asList(questions).forEach(questionService::save);
+    public void commit (QuestionService questionService) {
+        List<ObjectId> scopeQuestionsIds = new ArrayList<>();
+        Arrays.asList(questions).forEach((question) ->{
+            ObjectId questionId = questionService.save(question).getId();
+            scopeQuestionsIds.add(questionId);
+        });
+        setQuestionIds((ObjectId[])scopeQuestionsIds.toArray());
     }
 
-    public Question[] getQuestion() {
-        return questions;
+    public Question[] getQuestions() {
+        return this.questions;
+    }
+
+    public void setQuestions(Question[] questions) {
+        this.questions = questions;
     }
 }

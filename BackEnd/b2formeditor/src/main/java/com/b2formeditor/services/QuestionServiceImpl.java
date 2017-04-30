@@ -2,6 +2,7 @@ package com.b2formeditor.services;
 
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.repositories.QuestionRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +22,12 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question getById(Integer id) {
+    public Question getById(ObjectId id) {
         return repository.findOne(id);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(ObjectId id) {
         repository.delete(id);
     }
 

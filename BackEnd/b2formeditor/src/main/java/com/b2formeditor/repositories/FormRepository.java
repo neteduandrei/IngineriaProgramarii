@@ -1,6 +1,7 @@
 package com.b2formeditor.repositories;
 
 import com.b2formeditor.models.databasemodels.Form;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,15 +12,15 @@ import java.util.List;
  */
 
 @Repository
-public interface FormRepository extends MongoRepository<Form, Integer> {
+public interface FormRepository extends MongoRepository<Form, ObjectId> {
     List<Form> findAll();
 
-    Form findOne(Integer id);
+    Form findOne(ObjectId id);
 
-    List<Form> findByCreatedBy(Integer createdBy);
+    List<Form> findByCreatedBy(String createdBy);
 
     List<Form> findByTitle(String title);
 
-    void delete(Integer id);
+    void delete(ObjectId id);
 
 }

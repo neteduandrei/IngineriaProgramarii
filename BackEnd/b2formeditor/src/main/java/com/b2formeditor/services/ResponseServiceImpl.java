@@ -6,6 +6,7 @@ package com.b2formeditor.services;
 
 import com.b2formeditor.models.responsemodels.ProcessedResponse;
 import com.b2formeditor.repositories.ResponseRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +28,12 @@ public class ResponseServiceImpl implements ResponseService {
     }
 
     @Override
-    public ProcessedResponse getById(Integer id) {
+    public ProcessedResponse getById(ObjectId id) {
         return (ProcessedResponse) this.repository.findOne(id);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(ObjectId id) {
         this.repository.delete(id);
     }
 }
