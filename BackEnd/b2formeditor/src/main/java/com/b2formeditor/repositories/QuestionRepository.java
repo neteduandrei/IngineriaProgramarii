@@ -1,9 +1,9 @@
 package com.b2formeditor.repositories;
 
 import com.b2formeditor.models.databasemodels.Question;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
@@ -12,16 +12,16 @@ import java.util.List;
  */
 
 @Repository
-public interface QuestionRepository extends MongoRepository<Question, ObjectId> {
+public interface QuestionRepository extends MongoRepository<Question, String> {
     List<Question> findAll();
 
-    List<Question> findByTypeAndOptions(Question question);
+    List<Question> findByTypeAndOptions(String type, String[] options);
 
     Question save(Question question);
 
-    void delete(ObjectId id);
+    void delete(String id);
 
-    Question findOne(ObjectId id);
+    Question findOne(String id);
 
     List<Question> findByType(String type);
 }

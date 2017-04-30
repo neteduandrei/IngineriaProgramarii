@@ -2,9 +2,9 @@ package com.b2formeditor.services;
 
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.repositories.QuestionRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question getById(ObjectId id) {
+    public Question getById(String id) {
         return repository.findOne(id);
     }
 
     @Override
-    public void delete(ObjectId id) {
+    public void delete(String id) {
         repository.delete(id);
     }
 
@@ -37,7 +37,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question save (Question question) {
-        List<Question> existing = this.repository.findByTypeAndOptions(question);
+        List<Question> existing = this.repository.findByTypeAndOptions(question.getType(), question.getOptions());
         if (existing.isEmpty()) {
             return this.repository.save(question);
         }

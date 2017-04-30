@@ -7,9 +7,9 @@ package com.b2formeditor.services;
 import com.b2formeditor.models.databasemodels.User;
 import com.b2formeditor.models.responsemodels.ProcessedUser;
 import com.b2formeditor.repositories.UserRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -29,12 +29,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ProcessedUser getById(ObjectId id) {
+    public ProcessedUser getById(String id) {
         return (ProcessedUser)this.repository.findOne(id);
     }
 
     @Override
-    public void delete(ObjectId id) {
+    public void delete(String id) {
         this.repository.delete(this.repository.findOne(id));
     }
 

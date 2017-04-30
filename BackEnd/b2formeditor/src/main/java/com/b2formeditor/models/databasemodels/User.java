@@ -1,6 +1,5 @@
 package com.b2formeditor.models.databasemodels;
 
-import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -9,13 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Size;
 
 
+
 /**
  * Created by Dorneanu Dragos-Andrei on 29.04.2017.
  */
 @Document(collection = "Users")
 public class User {
     @Id
-    private ObjectId id;
+    private String id;
 
     @Indexed(unique = true)
     private String email;
@@ -34,11 +34,11 @@ public class User {
     private String accessToken;
     private String service;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

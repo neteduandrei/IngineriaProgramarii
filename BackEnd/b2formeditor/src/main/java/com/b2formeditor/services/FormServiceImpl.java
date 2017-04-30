@@ -7,9 +7,9 @@ package com.b2formeditor.services;
 import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.repositories.FormRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +35,12 @@ public class FormServiceImpl implements FormService {
     }
 
     @Override
-    public ProcessedForm getById(ObjectId id) {
+    public ProcessedForm getById(String id) {
         return new ProcessedForm(questionService, this.repository.findOne(id));
     }
 
     @Override
-    public void delete(ObjectId id) {
+    public void delete(String id) {
         this.repository.delete(id);
     }
 

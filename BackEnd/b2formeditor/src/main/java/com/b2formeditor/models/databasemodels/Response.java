@@ -1,8 +1,8 @@
 package com.b2formeditor.models.databasemodels;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 import java.util.Date;
 
@@ -12,17 +12,17 @@ import java.util.Date;
 @Document(collection = "Responses")
 public class Response {
     @Id
-    private ObjectId id;
+    private String id;
     private String createdBy;
     private Date createdAt;
-    private ObjectId formId;
+    private String formId;
     private String[] answers;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,11 +42,11 @@ public class Response {
         this.createdAt = createdAt;
     }
 
-    public ObjectId getFormId() {
+    public String getFormId() {
         return formId;
     }
 
-    public void setFormId(ObjectId formId) {
+    public void setFormId(String formId) {
         this.formId = formId;
     }
 

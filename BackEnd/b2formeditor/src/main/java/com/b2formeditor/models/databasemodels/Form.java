@@ -1,12 +1,12 @@
 package com.b2formeditor.models.databasemodels;
 
 import com.sun.istack.internal.NotNull;
-import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Null;
+
 import java.util.Date;
 
 /**
@@ -15,29 +15,29 @@ import java.util.Date;
 @Document(collection = "Forms")
 public class Form {
     @Id
-    private ObjectId id;
-    private ObjectId createdBy;
+    private String id;
+    private String createdBy;
     private Date createdAt;
 
     @NotBlank
     private String title;
     private String description;
     @NotNull
-    private ObjectId[] questionIds;
+    private String[] questionIds;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public ObjectId getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(ObjectId createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -65,11 +65,11 @@ public class Form {
         this.description = description;
     }
 
-    public ObjectId[] getQuestionIds() {
+    public String[] getQuestionIds() {
         return questionIds;
     }
 
-    public void setQuestionIds(ObjectId[] questions) {
+    public void setQuestionIds(String[] questions) {
         this.questionIds = questions;
     }
 }

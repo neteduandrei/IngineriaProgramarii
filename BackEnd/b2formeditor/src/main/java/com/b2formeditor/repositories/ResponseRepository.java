@@ -1,9 +1,9 @@
 package com.b2formeditor.repositories;
 
 import com.b2formeditor.models.databasemodels.Response;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
@@ -12,18 +12,18 @@ import java.util.List;
  */
 
 @Repository
-public interface ResponseRepository extends MongoRepository<Response, ObjectId> {
+public interface ResponseRepository extends MongoRepository<Response, String> {
     List<Response> findAll();
 
     Response save(Response response);
 
     void delete(Response response);
 
-    Response findOne(ObjectId id);
+    Response findOne(String id);
 
-    List<Response> findByCreatedBy(ObjectId createdBy);
+    List<Response> findByCreatedBy(String createdBy);
 
-    List<Response> findByFormId(ObjectId formId);
+    List<Response> findByFormId(String formId);
 
-    void delete(ObjectId id);
+    void delete(String id);
 }
