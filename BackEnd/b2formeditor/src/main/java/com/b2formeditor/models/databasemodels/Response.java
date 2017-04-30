@@ -11,25 +11,25 @@ import java.util.Date;
 @Document(collection = "Responses")
 public class Response {
     @Id
-    private Integer id;
-    private Integer createdBy;
+    private String id;
+    private String createdBy;
     private Date createdAt;
-    private Integer formId;
+    private String formId;
     private Object[] answers;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -41,11 +41,11 @@ public class Response {
         this.createdAt = createdAt;
     }
 
-    public Integer getFormId() {
+    public String getFormId() {
         return formId;
     }
 
-    public void setFormId(Integer formId) {
+    public void setFormId(String formId) {
         this.formId = formId;
     }
 

@@ -29,14 +29,14 @@ public class FormController {
     public ResponseEntity<List<ProcessedForm>> get() {
         List<ProcessedForm> forms = this.service.getAll();
         if (forms.isEmpty()) {
-            return new ResponseEntity<List<ProcessedForm>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<ProcessedForm>>(forms, HttpStatus.OK);
+        return new ResponseEntity<>(forms, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<ProcessedForm> addForm(@RequestBody ProcessedForm form) {
         ProcessedForm savedForm = this.service.save(form);
-        return new ResponseEntity<ProcessedForm>(savedForm, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
     }
 }

@@ -12,8 +12,8 @@ import java.util.Date;
 @Document(collection = "Forms")
 public class Form {
     @Id
-    private Integer id;
-    private Integer createdBy;
+    private String id;
+    private String createdBy;
     private Date createdAt;
 
     @NotBlank
@@ -21,19 +21,19 @@ public class Form {
     private String description;
     private Integer[] questionIds;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 

@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Document(collection = "Users")
 public class User {
     @Id
-    private Integer id;
+    private String id;
 
     @Indexed(unique = true)
     private String email;
@@ -33,11 +33,11 @@ public class User {
     private Object accessToken;
     private String service;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
