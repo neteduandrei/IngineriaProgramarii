@@ -29,8 +29,8 @@ public class User {
     @Size(min = 6)
     private String password;
 
-    private Object refreshToken;
-    private Object accessToken;
+    private String refreshToken;
+    private String accessToken;
     private String service;
 
     public String getId() {
@@ -85,7 +85,7 @@ public class User {
         return accessToken;
     }
 
-    public void setAccessToken(Object accessToken) {
+    public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
 

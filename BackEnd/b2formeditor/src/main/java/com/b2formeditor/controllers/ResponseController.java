@@ -32,7 +32,7 @@ public class ResponseController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProcessedResponse> addForm(@RequestBody ProcessedResponse response) {
+    public ResponseEntity<ProcessedResponse> addResponse(@RequestBody ProcessedResponse response) {
         ProcessedResponse savedForm = this.service.save(response);
         return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
     }

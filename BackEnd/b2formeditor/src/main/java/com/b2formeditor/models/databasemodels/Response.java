@@ -15,7 +15,7 @@ public class Response {
     private String createdBy;
     private Date createdAt;
     private String formId;
-    private Object[] answers;
+    private String[] answers;
 
     public String getId() {
         return id;
@@ -53,7 +53,7 @@ public class Response {
         return answers;
     }
 
-    public void setAnswers(Object[] answers) {
+    public void setAnswers(String[] answers) {
         this.answers = answers;
     }
 }
