@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Created by Dorneanu Dragos-Andrei on 29.04.2017.
  */
-
 @Repository
 public interface UserRepository extends MongoRepository<User, Integer> {
     List<User> findAll();
