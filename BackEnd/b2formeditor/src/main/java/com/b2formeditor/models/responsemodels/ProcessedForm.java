@@ -4,6 +4,8 @@ import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.repositories.QuestionRepository;
 import com.b2formeditor.services.QuestionService;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +17,7 @@ public class ProcessedForm extends Form {
     private Question[] questions;
 
     public ProcessedForm(QuestionService questionService, Form baseForm) {
-        Integer[] base_questions = baseForm.getQuestions();
+        Integer[] base_questions = baseForm.getQuestionIds();
         questions = new Question[base_questions.length];
 
         for (int i = 0; i < base_questions.length; i++) {

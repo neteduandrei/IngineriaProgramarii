@@ -36,7 +36,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question save (Question question) {
-        List<Question> existing = this.repository.findByTypeAndQuestions(question);
+        List<Question> existing = this.repository.findByTypeAndOptions(question);
         if (existing.isEmpty()) {
             return this.repository.save(question);
         }
