@@ -3,12 +3,12 @@
   <md-card id="formContainer">
     <md-card-title>
       <md-input-container>
-        <input mdInput type="text" maxlength="64" placeholder="Title">
+        <input mdInput type="text" maxlength="64" placeholder="Title" [(ngModel)]="title">
       </md-input-container>
     </md-card-title>
     <md-card-subtitle>
       <md-input-container>
-        <input mdInput type="text" maxlength="64" placeholder="Form description">
+        <input mdInput type="text" maxlength="64" placeholder="Form description" [(ngModel)]="description">
       </md-input-container>
     </md-card-subtitle>
     <md-card-content fxLayout="column" fxLayoutGap="2%">
@@ -19,6 +19,6 @@
     <div fxLayout="row" fxLayoutAlign="end center">
       <button md-mini-fab (click)="addField()"><md-icon>add</md-icon></button>
     </div>
-    <button md-raised-button color="primary">Submit</button>
+    <button md-raised-button color="primary" (click)="save()">Save</button>
   </md-card>
 </div>
