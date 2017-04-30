@@ -11,7 +11,7 @@ public class Question {
     @Id
     private Integer id;
     private String type;
-    private String[] option;
+    private String[] options;
 
     public Integer getId() {
         return id;
@@ -29,11 +29,11 @@ public class Question {
         this.type = type;
     }
 
-    public String[] getOption() {
-        return option;
+    public String[] getOptions() {
+        return options;
     }
 
-    public void setOption(String[] option) {
-        this.option = option;
+    public void setOptions(String[] option) {
+        this.options = option;
     }
 }

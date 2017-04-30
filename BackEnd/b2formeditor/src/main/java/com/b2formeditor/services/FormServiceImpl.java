@@ -10,10 +10,15 @@ import com.b2formeditor.repositories.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class FormServiceImpl implements FormService {
+    @Autowired
+    private
+    QuestionService questionService;
+
     @Autowired
     private FormRepository repository;
 
@@ -24,12 +29,12 @@ public class FormServiceImpl implements FormService {
 
     @Override
     public List<ProcessedForm> getAll() {
-        return (List<ProcessedForm>)(Object)this.repository.findAll();
+        return processForms(this.repository.findAll());
     }
 
     @Override
     public ProcessedForm getById(Integer id) {
-        return (ProcessedForm)this.repository.findOne(id);
+        return new ProcessedForm(questionService, this.repository.findOne(id));
     }
 
     @Override
@@ -39,7 +44,13 @@ public class FormServiceImpl implements FormService {
 
     @Override
     public List<ProcessedForm> getByUserId(Integer id) {
-        return (List<ProcessedForm>)(Object)this.repository.findByCreatedBy(id);
+        return processForms(this.repository.findByCreatedBy(id));
+    }
+
+    private List<ProcessedForm> processForms (List<Form> formList) {
+        List<ProcessedForm> processedFormList = new ArrayList<>();
+        formList.forEach((Form form) -> processedFormList.add(new ProcessedForm(questionService, form)));
+        return processedFormList;
     }
 
 }

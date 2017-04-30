@@ -16,11 +16,6 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionRepository repository;
 
     @Override
-    public Question save(Question entity) {
-        return repository.save(entity);
-    }
-
-    @Override
     public List<Question> getAll() {
         return repository.findAll();
     }
@@ -37,5 +32,14 @@ public class QuestionServiceImpl implements QuestionService {
 
     List<Question> findByType(String type) {
         return repository.findByType(type);
+    }
+
+    @Override
+    public Question save (Question question) {
+        List<Question> existing = this.repository.findByTypeAndQuestions(question);
+        if (existing.isEmpty()) {
+            return this.repository.save(question);
+        }
+        return existing.get(0);
     }
 }
