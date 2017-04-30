@@ -6,11 +6,17 @@ md-icon {
   display: inline;
 }
 
-#searchField {
+#searchFieldContainer {
   background: white;
   border: hidden;
   border-radius: 50px;
   height: 2em;
   color: black;
   padding:10px;
+}
+
+#searchField {
+  border: none;
+  outline: 0;
+  font:inherit;
 }
