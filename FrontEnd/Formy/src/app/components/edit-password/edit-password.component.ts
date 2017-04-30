@@ -4,21 +4,23 @@ import {FormGroup, FormControl,Validators } from '@angular/forms';
 @Component({
   selector: 'formy-edit-password',
   templateUrl: './edit-password.component.html',
-  styleUrls: ['./edit-password.component.css']
+  styleUrls: ['./edit-password.component.scss']
 })
 export class EditPasswordComponent implements OnInit {
-	form;
-  constructor() { }
-
-  ngOnInit() {
-  		this.form = new FormGroup({
-  		currentPassword: new FormControl("",Validators.required),
-  		newPassword: new FormControl(""),
-  		confirmNewPassword: new FormControl("") 
-  		});
+  myForm: MyForm;
+  constructor() {
+    this.myForm = new MyForm();
   }
 
-  	onSubmit = function(user){
-  		console.log(user);
-  	}
+  ngOnInit() {
+  }
+   submit(myForm){
+    console.log(myForm);
+  }
+}
+
+class MyForm {
+  public currentPassword: string;
+  public newPassword: string;
+  public confirmNewPassword: string;
 }

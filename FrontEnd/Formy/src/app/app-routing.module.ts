@@ -7,7 +7,6 @@ import { MaterialModule } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-
 import { BuildFormComponent } from "./components/build-form/build-form.component";
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
 
