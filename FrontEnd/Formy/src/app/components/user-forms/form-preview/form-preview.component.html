@@ -1,4 +1,27 @@
 <md-card>
   <img md-card-image src="../../../../assets/images/mockupFormPreview">
-  <md-card-actions><md-icon>more_horiz</md-icon></md-card-actions>
+  <md-card-actions>
+    <md-menu #formMore="mdMenu">
+      <button md-menu-item>
+        <md-icon>share</md-icon>
+        Share
+      </button>
+      <button md-menu-item>
+        <md-icon>file_download</md-icon>
+        Download as PDF
+      </button>
+      <button md-menu-item>
+        <md-icon>label</md-icon>
+          Add Label
+      </button>
+      <button md-menu-item>
+        <md-icon>delete</md-icon>
+        Delete
+      </button>
+    </md-menu>
+
+    <button md-icon-button [mdMenuTriggerFor]="formMore">
+      <md-icon>more_horiz</md-icon>
+    </button>
+  </md-card-actions>
 </md-card>
