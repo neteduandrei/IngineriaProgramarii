@@ -15,7 +15,7 @@ export class FieldComponent implements OnInit {
     {value : 'singleChoice', viewValue: 'Single Choice'},
     {value : 'multipleChoice', viewValue: 'Multiple Choice'},
     {value : 'date', viewValue: 'Date'},
-    {value: 'linearScale', viewValue: 'Linear Scale'}
+    {value : 'linearScale', viewValue: 'Linear Scale'}
   ];
 
   public selectedOption;

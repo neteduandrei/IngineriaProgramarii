@@ -1,3 +1,13 @@
-<md-input-container>
-  <input mdInput placeholder="Short answer" disabled maxlength="64">
-</md-input-container>
+<div fxLayout="column" fxLayoutAlign="start start">
+  <md-input-container>
+    <input mdInput placeholder="Short answer" disabled maxlength="64">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="Verify by regex (optional)" maxlength="256" [(ngModel)]="constraintRegexTemplate" (change)="verifyRegex()"/>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput #textRegex="ngModel" placeholder="Test regex" maxlength="64" pattern="{{constraintRegex}}" [(ngModel)]="testRegex"/>
+  </md-input-container>
+  <p *ngIf="!textRegex.valid" class="error">Input is not valid</p>
+  <p *ngIf="!isRegexValid" class="error">Regex is not valid</p>
+</div>

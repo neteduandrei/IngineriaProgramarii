@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeShortTextComponent implements OnInit {
 
-  constructor() { }
+  public constraintRegexTemplate : string;
+  public constraintRegex : string;
+  public testRegex : string;
+  public isRegexValid : boolean;
+
+  constructor() {
+    this.isRegexValid = true;
+  }
 
   ngOnInit() {
+  }
+
+  public verifyRegex() {
+    console.log('here');
+    try {
+      let regex = new RegExp(this.constraintRegexTemplate);
+      this.constraintRegex = this.constraintRegexTemplate;
+      this.isRegexValid = true;
+    }
+    catch (e) {
+      this.isRegexValid = false;
+      console.log(e);
+    }
   }
 
 }

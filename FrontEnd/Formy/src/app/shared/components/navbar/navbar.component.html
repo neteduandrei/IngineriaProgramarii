@@ -1,3 +1,24 @@
-<p>
-  navbar works!
-</p>
+<md-toolbar color="primary">
+  <div id="navbarContent" fxLayout="row" fxLayoutAlign="space-between center">
+    <div id="logo" fxFlex="20">Formy</div>
+    <div id="controls" fxFlex="70" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
+      <div id="searchField" fxLayout="row" fxLayoutAlign="center center">
+        <input mdInput type="text" placeholder="Search forms">
+        <md-icon>search</md-icon>
+      </div>
+      <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
+        <md-icon>add_circle</md-icon>
+        <span>New Form</span>
+      </span>
+      <span fxLayout="row" fxLayoutAlign="start center">
+        <md-icon>file_upload</md-icon>
+        <span>Upload</span>
+      </span>
+    </div>
+    <div id="options" fxFlex="10" fxLayout="row" fxLayoutAlign="space-between center">
+      <md-icon>account_circle</md-icon>
+      <p>Username</p>
+      <md-icon>settings</md-icon>
+    </div>
+  </div>
+</md-toolbar>

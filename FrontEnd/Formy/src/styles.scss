@@ -96,7 +96,13 @@ nav {
   flex: none;
 }
 
+
 #content {
   flex:1;
   height: 100%;
+}
+
+formy-root > * {
+  display: flex;
+  flex-direction: column;
 }
