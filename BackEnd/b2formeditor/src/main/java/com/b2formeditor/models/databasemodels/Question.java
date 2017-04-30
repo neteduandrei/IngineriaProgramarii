@@ -13,6 +13,7 @@ public class Question {
     @Id
     private String id;
     private String type;
+    private String field;
     private String[] options;
 
     public String getId() {
@@ -37,5 +38,13 @@ public class Question {
 
     public void setOptions(String[] option) {
         this.options = option;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
     }
 }

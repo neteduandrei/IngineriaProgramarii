@@ -37,10 +37,14 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question save (Question question) {
-        List<Question> existing = this.repository.findByTypeAndOptions(question.getType(), question.getOptions());
+        List<Question> existing = this.repository.findByFieldAndTypeAndOptions(question.getField(), question.getType(), question.getOptions());
         if (existing.isEmpty()) {
             return this.repository.save(question);
         }
         return existing.get(0);
+    }
+
+    public Question getOneByField (String field) {
+        return this.repository.findByField(field);
     }
 }

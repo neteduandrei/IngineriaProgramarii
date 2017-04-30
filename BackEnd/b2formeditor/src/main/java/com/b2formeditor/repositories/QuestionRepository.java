@@ -15,7 +15,9 @@ import java.util.List;
 public interface QuestionRepository extends MongoRepository<Question, String> {
     List<Question> findAll();
 
-    List<Question> findByTypeAndOptions(String type, String[] options);
+    List<Question> findByFieldAndTypeAndOptions(String field, String type, String[] options);
+
+    Question findByField(String field);
 
     Question save(Question question);
 
