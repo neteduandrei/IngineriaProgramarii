@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild} from '@angular/core';
 import {FieldComponent} from "./field/field.component";
 
 @Component({
@@ -8,7 +8,7 @@ import {FieldComponent} from "./field/field.component";
 })
 export class BuildFormComponent implements OnInit {
 
-  @ViewChild(FieldComponent) public fields : FieldComponent[];
+  public fields : FieldComponent[];
 
   constructor() {
     this.fields = [];
