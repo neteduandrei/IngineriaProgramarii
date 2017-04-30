@@ -19,12 +19,13 @@ import { TypeMultipleChoiceComponent } from './components/build-form/field/field
 import { TypeDateComponent } from './components/build-form/field/field-of-type/type-date/type-date.component';
 import { TypeLinearScaleComponent } from './components/build-form/field/field-of-type/type-linear-scale/type-linear-scale.component';
 import { FormPreviewComponent } from './components/user-forms/form-preview/form-preview.component';
-
+import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthentificationComponent,
+    DialogDeleteComponent,
     EditPasswordComponent,
     UserFormsComponent,
     FillFormComponent,
