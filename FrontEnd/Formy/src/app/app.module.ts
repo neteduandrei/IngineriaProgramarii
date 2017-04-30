@@ -18,6 +18,7 @@ import { TypeSingleChoiceComponent } from './components/build-form/field/field-o
 import { TypeMultipleChoiceComponent } from './components/build-form/field/field-of-type/type-multiple-choice/type-multiple-choice.component';
 import { TypeDateComponent } from './components/build-form/field/field-of-type/type-date/type-date.component';
 import { TypeLinearScaleComponent } from './components/build-form/field/field-of-type/type-linear-scale/type-linear-scale.component';
+import { FormPreviewComponent } from './components/user-forms/form-preview/form-preview.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TypeLinearScaleComponent } from './components/build-form/field/field-of
     TypeSingleChoiceComponent,
     TypeMultipleChoiceComponent,
     TypeDateComponent,
-    TypeLinearScaleComponent
+    TypeLinearScaleComponent,
+    FormPreviewComponent
   ],
   imports: [
     AppRoutingModule
