@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { UserFormsComponent } from './components/user-forms/user-forms.component';
+import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
 import { FillFormComponent } from './components/fill-form/fill-form.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FieldComponent } from "./components/build-form/field/field.component";
@@ -25,6 +26,7 @@ import { TypeLinearScaleComponent } from './components/build-form/field/field-of
   declarations: [
     AppComponent,
     AuthentificationComponent,
+    EditPasswordComponent,
     UserFormsComponent,
     FillFormComponent,
     NavbarComponent,
