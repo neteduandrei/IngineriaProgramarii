@@ -1,3 +1,4 @@
+<nav><formy-navbar></formy-navbar></nav>
 <div id="content" fxLayout="column" fxLayoutAlign="start center">
   <md-card id="formContainer">
     <md-card-title>
@@ -10,8 +11,14 @@
         <input mdInput type="text" maxlength="64" placeholder="Form description">
       </md-input-container>
     </md-card-subtitle>
-    <md-card-content>
-      <formy-field></formy-field>
+    <md-card-content fxLayout="column" fxLayoutGap="2%">
+      <div *ngFor="let field of fields; let i = index">
+        <formy-field (delete)="delete(i)"></formy-field>
+      </div>
     </md-card-content>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button md-mini-fab (click)="addField()"><md-icon>add</md-icon></button>
+    </div>
+    <button md-raised-button color="primary">Submit</button>
   </md-card>
 </div>

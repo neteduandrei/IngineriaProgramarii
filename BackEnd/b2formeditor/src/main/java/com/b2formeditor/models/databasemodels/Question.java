@@ -1,5 +1,6 @@
 package com.b2formeditor.models.databasemodels;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,15 +10,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Questions")
 public class Question {
     @Id
-    private Integer id;
+    private ObjectId id;
     private String type;
-    private String[] option;
+    private String[] options;
 
-    public Integer getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -29,11 +30,11 @@ public class Question {
         this.type = type;
     }
 
-    public String[] getOption() {
-        return option;
+    public String[] getOptions() {
+        return options;
     }
 
-    public void setOption(String[] option) {
-        this.option = option;
+    public void setOptions(String[] option) {
+        this.options = option;
     }
 }

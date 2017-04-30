@@ -1,5 +1,6 @@
 package com.b2formeditor.models.databasemodels;
 
+import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -14,7 +15,7 @@ import javax.validation.constraints.Size;
 @Document(collection = "Users")
 public class User {
     @Id
-    private Integer id;
+    private ObjectId id;
 
     @Indexed(unique = true)
     private String email;
@@ -29,15 +30,15 @@ public class User {
     @Size(min = 6)
     private String password;
 
-    private Object refreshToken;
-    private Object accessToken;
+    private String refreshToken;
+    private String accessToken;
     private String service;
 
-    public Integer getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -85,7 +86,7 @@ public class User {
         return accessToken;
     }
 
-    public void setAccessToken(Object accessToken) {
+    public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
 

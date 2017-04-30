@@ -20,8 +20,6 @@ import { TypeDateComponent } from './components/build-form/field/field-of-type/t
 import { TypeLinearScaleComponent } from './components/build-form/field/field-of-type/type-linear-scale/type-linear-scale.component';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

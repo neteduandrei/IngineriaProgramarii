@@ -1,5 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$md-mcgAppPrimary: (
+  50 : #e8eefc,
+  100 : #c5d6f8,
+  200 : #9ebaf4,
+  300 : #779eef,
+  400 : #5a8aeb,
+  500 : #3d75e8,
+  600 : #376de5,
+  700 : #2f62e2,
+  800 : #2758de,
+  900 : #1a45d8,
+  A100 : #ffffff,
+  A200 : #d9e0ff,
+  A400 : #a6b7ff,
+  A700 : #8ca3ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+$md-mcgAppAccent: (
+  50 : #ece9fa,
+  100 : #d0c8f2,
+  200 : #b1a4e9,
+  300 : #9280e0,
+  400 : #7a64da,
+  500 : #6349d3,
+  600 : #5b42ce,
+  700 : #5139c8,
+  800 : #4731c2,
+  900 : #3521b7,
+  A100 : #f3f1ff,
+  A200 : #c6beff,
+  A400 : #998bff,
+  A700 : #8272ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$app-primary : mat-palette($md-mcgAppPrimary, 500);
+$app-accent : mat-palette($md-mcgAppAccent, 500);
+
+$app-theme : mat-light-theme($app-primary, $app-accent);
+
+@include angular-material-theme($app-theme);
 
 * {
   -webkit-box-sizing: border-box;
@@ -10,6 +85,7 @@
 body {
   height: 100%;
   margin: 0;
+  background: linear-gradient(to bottom, rgb(79, 111, 251), rgb(99, 73, 211)) fixed !important;
 }
 
 html {
@@ -20,7 +96,13 @@ nav {
   flex: none;
 }
 
+
 #content {
   flex:1;
   height: 100%;
+}
+
+formy-root > * {
+  display: flex;
+  flex-direction: column;
 }
