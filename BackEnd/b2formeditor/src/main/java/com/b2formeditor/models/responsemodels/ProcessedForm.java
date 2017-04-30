@@ -15,7 +15,7 @@ public class ProcessedForm extends Form {
     }
 
     public ProcessedForm(QuestionService questionService, Form baseForm) {
-        String[] base_questions = baseForm.getQuestionIds();
+        String[] base_questions = ((ProcessedForm) baseForm).questionIds;
         questions = new Question[base_questions.length];
 
         for (int i = 0; i < base_questions.length; i++) {
@@ -32,7 +32,7 @@ public class ProcessedForm extends Form {
             scopeQuestionsIds[i] = questionId;
         }
 
-        setQuestionIds(scopeQuestionsIds);
+        this.questionIds = scopeQuestionsIds;
     }
 
     public Question[] getQuestions() {

@@ -21,7 +21,7 @@ public class Form {
     private String title;
     private String description;
     @NotNull
-    private String[] questionIds;
+    protected String[] questionIds;
 
     public String getId() {
         return id;
@@ -61,13 +61,5 @@ public class Form {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String[] getQuestionIds() {
-        return questionIds;
-    }
-
-    public void setQuestionIds(String[] questions) {
-        this.questionIds = questions;
     }
 }
