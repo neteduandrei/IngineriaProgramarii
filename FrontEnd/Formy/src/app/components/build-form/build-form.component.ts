@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FieldComponent} from "./field/field.component";
 
 @Component({
   selector: 'formy-build-form',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuildFormComponent implements OnInit {
 
-  constructor() { }
+  public fields : FieldComponent[];
+
+  constructor() {
+    this.fields = [];
+  }
 
   ngOnInit() {
+    this.fields.push(new FieldComponent);
+  }
+
+  public addField() {
+    this.fields.push(new FieldComponent);
   }
 
 }
