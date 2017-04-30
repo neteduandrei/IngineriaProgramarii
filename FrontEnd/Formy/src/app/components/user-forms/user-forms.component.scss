@@ -3,8 +3,19 @@
   background: #f4f4f4;
 }
 
+#sidebar md-list i{
+  color: rgba(54,54,54,0.79);
+  padding-left: 20px;
+}
+
+#sidebar span{
+  padding-left: 10px;
+  font-size: 14px;
+}
+
 #main {
   overflow-y: auto;
   padding-top:2%;
+  padding-left: 1%;
   background: #fff;
 }
