@@ -16,16 +16,6 @@ public class Question {
     private String description;
     private String type;
     private boolean required;
-    private String field;
-
-    public String getField() {
-        return field;
-    }
-
-    public void setField(String field) {
-        this.field = field;
-    }
-
     private Object value;
     private Object[] options;
 
