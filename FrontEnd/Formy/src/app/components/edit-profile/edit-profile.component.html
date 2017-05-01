@@ -1,0 +1,22 @@
+<div id="content" fxLayout="column" fxLayoutAlign="start center">
+ <div class="formContainer">
+  <form class="container" #editDetails="ngForm">
+            <div style="text-align: center"> <img src="https://t4.ftcdn.net/jpg/01/07/85/89/240_F_107858989_SJogeLthvc6WZ6lP6EsuLlxIRNtsz4JH.jpg"/>
+            </div>
+            <a [routerLink]="['/edit-password']">Update photo</a>
+
+            <div class="contain">
+                <md-input-container>
+                  <input mdInput type = "text-align" name = "name" placeholder="Enter your new name" [(ngModel)]="editDetails.name"/>
+                </md-input-container>
+            </div>
+            <div class="contain">
+                <md-input-container>
+                  <input mdInput type = "text-align" name = "email" placeholder="Enter your new email" [(ngModel)]="editDetails.email"/>
+                </md-input-container>
+            </div>
+            <button md-button class="btn-update">Update</button>
+            <a [routerLink]="['/edit-password']">Change password</a>
+  </form>
+ </div>
+</div>

@@ -31,6 +31,7 @@ import { FillTypeLongTextComponent } from './components/fill-form/fill-field/fil
 import { FillTypeMultipleChoiceComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-multiple-choice/fill-type-multiple-choice.component';
 import { FillTypeShortTextComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-short-text/fill-type-short-text.component';
 import { FillTypeSingleChoiceComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-single-choice/fill-type-single-choice.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { FillTypeSingleChoiceComponent } from './components/fill-form/fill-field
     FillTypeLongTextComponent,
     FillTypeMultipleChoiceComponent,
     FillTypeShortTextComponent,
-    FillTypeSingleChoiceComponent
+    FillTypeSingleChoiceComponent,
+    EditProfileComponent
   ],
   imports: [
     AppRoutingModule

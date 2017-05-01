@@ -13,6 +13,7 @@ import { UserFormsComponent } from "./components/user-forms/user-forms.component
 import { DialogDeleteComponent } from "./components/edit-password/edit-password.component";
 import { AuthentificationComponent } from "./components/authentification/authentification.component";
 import {FillFormComponent} from "app/components/fill-form/fill-form.component";
+import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'dialogDelete',
     component: DialogDeleteComponent
+  },
+  {
+    path: 'editProfile',
+    component: EditProfileComponent
   }
 ];
 
