@@ -5,7 +5,10 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 @Component({
   selector: 'formy-edit-password',
   templateUrl: './edit-password.component.html',
-  styleUrls: ['./edit-password.component.scss']
+  styleUrls: ['./edit-password.component.scss'],
+    host: {
+    class:'page'
+  }
 })
 export class EditPasswordComponent implements OnInit {
   myForm: MyForm;
