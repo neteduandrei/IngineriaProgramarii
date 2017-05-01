@@ -21,6 +21,11 @@ public class ProcessedForm extends Form {
         for (int i = 0; i < base_fields.length; i++) {
             fields[i] = questionService.getById(base_fields[i]);
         }
+        this.id = baseForm.getId();
+        this.createdBy = baseForm.getCreatedBy();
+        this.createdAt = baseForm.getCreatedAt();
+        this.title = baseForm.getTitle();
+        this.description = baseForm.getDescription();
     }
 
     public void commit(QuestionService questionService) {
@@ -42,4 +47,5 @@ public class ProcessedForm extends Form {
     public void setFields(Question[] fields) {
         this.fields = fields;
     }
+
 }
