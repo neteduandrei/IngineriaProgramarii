@@ -15,6 +15,7 @@ export class EditPasswordComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
+      console.log(result);
     });
   }
 
@@ -40,6 +41,10 @@ class MyForm {
 })
 export class DialogDeleteComponent {
   constructor(public dialogRef: MdDialogRef<DialogDeleteComponent>) {}
+
+  closeDialog(result) {
+    this.dialogRef.close(result);
+  }
 }
 
 

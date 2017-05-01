@@ -5,6 +5,6 @@
   </div>
 </form>
 <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-label="Close">Yes</button>
-    <button class="btn" data-dismiss="modal" aria-label="Close">No</button>
+    <button class="btn" data-dismiss="modal" aria-label="Close" (click)="closeDialog('yes')" >Yes</button>
+    <button class="btn" data-dismiss="modal" aria-label="Close" (click)="closeDialog('no')">No</button>
 </div>

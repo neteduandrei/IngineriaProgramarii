@@ -16,7 +16,8 @@ import { AuthentificationComponent } from "./components/authentification/authent
 const routes: Routes = [
   {
     path: '',
-    children: []
+    pathMatch : 'full',
+    redirectTo: 'authentification'
   },
   {
     path: 'build-form',
