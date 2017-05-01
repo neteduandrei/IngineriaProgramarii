@@ -35,11 +35,11 @@ public class ProcessedForm extends Form {
         this.questionIds = scopeQuestionsIds;
     }
 
-    public Question[] getQuestions() {
+    public Question[] getFields() {
         return this.fields;
     }
 
-    public void setQuestions(Question[] fields) {
+    public void setFields(Question[] fields) {
         this.fields = fields;
     }
 }
