@@ -12,11 +12,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/forms")
 public class FormController {
     @Autowired
     private FormService service;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<ProcessedForm>> getAll() {
+        List<ProcessedForm> forms = service.getAll();
+        if (forms == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(forms, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ResponseEntity<ProcessedForm> get(@PathVariable("id") String id) {
