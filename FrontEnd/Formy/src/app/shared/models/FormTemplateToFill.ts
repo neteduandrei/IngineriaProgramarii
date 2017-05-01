@@ -4,6 +4,5 @@ import { Form } from "./Form";
  */
 export class FormTemplateToFill {
   id : string;
-  owner : string;
   form : Form
 }

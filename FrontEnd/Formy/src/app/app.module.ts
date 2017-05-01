@@ -21,6 +21,9 @@ import { TypeLinearScaleComponent } from './components/build-form/field/field-of
 import { FormPreviewComponent } from './components/user-forms/form-preview/form-preview.component';
 import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
 
+
+import {FillFormService} from "app/shared/services/fill-form/fill-form.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import { DialogDeleteComponent } from './components/edit-password/edit-password.
   imports: [
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    FillFormService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

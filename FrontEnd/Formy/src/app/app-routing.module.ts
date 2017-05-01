@@ -12,6 +12,7 @@ import { EditPasswordComponent } from "./components/edit-password/edit-password.
 import { UserFormsComponent } from "./components/user-forms/user-forms.component";
 import { DialogDeleteComponent } from "./components/edit-password/edit-password.component";
 import { AuthentificationComponent } from "./components/authentification/authentification.component";
+import {FillFormComponent} from "app/components/fill-form/fill-form.component";
 
 const routes: Routes = [
   {
@@ -32,12 +33,12 @@ const routes: Routes = [
     component: EditPasswordComponent
   },
   {
-    path: 'dialog-delete',
-    component: DialogDeleteComponent
-  },
-  {
     path: 'authentification',
     component: AuthentificationComponent
+  },
+  {
+    path: 'form/fill/:id',
+    component: FillFormComponent
   }
 ];
 
