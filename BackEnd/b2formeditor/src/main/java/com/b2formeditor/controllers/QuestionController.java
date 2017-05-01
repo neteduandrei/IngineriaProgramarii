@@ -20,8 +20,8 @@ public class QuestionController {
     private QuestionService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Question> get(@RequestParam String fieldName) {
-        Question responseQuestion = this.service.getOneByField(fieldName);
+    public ResponseEntity<Question> get(@RequestParam String title) {
+        Question responseQuestion = this.service.getOneByTitle(title);
         if (responseQuestion == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
