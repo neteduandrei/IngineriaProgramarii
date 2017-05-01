@@ -8,27 +8,27 @@ import com.b2formeditor.services.QuestionService;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 public class ProcessedForm extends Form {
-    private Question[] questions;
+    private Question[] fields;
 
     public ProcessedForm() {
         // default constructor for json
     }
 
     public ProcessedForm(QuestionService questionService, Form baseForm) {
-        String[] base_questions = ((ProcessedForm) baseForm).questionIds;
-        questions = new Question[base_questions.length];
+        String[] base_fields = ((ProcessedForm) baseForm).questionIds;
+        fields = new Question[base_fields.length];
 
-        for (int i = 0; i < base_questions.length; i++) {
-            questions[i] = questionService.getById(base_questions[i]);
+        for (int i = 0; i < base_fields.length; i++) {
+            fields[i] = questionService.getById(base_fields[i]);
         }
     }
 
     public void commit(QuestionService questionService) {
-        String[] scopeQuestionsIds = new String[questions.length];
+        String[] scopeQuestionsIds = new String[fields.length];
 
-        for (int i = 0; i < questions.length; i++) {
-            String questionId = questionService.save(questions[i]).getId();
-            questions[i].setId(questionId);
+        for (int i = 0; i < fields.length; i++) {
+            String questionId = questionService.save(fields[i]).getId();
+            fields[i].setId(questionId);
             scopeQuestionsIds[i] = questionId;
         }
 
@@ -36,10 +36,10 @@ public class ProcessedForm extends Form {
     }
 
     public Question[] getQuestions() {
-        return this.questions;
+        return this.fields;
     }
 
-    public void setQuestions(Question[] questions) {
-        this.questions = questions;
+    public void setQuestions(Question[] fields) {
+        this.fields = fields;
     }
 }
