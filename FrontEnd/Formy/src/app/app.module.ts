@@ -19,6 +19,7 @@ import { TypeMultipleChoiceComponent } from './components/build-form/field/field
 import { TypeDateComponent } from './components/build-form/field/field-of-type/type-date/type-date.component';
 import { TypeLinearScaleComponent } from './components/build-form/field/field-of-type/type-linear-scale/type-linear-scale.component';
 import { FormPreviewComponent } from './components/user-forms/form-preview/form-preview.component';
+import { DialogShareComponent } from './components/user-forms/form-preview/form-preview.component';
 import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
 
 
@@ -39,6 +40,7 @@ import { SimplenavbarComponent } from './shared/components/simplenavbar/simplena
     AppComponent,
     AuthentificationComponent,
     DialogDeleteComponent,
+    DialogShareComponent,
     EditPasswordComponent,
     UserFormsComponent,
     FillFormComponent,
