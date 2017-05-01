@@ -1,5 +1,5 @@
-# Format of FormTemplateGenerator
-### Used to send to the server a form's template
+# Communication standard
+## Template Used to send to the server a form's template
 
 - as classes: 
 ```typescript
@@ -44,7 +44,7 @@ class Field {
 }
 ```
 
-### Explaining the fields:
+#### Explaining the fields:
 
 - type : shortText, longText, singleChoice, multipleChoice, date, linearScale
 - required : true/false
@@ -56,3 +56,15 @@ class Field {
   + shortText : Pair\<String, String\> ("regex" : "")
   + longText : Pair\<String, Integer\> ("maxLength" : Integer)
   + date, singleChoice, multipleChoice : null
+
+
+## Template used when receiving the template from the server
+
+- classes :
+```typescript
+class FormTemplateToFill {
+  public id : string;
+  public form : Form;
+}
+/* The others are like above */
+```
