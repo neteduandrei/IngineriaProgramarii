@@ -13,7 +13,8 @@ export class EditPasswordComponent implements OnInit {
 
   constructor(public dialog: MdDialog) {this.myForm = new MyForm(); }
 
-  openDialog() {
+  public openDialog() {
+    console.log('test');
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;

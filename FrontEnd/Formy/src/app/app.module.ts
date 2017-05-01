@@ -23,6 +23,14 @@ import { DialogDeleteComponent } from './components/edit-password/edit-password.
 
 
 import {FillFormService} from "app/shared/services/fill-form/fill-form.service";
+import { FillFieldComponent } from './components/fill-form/fill-field/fill-field.component';
+import { FillFieldOfTypeComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-field-of-type.component';
+import { FillTypeDateComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-date/fill-type-date.component';
+import { FillTypeLinearScaleComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-linear-scale/fill-type-linear-scale.component';
+import { FillTypeLongTextComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-long-text/fill-type-long-text.component';
+import { FillTypeMultipleChoiceComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-multiple-choice/fill-type-multiple-choice.component';
+import { FillTypeShortTextComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-short-text/fill-type-short-text.component';
+import { FillTypeSingleChoiceComponent } from './components/fill-form/fill-field/fill-field-of-type/fill-type-single-choice/fill-type-single-choice.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +50,15 @@ import {FillFormService} from "app/shared/services/fill-form/fill-form.service";
     TypeMultipleChoiceComponent,
     TypeDateComponent,
     TypeLinearScaleComponent,
-    FormPreviewComponent
+    FormPreviewComponent,
+    FillFieldComponent,
+    FillFieldOfTypeComponent,
+    FillTypeDateComponent,
+    FillTypeLinearScaleComponent,
+    FillTypeLongTextComponent,
+    FillTypeMultipleChoiceComponent,
+    FillTypeShortTextComponent,
+    FillTypeSingleChoiceComponent
   ],
   imports: [
     AppRoutingModule

@@ -1,0 +1,5 @@
+<md-input-container>
+  <input mdInput placeholder="Your answer" #answer type="text" maxlength="64"
+         pattern="{{options.regex}}" [(ngModel)]="value" value="{{options.regex}}" [required]="required" />
+  <md-error>Field cannot be empty and must respect the given format</md-error>
+</md-input-container>

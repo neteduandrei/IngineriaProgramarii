@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'form/fill/:id',
     component: FillFormComponent
+  },
+  {
+    path: 'dialogDelete',
+    component: DialogDeleteComponent
   }
 ];
 
