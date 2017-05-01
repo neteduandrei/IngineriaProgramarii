@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'formy-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.scss']
+  styleUrls: ['./edit-profile.component.scss'],
+    host: {
+    class:'page'
+  }
 })
 export class EditProfileComponent implements OnInit {
   editDetails : EditDetails;
