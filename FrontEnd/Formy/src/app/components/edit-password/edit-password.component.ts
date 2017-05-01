@@ -10,7 +10,9 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 export class EditPasswordComponent implements OnInit {
   myForm: MyForm;
   selectedOption: string;
+
   constructor(public dialog: MdDialog) {this.myForm = new MyForm(); }
+
   openDialog() {
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe(result => {
