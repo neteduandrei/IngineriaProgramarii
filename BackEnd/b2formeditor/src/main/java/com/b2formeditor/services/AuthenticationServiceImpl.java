@@ -81,5 +81,4 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         return successfulAuthentication;
     }
-
 }
