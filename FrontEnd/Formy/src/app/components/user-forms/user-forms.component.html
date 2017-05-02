@@ -30,23 +30,9 @@
 
   </div>
   <div id="main" fxFlex="90%" fxLayout="row" fxLayoutGap="3%" fxLayoutWrap>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
-    <formy-form-preview fxFlex="15%"></formy-form-preview>
+      <formy-form-preview fxFlex="15%"></formy-form-preview>
+    <div *ngFor="let form of forms; let i = index">
+      <formy-form-preview fxFlex="15%"></formy-form-preview>
+    </div>
   </div>
 </div>
