@@ -19,12 +19,6 @@ export class UserFormsComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    let test: FormPreviewComponent;
-    test.title = 'Test Title';
-    test.moreInfo = 'Apr 30, 141 KB';
-    this.forms.push(test);
-    */
   }
 
   public addForm(form: FormPreviewComponent){

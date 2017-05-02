@@ -1,10 +1,18 @@
 <md-toolbar color="primary">
   <div id="navbarContent" fxLayout="row" fxLayoutAlign="space-between center">
-    <div id="logo" fxFlex="20">Formy</div>
-    <div id="options" fxFlex="15" fxLayout="row" fxLayoutAlign="space-around center">
+  <a [routerLink]="['/user']" hreg="." style="text-decoration: none; color:white">
+    <div id="logo" fxFlex="20">Formy</div></a>
+	<div id="options" fxFlex="15" fxLayout="row" fxLayoutAlign="space-around center">
       <md-icon>account_circle</md-icon>
       <p>Username</p>
-      <md-icon>settings</md-icon>
+      <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
+        <md-icon>settings</md-icon>
+      </button>
+
+      <md-menu #settingsMenu="mdMenu">
+        <button md-menu-item [routerLink]="['/editProfile']">Change settings</button>
+        <button md-menu-item [routerLink]="['/edit-password']">Change password</button>
+      </md-menu>
     </div>
   </div>
 </md-toolbar>
