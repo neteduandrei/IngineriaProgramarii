@@ -1,12 +1,10 @@
-<div id="content" fxLayout="column" fxLayoutAlign="center center">
+<div id="content" fxLayout="column" fxLayoutAlign="start center">
 	<md-card>
 		<md-tab-group>
 		  <md-tab label="Login">
 		    <br>
-		    Login To Your Account
-		    <br>
+		    <p>Login To Your Account</p>
 		    <form class="Login-Form">
-		      <br>
 		      <div class="container">
 		        <md-input-container>
 		          <input mdInput placeholder="Email" value="">
@@ -19,22 +17,19 @@
 		      </div> 
 		      <div class="CheckBox">
 		      <md-checkbox ng-model="isChecked" color="primary">
-		        Remember password!
+		        <p>Remember password!</p>
 		      </md-checkbox>
 		      </div>
 		      <br>
 		      <div class="LoginButton">
-		        <a md-raised-button routerLink="." color="primary">LogIn</a>
+		        <a md-raised-button routerLink="." color="primary"style="margin-bottom: 28%;">LogIn</a>
 		      </div>
 		    </form>
-		    <br>
 		  </md-tab>
 		  <md-tab label="Register">
 		    <br>
-		    Register To Your Account
-		    <br>
+		    <p>Register To Your Account</p>
 		    <form class="Login-Form">
-		    <br>
 		      <div class="container">
 		        <md-input-container>
 		          <input mdInput placeholder="Email" value="">
@@ -56,19 +51,40 @@
 		            </md-input-container>
 		      </div> 
 		      <div class="RegisterButton">
-		        <a md-raised-button routerLink="." color="primary">Register</a>
+		        <p><a md-raised-button routerLink="." color="primary" style="margin-bottom: 20%;">Register</a></p>
 		      </div>
 		    </form>
-		    <br>
 		  </md-tab>
 		</md-tab-group>
-
-		<div id="socialLogIn" style="background-color: white;">
+		<md-card-footer class="text-center" style="background-color: #cbd1db;">
 		<div>
-			<p>Login With <a href="#">Facebook</a> | Login With <a href="#">Twiter</a></p>
+			{{status}}
+			<p>Login With <button (click)="signIn('facebook')">facebook</button>Login With <button (click)="signIn('google')">google</button></p>
+              <div *ngIf="user">
+                <table>
+                  <tr>
+                    <td>Name:</td>
+                    <td>{{user.name}}</td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td>{{user.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>UID</td>
+                    <td>{{user.uid}}</td>
+                  </tr>
+                  <tr>
+                    <td>Provider</td>
+                    <td>{{user.provider}}</td>
+                  </tr>
+                  <tr>
+                    <td>Image</td>
+                    <td>{{user.image}}</td>
+                  </tr>
+                </table>
+              </div>
 		</div>
-		</div>
+		</md-card-footer>	
 	</md-card>
-	
-
 </div>
