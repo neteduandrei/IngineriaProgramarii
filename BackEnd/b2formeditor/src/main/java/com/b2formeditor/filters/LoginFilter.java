@@ -33,7 +33,10 @@ public class LoginFilter implements Filter {
         HttpSession session = httpRequest.getSession(true);
         String email = httpRequest.getParameter("email");
         String password = httpRequest.getParameter("password");
-        LoginCredentials credentials = new LoginCredentials(email, password);
+
+        // TODO: De acuma inainte, folosim pull requests sa adaugam cod okay. Doar fixuri faci in master,
+        // TODO: features cu pull request si reviable - codul de mai jos nu merge
+        /*LoginCredentials credentials = new LoginCredentials(email, password); // FIXME: compile error
 
         if (session.getAttribute("credentials") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
@@ -45,7 +48,7 @@ public class LoginFilter implements Filter {
                 httpResponse.setDateHeader("Expires", 0);
                 filterChain.doFilter(servletRequest, servletResponse);
             }
-        }
+        }*/
     }
 
     @Override

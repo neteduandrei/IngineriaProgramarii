@@ -45,6 +45,7 @@ public class ResponseServiceImpl implements ResponseService {
         for(int i = 0; i < answers.length; i++) {
             String answer, regex, jsonRegex;
             answer = answers[i];
+
             jsonRegex = questions[i].getOptions()[0].toString();
 
             regex = "";
@@ -66,8 +67,9 @@ public class ResponseServiceImpl implements ResponseService {
             if(found == 0) return true;
 
             Pattern pattern = Pattern.compile("^(" + regex + ")");
+
             Matcher matcher = pattern.matcher(answer);
-            if (!matcher.find()) {
+            if (matcher.find()) {
                 return false;
             }
         }
