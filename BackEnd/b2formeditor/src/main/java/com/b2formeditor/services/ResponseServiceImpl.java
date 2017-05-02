@@ -46,6 +46,8 @@ public class ResponseServiceImpl implements ResponseService {
             String answer, regex, jsonRegex;
             answer = answers[i];
 
+            if(questions[i].getOptions() == null) return true;
+
             jsonRegex = questions[i].getOptions()[0].toString();
 
             regex = "";
