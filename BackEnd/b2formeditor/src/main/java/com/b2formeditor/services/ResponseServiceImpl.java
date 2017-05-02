@@ -6,6 +6,8 @@ package com.b2formeditor.services;
  */
 
 import com.b2formeditor.models.databasemodels.Form;
+import com.b2formeditor.models.databasemodels.Question;
+import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.models.responsemodels.ProcessedResponse;
 import com.b2formeditor.repositories.FormRepository;
 import com.b2formeditor.repositories.QuestionRepository;
@@ -29,17 +31,23 @@ public class ResponseServiceImpl implements ResponseService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    @Autowired
+    private QuestionService questionsService;
+
     private boolean check(ProcessedResponse entity) {
-        String[] answers, questions;
+        String[] answers;
+        Question[] questions;
+        ProcessedForm pf;
         answers = (String[]) entity.getAnswers();
-        questions = formRepository.findOne(entity.getFormId()).getQuestionIds();
+        pf = new ProcessedForm(questionsService, formRepository.findOne(entity.getFormId()));
+        questions = pf.getFields();
 
         for(int i = 0; i < answers.length; i++) {
             String answer, regex;
             answer = answers[i];
-            regex = (String) questionRepository.findOne(questions[i]).getOptions()[0];
+            regex = (String) questions[i].getOptions()[0];
 
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile("^" + regex);
             Matcher matcher = pattern.matcher(answer);
             if (matcher.find()) {
                 return false;

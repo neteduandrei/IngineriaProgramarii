@@ -1,6 +1,11 @@
 <md-toolbar color="primary">
   <div id="navbarContent" fxLayout="row" fxLayoutAlign="space-between center">
-    <a [routerLink]="['/user']" hreg="." style="text-decoration: none; color:white"><div id="logo" fxFlex="20">Formy</div></a>
+    <a [routerLink]="['/user']" hreg="." fxFlex="20"
+       style="text-decoration: none; color:white">
+      <div id="logo" >
+      <img src="../assets/images/LogoFiiForm-01.svg" style="width:68%; margin-left:-8%">
+      </div>
+    </a>
     <div id="controls" fxFlex="65" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
       <div id="searchFieldContainer" fxLayout="row" fxLayoutAlign="center center">
         <input mdInput type="text" placeholder="Search forms" id="searchField">
