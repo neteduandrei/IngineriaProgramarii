@@ -12,7 +12,7 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import { BuildFormComponent } from "./components/build-form/build-form.component";
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
 import { UserFormsComponent } from "./components/user-forms/user-forms.component";
-import { DialogShareComponent } from "./components/user-forms/form-preview/form-preview.component"
+import { DialogShareComponent } from "./components/user-forms/form-preview/dialogs/dialog-share.component"
 import { DialogDeleteComponent } from "./components/edit-password/edit-password.component";
 import { AuthentificationComponent } from "./components/authentification/authentification.component";
 import {FillFormComponent} from "app/components/fill-form/fill-form.component";
