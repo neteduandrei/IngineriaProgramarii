@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Angular2SocialLoginModule } from "angular2-social-login";
+
 
 import { BuildFormComponent } from "./components/build-form/build-form.component";
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
@@ -16,6 +18,15 @@ import { AuthentificationComponent } from "./components/authentification/authent
 import {FillFormComponent} from "app/components/fill-form/fill-form.component";
 import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 
+let providers = {
+    "google": {
+      "clientId": "GOOGLE_CLIENT_ID"
+    },
+    "facebook": {
+      "clientId": "FACEBOOK_CLIENT_ID",
+      "apiVersion": "v2.4"
+    }
+  };
 const routes: Routes = [
   {
     path: '',
@@ -64,7 +75,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    Angular2SocialLoginModule
   ],
   exports: [
     RouterModule,
@@ -79,3 +91,5 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
+
+Angular2SocialLoginModule.loadProvidersScripts(providers);
