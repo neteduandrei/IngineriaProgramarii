@@ -32,23 +32,23 @@ git checkout work #schimbam inapoi pe branch-ul work si continuam sa facem schim
 ## Varianta cu branch work și GitKraken
 
 #### Step 1
-Create work branch and checkout.
+Create work branch and checkout.  
 ![image](https://cloud.githubusercontent.com/assets/2271038/25617352/839c4d08-2f4a-11e7-979d-cb27e93b7e42.png)
 
 #### Step 2
 Do your work, make some commits...
 
 #### Step 3
-Right click on master branch and pull.
+Right click on master branch and pull.  
 ![image](https://cloud.githubusercontent.com/assets/2271038/25617380/a8b10980-2f4a-11e7-9be5-68eb89ac401c.png)
 
 
 #### Step 4
-Right click on master branch and checkout.
+Right click on master branch and checkout.  
 ![image](https://cloud.githubusercontent.com/assets/2271038/25617391/bf1cdb54-2f4a-11e7-9f8d-aa0fa9787426.png)
 
 #### Step 5
-Right click on work branch, choose __merge work into master__
+Right click on work branch, choose __merge work into master__  
 ![image](https://cloud.githubusercontent.com/assets/2271038/25617439/fa437ecc-2f4a-11e7-9d94-debb4e41b9be.png)
 
 Done. Credits to [valiro21](https://github.com/valiro21) for providing clear instructions on the process.
