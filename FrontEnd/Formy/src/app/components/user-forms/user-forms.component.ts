@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {FormPreviewComponent} from './form-preview/form-preview.component'
+import {MdDialog} from "@angular/material";
 
 @Component({
   selector: 'formy-user-forms',
@@ -10,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormsComponent implements OnInit {
 
-  constructor() { }
+  public forms: FormPreviewComponent[];
+
+  constructor() {
+    this.forms = [];
+  }
 
   ngOnInit() {
+  }
+
+  public addForm(form: FormPreviewComponent){
+    this.forms.push(form);
+  }
+
+  public deleteForm(index: number){
+    this.forms.splice(index, 1);
   }
 
 }

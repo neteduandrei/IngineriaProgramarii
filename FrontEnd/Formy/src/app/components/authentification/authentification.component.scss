@@ -1,0 +1,33 @@
+#content { margin-top: 10%;}
+
+@at-root {
+  md-tab-group {
+    width: 25vw;
+  }
+
+}
+
+.fullWidth {
+  width:100%;
+}
+
+md-card {
+  background-color: rgb(40, 81, 160);
+  box-shadow: none !important;
+  color:white;
+}
+
+#cardFooter {
+  background: #cbd1db;
+  height: 3em;
+  color:rgb(79,79,79);
+}
+
+.socialNetworkButton {
+  height: 100%;
+}
+
+.socialNetworkButton:hover {
+  cursor: pointer;
+  background: #6a707a;
+}
