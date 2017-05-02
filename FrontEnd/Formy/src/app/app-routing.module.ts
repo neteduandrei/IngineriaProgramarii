@@ -10,9 +10,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BuildFormComponent } from "./components/build-form/build-form.component";
 import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
 import { UserFormsComponent } from "./components/user-forms/user-forms.component";
+import { DialogShareComponent } from "./components/user-forms/form-preview/form-preview.component"
 import { DialogDeleteComponent } from "./components/edit-password/edit-password.component";
 import { AuthentificationComponent } from "./components/authentification/authentification.component";
 import {FillFormComponent} from "app/components/fill-form/fill-form.component";
+import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 
 const routes: Routes = [
   {
@@ -39,6 +41,18 @@ const routes: Routes = [
   {
     path: 'form/fill/:id',
     component: FillFormComponent
+  },
+  {
+    path: 'dialogDelete',
+    component: DialogDeleteComponent
+  },
+  {
+    path: 'dialogShare',
+    component: DialogShareComponent
+  },
+  {
+    path: 'editProfile',
+    component: EditProfileComponent
   }
 ];
 

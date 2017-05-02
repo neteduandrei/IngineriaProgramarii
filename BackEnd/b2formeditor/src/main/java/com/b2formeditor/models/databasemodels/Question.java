@@ -12,9 +12,44 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Question {
     @Id
     private String id;
+    private String title;
+    private String description;
     private String type;
-    private String field;
-    private String[] options;
+    private boolean required;
+    private Object value;
+    private Object[] options;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public void setRequired(boolean required) {
+        this.required = required;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
 
     public String getId() {
         return id;
@@ -32,19 +67,12 @@ public class Question {
         this.type = type;
     }
 
-    public String[] getOptions() {
+    public Object[] getOptions() {
         return options;
     }
 
-    public void setOptions(String[] option) {
+    public void setOptions(Object[] option) {
         this.options = option;
     }
 
-    public String getField() {
-        return field;
-    }
-
-    public void setField(String field) {
-        this.field = field;
-    }
 }

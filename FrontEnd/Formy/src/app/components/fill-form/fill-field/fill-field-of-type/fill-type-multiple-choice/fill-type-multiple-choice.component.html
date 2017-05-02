@@ -1,0 +1,3 @@
+<div *ngFor="let option of values; let i = index;">
+  <md-checkbox [value]="selectedValues[i].val" [(ngModel)]="selectedValues[i].checked">{{selectedValues[i].val}}</md-checkbox>
+</div>

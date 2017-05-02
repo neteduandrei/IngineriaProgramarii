@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './fill-form.component.html',
   styleUrls: ['./fill-form.component.scss'],
   host: {
-    class:'page'
+    'class':'page'
   }
 })
 export class FillFormComponent implements OnInit {
@@ -32,7 +32,6 @@ export class FillFormComponent implements OnInit {
     this.fillFormService.getForm(this.id)
       .subscribe((form : FormTemplateToFill) => {
         this.formTemplateToFill = form;
-        console.log(this.formTemplateToFill);
       });
 
   }

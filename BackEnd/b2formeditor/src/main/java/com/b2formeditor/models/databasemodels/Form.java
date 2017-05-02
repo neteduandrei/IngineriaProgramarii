@@ -14,13 +14,13 @@ import java.util.Date;
 @Document(collection = "Forms")
 public class Form {
     @Id
-    private String id;
-    private String createdBy;
-    private Date createdAt;
+    protected String id;
+    protected String createdBy;
+    protected Date createdAt;
 
     @NotBlank
-    private String title;
-    private String description;
+    protected String title;
+    protected String description;
     @NotNull
     protected String[] questionIds;
 
@@ -31,7 +31,7 @@ public class Form {
     public void setId(String id) {
         this.id = id;
     }
-
+    
     public String getCreatedBy() {
         return createdBy;
     }

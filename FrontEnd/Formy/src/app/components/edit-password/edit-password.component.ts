@@ -5,7 +5,10 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 @Component({
   selector: 'formy-edit-password',
   templateUrl: './edit-password.component.html',
-  styleUrls: ['./edit-password.component.scss']
+  styleUrls: ['./edit-password.component.scss'],
+    host: {
+    class:'page'
+  }
 })
 export class EditPasswordComponent implements OnInit {
   myForm: MyForm;
@@ -13,7 +16,8 @@ export class EditPasswordComponent implements OnInit {
 
   constructor(public dialog: MdDialog) {this.myForm = new MyForm(); }
 
-  openDialog() {
+  public openDialog() {
+    console.log('test');
     let dialogRef = this.dialog.open(DialogDeleteComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;

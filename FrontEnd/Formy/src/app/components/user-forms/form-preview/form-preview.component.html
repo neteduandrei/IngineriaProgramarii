@@ -6,7 +6,7 @@
   </md-card-subtitle>
   <md-card-footer fxLayout="row" fxLayoutAlign="end center">
     <md-menu #formMore="mdMenu">
-      <button md-menu-item>
+      <button md-menu-item (click)="openDialog()">
         <md-icon>share</md-icon>
         Share
       </button>
