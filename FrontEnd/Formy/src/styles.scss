@@ -80,6 +80,7 @@ $app-theme : mat-light-theme($app-primary, $app-accent);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: "Fira Sans", Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -108,3 +109,13 @@ nav {
   height: 100%;
 }
 
+.mat-tab-label {
+  background: rgb(35, 73, 143);
+  opacity: 0;
+  color:white;
+  width:50%
+}
+
+md-tab-header {
+  border-bottom: none !important;
+}
