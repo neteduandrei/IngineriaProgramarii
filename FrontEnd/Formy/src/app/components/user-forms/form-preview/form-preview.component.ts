@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {Component, Input, OnInit} from '@angular/core';
+import {DialogShareComponent} from "./dialogs/dialog-share.component";
+import {MdDialog} from "@angular/material";
 
 @Component({
   selector: 'formy-form-preview',
@@ -8,12 +9,11 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 })
 export class FormPreviewComponent implements OnInit {
 
-  public title: string;
-  public moreInfo: string;
+  @Input() title: string;
+  @Input() moreInfo: string;
+
 
   constructor(public dialog: MdDialog) {
-    this.title = 'Form Example';
-    this.moreInfo = 'Apr 30, 13.37 KB';
   }
 
   public openDialog() {
@@ -22,17 +22,7 @@ export class FormPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
-
-}
-
-
-@Component({
-  selector: 'dialog-share',
-  templateUrl: './dialogs/dialog-share.component.html',
-  styleUrls: ['./dialogs/dialog-share.component.scss']
-})
-export class DialogShareComponent {
-  constructor(public dialogRef: MdDialogRef<DialogShareComponent>) {}
 
 }
