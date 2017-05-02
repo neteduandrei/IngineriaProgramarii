@@ -43,13 +43,24 @@ public class ResponseServiceImpl implements ResponseService {
         questions = pf.getFields();
 
         for(int i = 0; i < answers.length; i++) {
-            String answer, regex;
+            String answer, regex, jsonRegex;
             answer = answers[i];
-            regex = (String) questions[i].getOptions()[0];
+            jsonRegex = questions[i].getOptions()[0].toString();
 
-            Pattern pattern = Pattern.compile("^" + regex);
+            regex = "";
+            for(int j = 0; j < jsonRegex.length(); j++) {
+                if (jsonRegex.charAt(j) == '=') {
+                    j++;
+                    while(jsonRegex.charAt(j) != '}') {
+                        regex += jsonRegex.charAt(j);
+                        j++;
+                    }
+                }
+            }
+
+            Pattern pattern = Pattern.compile("^(" + regex + ")");
             Matcher matcher = pattern.matcher(answer);
-            if (matcher.find()) {
+            if (!matcher.find()) {
                 return false;
             }
         }
