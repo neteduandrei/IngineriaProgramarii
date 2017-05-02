@@ -48,15 +48,22 @@ public class ResponseServiceImpl implements ResponseService {
             jsonRegex = questions[i].getOptions()[0].toString();
 
             regex = "";
+            int found = 0;
+
             for(int j = 0; j < jsonRegex.length(); j++) {
                 if (jsonRegex.charAt(j) == '=') {
                     j++;
-                    while(jsonRegex.charAt(j) != '}') {
+
+                    while(jsonRegex.charAt(j) != '}' || jsonRegex.charAt(j) != ',') {
                         regex += jsonRegex.charAt(j);
                         j++;
+                        found = 1;
                     }
+                    if(found == 1) break;
                 }
             }
+
+            if(found == 0) return true;
 
             Pattern pattern = Pattern.compile("^(" + regex + ")");
             Matcher matcher = pattern.matcher(answer);
