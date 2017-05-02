@@ -8,8 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 /**
- * Created by Dorneanu Dragos-Andrei on 29.04.2017.
+ * Created by Dorneanu Dragos-Andrei on 29.04.2017
  */
+
 @Document(collection = "Forms")
 public class Form {
     @Id
@@ -61,5 +62,13 @@ public class Form {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String[] getQuestionIds() {
+        return questionIds;
+    }
+
+    public void setQuestionIds(String[] questionsIds) {
+        this.questionIds = questionsIds;
     }
 }
