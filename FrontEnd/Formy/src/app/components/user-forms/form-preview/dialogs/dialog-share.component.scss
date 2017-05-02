@@ -1,8 +1,13 @@
 .dialog-wrapper{
   font-family: "Fira Sans";
+  width: 50em;
 }
 
-h1{
-  text-align: left;
+md-input-container{
+  width: 80%;
 }
 
+#copyButton{
+  width: 10%;
+  float: right;
+}

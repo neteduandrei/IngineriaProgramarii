@@ -8,10 +8,15 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 })
 export class FormPreviewComponent implements OnInit {
 
-  constructor(public dialog: MdDialog) { }
+  public title: string;
+  public moreInfo: string;
+
+  constructor(public dialog: MdDialog) {
+    this.title = 'Form Example';
+    this.moreInfo = 'Apr 30, 13.37 KB';
+  }
 
   public openDialog() {
-    console.log('test');
     let dialogRef = this.dialog.open(DialogShareComponent);
 
   }
