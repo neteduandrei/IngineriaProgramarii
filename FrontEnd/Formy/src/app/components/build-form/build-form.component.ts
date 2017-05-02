@@ -15,7 +15,8 @@ export class BuildFormComponent implements OnInit {
 
   @ViewChildren(FieldComponent) childFields : QueryList<FieldComponent>;
 
-  public fields : FieldComponent[];
+ // public fields : FieldComponent[];
+  public fields : number[];
   public title : string;
   public description : string;
 
@@ -26,12 +27,14 @@ export class BuildFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fields.push(new FieldComponent);
+   // this.fields.push(new FieldComponent);
+    this.fields.push(0);
 
   }
 
   public addField() {
-    this.fields.push(new FieldComponent);
+   // this.fields.push(new FieldComponent);
+    this.fields.push(0);
   }
 
   public delete(index : number) {
