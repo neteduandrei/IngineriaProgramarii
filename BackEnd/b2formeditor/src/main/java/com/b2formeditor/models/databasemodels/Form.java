@@ -1,6 +1,5 @@
 package com.b2formeditor.models.databasemodels;
 
-import com.sun.istack.internal.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,7 +20,6 @@ public class Form {
     @NotBlank
     protected String title;
     protected String description;
-    @NotNull
     protected String[] questionIds;
 
     public String getId() {
