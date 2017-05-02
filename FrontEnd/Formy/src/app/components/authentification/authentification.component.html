@@ -1,90 +1,89 @@
 <div id="content" fxLayout="column" fxLayoutAlign="start center">
-	<md-card>
-		<md-tab-group>
-		  <md-tab label="Login">
-		    <br>
-		    <p>Login To Your Account</p>
-		    <form class="Login-Form">
-		      <div class="container">
-		        <md-input-container>
-		          <input mdInput placeholder="Email" value="">
-		        </md-input-container>
-		      </div> 
-		      <div class="container">
-		            <md-input-container>
-		              <input mdInput placeholder="Password" value="" type="password"/>
-		            </md-input-container>
-		      </div> 
-		      <div class="CheckBox">
-		      <md-checkbox ng-model="isChecked" color="primary">
-		        <p>Remember password!</p>
-		      </md-checkbox>
-		      </div>
-		      <br>
-		      <div class="LoginButton">
-		        <a md-raised-button routerLink="." color="primary"style="margin-bottom: 28%;">LogIn</a>
-		      </div>
-		    </form>
-		  </md-tab>
-		  <md-tab label="Register">
-		    <br>
-		    <p>Register To Your Account</p>
-		    <form class="Login-Form">
-		      <div class="container">
-		        <md-input-container>
-		          <input mdInput placeholder="Email" value="">
-		        </md-input-container>
-		      </div> 
-		      <div class="container">
-		        <md-input-container>
-		          <input mdInput placeholder="User Name" value="">
-		        </md-input-container>
-		      </div>
-		      <div class="container">
-		        <md-input-container>
-		          <input mdInput placeholder="Name" value="">
-		        </md-input-container>
-		      </div> 
-		      <div class="container">
-		            <md-input-container>
-		              <input mdInput placeholder="Password" value="" type="password"/>
-		            </md-input-container>
-		      </div> 
-		      <div class="RegisterButton">
-		        <p><a md-raised-button routerLink="." color="primary" style="margin-bottom: 20%;">Register</a></p>
-		      </div>
-		    </form>
-		  </md-tab>
-		</md-tab-group>
-		<md-card-footer class="text-center" style="background-color: #cbd1db;">
-		<div>
-			{{status}}
-			<p>Login With <button (click)="signIn('facebook')">facebook</button>Login With <button (click)="signIn('google')">google</button></p>
-              <div *ngIf="user">
-                <table>
-                  <tr>
-                    <td>Name:</td>
-                    <td>{{user.name}}</td>
-                  </tr>
-                  <tr>
-                    <td>Email</td>
-                    <td>{{user.email}}</td>
-                  </tr>
-                  <tr>
-                    <td>UID</td>
-                    <td>{{user.uid}}</td>
-                  </tr>
-                  <tr>
-                    <td>Provider</td>
-                    <td>{{user.provider}}</td>
-                  </tr>
-                  <tr>
-                    <td>Image</td>
-                    <td>{{user.image}}</td>
-                  </tr>
-                </table>
-              </div>
-		</div>
-		</md-card-footer>	
-	</md-card>
+  <md-tab-group>
+    <md-tab label="Login">
+      <md-card>
+        <md-card-title>Login to your account</md-card-title>
+        <md-card-content>
+          <form>
+            <div class="fieldInput">
+            <md-input-container class="fullWidth">
+              <input mdInput type="email" placeholder="email" />
+            </md-input-container>
+            </div>
+            <div class="fieldInput">
+            <md-input-container class="fullWidth">
+              <input mdInput type="password" placeholder="Password" />
+            </md-input-container>
+            </div>
+            <md-checkbox>Remember password</md-checkbox>
+          </form>
+
+        </md-card-content>
+        <button md-raised-button color="primary">Login</button>
+        <!--<md-card-footer class="text-center" style="background-color: #cbd1db;">-->
+        <!--<div>-->
+        <!--{{status}}-->
+        <!--<p>Login With <button (click)="signIn('facebook')">facebook</button>Login With <button (click)="signIn('google')">google</button></p>-->
+        <!--<div *ngIf="user">-->
+        <!--<table>-->
+        <!--<tr>-->
+        <!--<td>Name:</td>-->
+        <!--<td>{{user.name}}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>Email</td>-->
+        <!--<td>{{user.email}}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>UID</td>-->
+        <!--<td>{{user.uid}}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>Provider</td>-->
+        <!--<td>{{user.provider}}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>Image</td>-->
+        <!--<td>{{user.image}}</td>-->
+        <!--</tr>-->
+        <!--</table>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</md-card-footer>-->
+      </md-card>
+      <div id="cardFooter" fxLayout="row" fxLayoutAlign="center center">
+        <div class="socialNetworkButton" fxFlex="50" fxLayout="row"
+             fxLayoutAlign="center center" (click)="signIn('facebook')">
+          <md-icon svgIcon="facebook"></md-icon>
+          Login with Facebook
+        </div>
+        <div class="socialNetworkButton" fxFlex="50" fxLayout="row"
+             fxLayoutAlign="center center" (click)="signIn('google')">
+          <md-icon svgIcon="google-plus"></md-icon>
+          Login with Google plus
+        </div>
+      </div>
+    </md-tab>
+    <md-tab label="Register">
+      <md-card>
+      <md-card-title>Register To Your Account</md-card-title>
+      <md-card-content>
+        <md-input-container class="fullWidth">
+          <input mdInput placeholder="Name" type="text" required />
+        </md-input-container>
+        <md-input-container class="fullWidth">
+          <input mdInput placeholder="Username" type="text" required />
+        </md-input-container>
+        <md-input-container class="fullWidth">
+          <input mdInput placeholder="Email" type="email" required />
+        </md-input-container>
+        <md-input-container class="fullWidth">
+          <input mdInput placeholder="Password" type="password" required />
+        </md-input-container>
+      </md-card-content>
+      <button md-raised-button color="primary">Login</button>
+      </md-card>
+    </md-tab>
+  </md-tab-group>
+
 </div>
