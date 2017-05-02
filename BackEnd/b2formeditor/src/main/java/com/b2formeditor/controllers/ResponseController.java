@@ -36,4 +36,26 @@ public class ResponseController {
         ProcessedResponse savedResponse = this.service.save(response);
         return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
     }
+    
+        @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Statistic>> get(@PathVariable("id") String id) {
+        List<ProcessedResponse> forms = this.service.getAll();
+        List<Statistic> result = new ArrayList<Statistic>();
+
+        for(ProcessedResponse processedResponse : forms){
+            System.out.println("ID: " + processedResponse.getFormId());
+            if(processedResponse.getFormId().equals(id))
+            {
+                Statistic st = new Statistic();
+                Object [] ans = processedResponse.getAnswers();
+                st.setAnswers(ans);
+                result.add(st);
+            }
+        }
+        if (result.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    
 }

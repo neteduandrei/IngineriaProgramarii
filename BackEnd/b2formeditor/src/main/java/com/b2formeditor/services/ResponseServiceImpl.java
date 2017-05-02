@@ -67,7 +67,7 @@ public class ResponseServiceImpl implements ResponseService {
 
             Pattern pattern = Pattern.compile("^(" + regex + ")");
             Matcher matcher = pattern.matcher(answer);
-            if (!matcher.find()) {
+            if (matcher.find()) {
                 return false;
             }
         }
