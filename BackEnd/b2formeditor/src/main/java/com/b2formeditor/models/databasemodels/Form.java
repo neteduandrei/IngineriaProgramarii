@@ -63,12 +63,4 @@ public class Form {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String[] getQuestionIds() {
-        return questionIds;
-    }
-
-    public void setQuestionIds(String[] questionsIds) {
-        this.questionIds = questionsIds;
-    }
 }

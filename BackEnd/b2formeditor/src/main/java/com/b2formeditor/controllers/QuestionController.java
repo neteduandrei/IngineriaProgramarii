@@ -21,7 +21,7 @@ public class QuestionController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Question> get(@RequestParam String title) {
-        Question responseQuestion = this.service.getOneByTitle(title);
+        Question responseQuestion =  this.service.getOneByTitle(title);
         if (responseQuestion == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
