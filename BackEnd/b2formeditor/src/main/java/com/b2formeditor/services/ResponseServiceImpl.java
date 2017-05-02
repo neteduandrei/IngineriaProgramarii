@@ -37,7 +37,7 @@ public class ResponseServiceImpl implements ResponseService {
         for(int i = 0; i < answers.length; i++) {
             String answer, regex;
             answer = answers[i];
-            regex = questionRepository.findOne(questions[i]).getOptions()[0];
+            regex = (String) questionRepository.findOne(questions[i]).getOptions()[0];
 
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(answer);
