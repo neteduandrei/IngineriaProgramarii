@@ -3,7 +3,7 @@
 
 ### Pentru fiecare modul trebuie facut cate un folder care la randul vostru il divizati cum  vreti (daca este necesar).
 
-## Varianta cu branch work și Git Bash
+## Varianta cu branch nou și Git Bash
 Luati Git Bash si urmariti pasii:
 
 * Creeaza un folder in care vei lucra
@@ -29,7 +29,7 @@ git push origin master #adaugam modificarile noastre local si pe repository-ul o
 git checkout work #schimbam inapoi pe branch-ul work si continuam sa facem schimbari
 ```
 
-## Varianta cu branch work și GitKraken
+## Varianta cu branch nou și GitKraken
 
 #### Step 1
 Create work branch and checkout.  
