@@ -46,4 +46,17 @@ public class FormController {
         savedForm = this.service.save(formTemplate.getForm());
         return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
     }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<ProcessedForm> updateForm(@RequestBody FormTemplateWrapper formTemplate) {
+        ProcessedForm savedForm;
+
+        formTemplate.getForm().setCreatedBy(formTemplate.getOwner());
+        savedForm = this.service.getById(formTemplate.getForm().getId());
+        if (savedForm == null) {
+            return new ResponseEntity<>(HttpStatus.FAILED_DEPENDENCY);
+        }
+        savedForm = this.service.save(formTemplate.getForm());
+        return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
+    }
 }
