@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,7 +40,7 @@ public class ResponseServiceImpl implements ResponseService {
         String[] answers;
         Question[] questions;
         ProcessedForm pf;
-        answers = (String[]) entity.getAnswers();
+        answers = (String[])entity.getAnswers();
         pf = new ProcessedForm(questionsService, formRepository.findOne(entity.getFormId()));
         questions = pf.getFields();
 
@@ -50,28 +52,20 @@ public class ResponseServiceImpl implements ResponseService {
 
             jsonRegex = questions[i].getOptions()[0].toString();
 
-            regex = "";
-            int found = 0;
+            String[] equalOperatorParts = jsonRegex.split("=", 2);
 
-            for(int j = 0; j < jsonRegex.length(); j++) {
-                if (jsonRegex.charAt(j) == '=') {
-                    j++;
+            // check for valid regex equals
+            if (equalOperatorParts.length < 2) return true;
+            String[] rightPartVariables = equalOperatorParts[1].split(",|}", 2);
 
-                    while(jsonRegex.charAt(j) != '}' || jsonRegex.charAt(j) != ',') {
-                        regex += jsonRegex.charAt(j);
-                        j++;
-                        found = 1;
-                    }
-                    if(found == 1) break;
-                }
-            }
+            // check for valid value
+            if (rightPartVariables.length < 1) return true;
+            regex = rightPartVariables[0];
 
-            if(found == 0) return true;
-
-            Pattern pattern = Pattern.compile("^(" + regex + ")");
+            Pattern pattern = Pattern.compile("^" + regex + "$");
 
             Matcher matcher = pattern.matcher(answer);
-            if (matcher.find()) {
+            if (!matcher.find()) {
                 return false;
             }
         }

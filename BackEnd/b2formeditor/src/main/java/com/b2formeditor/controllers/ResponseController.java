@@ -4,16 +4,15 @@ package com.b2formeditor.controllers;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
+import com.b2formeditor.models.databasemodels.Statistic;
 import com.b2formeditor.models.responsemodels.ProcessedResponse;
 import com.b2formeditor.services.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
