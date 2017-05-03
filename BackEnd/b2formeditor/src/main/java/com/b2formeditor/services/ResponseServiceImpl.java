@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,18 +40,32 @@ public class ResponseServiceImpl implements ResponseService {
         String[] answers;
         Question[] questions;
         ProcessedForm pf;
-        answers = (String[]) entity.getAnswers();
+        answers = (String[])entity.getAnswers();
         pf = new ProcessedForm(questionsService, formRepository.findOne(entity.getFormId()));
         questions = pf.getFields();
 
         for(int i = 0; i < answers.length; i++) {
-            String answer, regex;
+            String answer, regex, jsonRegex;
             answer = answers[i];
-            regex = (String) questions[i].getOptions()[0];
 
-            Pattern pattern = Pattern.compile("^" + regex);
+            if(questions[i].getOptions() == null) return true;
+
+            jsonRegex = questions[i].getOptions()[0].toString();
+
+            String[] equalOperatorParts = jsonRegex.split("=", 2);
+
+            // check for valid regex equals
+            if (equalOperatorParts.length < 2) return true;
+            String[] rightPartVariables = equalOperatorParts[1].split(",|}", 2);
+
+            // check for valid value
+            if (rightPartVariables.length < 1) return true;
+            regex = rightPartVariables[0];
+
+            Pattern pattern = Pattern.compile("^" + regex + "$");
+
             Matcher matcher = pattern.matcher(answer);
-            if (matcher.find()) {
+            if (!matcher.find()) {
                 return false;
             }
         }

@@ -43,6 +43,7 @@ public class FormController {
         ProcessedForm savedForm;
 
         formTemplate.getForm().setCreatedBy(formTemplate.getOwner());
+
         savedForm = this.service.save(formTemplate.getForm());
         return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
     }
