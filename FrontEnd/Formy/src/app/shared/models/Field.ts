@@ -2,10 +2,10 @@
  * Created by stefan on 30.04.2017.
  */
 export class Field {
-  title : string;
-  description : string;
-  type : string;
-  required : boolean;
-  value : any;
-  options: Object;
+  public title : string;
+  public description : string;
+  public type : string;
+  public required : boolean;
+  public value : any;
+  public options: Object;
 }

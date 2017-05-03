@@ -15,7 +15,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class FillFormComponent implements OnInit {
 
-  private formTemplateToFill : FormTemplateToFill;
+  public formTemplateToFill : FormTemplateToFill;
 
   public id : string;
 
