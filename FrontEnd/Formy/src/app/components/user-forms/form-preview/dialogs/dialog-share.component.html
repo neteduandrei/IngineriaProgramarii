@@ -4,7 +4,7 @@
     <md-input-container>
       <input mdInput readonly="readonly" type="text" placeholder="Link" value="http://formy.com/form/id/1UL9ihueJrqVkfUM43ZDL1K3NMnCzmgGF0lZKp5uMm7w" #linkTarget>
     </md-input-container>
-    <button md-button type="button" [ngxClipboard]="linkTarget" >
+    <button md-button type="button" [ngxClipboard]="linkTarget" (click)="openSnackBar()" >
       Copy Link
     </button>
   </div>

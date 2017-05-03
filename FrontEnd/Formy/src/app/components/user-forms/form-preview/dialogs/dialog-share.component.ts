@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'dialog-share',
@@ -7,6 +7,9 @@ import {MdDialog, MdDialogRef} from '@angular/material';
   styleUrls: ['./dialog-share.component.scss']
 })
 export class DialogShareComponent {
-  constructor(public dialogRef: MdDialogRef<DialogShareComponent>) {}
+  constructor(public dialogRef: MdDialogRef<DialogShareComponent>, public snackBar: MdSnackBar) {}
 
+  openSnackBar() {
+    let snackBarRef = this.snackBar.open('Link coppied to clipboard','',{duration: 3000});
+  }
 }
