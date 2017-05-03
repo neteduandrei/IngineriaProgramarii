@@ -10,6 +10,6 @@ export class DialogShareComponent {
   constructor(public dialogRef: MdDialogRef<DialogShareComponent>, public snackBar: MdSnackBar) {}
 
   openSnackBar() {
-    let snackBarRef = this.snackBar.open('Link coppied to clipboard','',{duration: 3000});
+    let snackBarRef = this.snackBar.open('Link coppied to clipboard','DISMISS',{duration: 3000});
   }
 }
