@@ -4,14 +4,17 @@ package com.b2formeditor.controllers;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
+import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 import com.b2formeditor.models.wrappers.FormTemplateWrapper;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.services.FormService;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -21,12 +24,19 @@ public class FormController {
     private FormService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<ProcessedForm>> getAll() {
-        List<ProcessedForm> forms = service.getAll();
-        if (forms == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<List<ProcessedForm>> getAll(HttpServletRequest request) {
+        List<ProcessedForm> forms;
+        HttpSession session = request.getSession(true);
+        ProcessedLoginCredentials credentials = (ProcessedLoginCredentials) session.getAttribute("credentials");
+
+        if (credentials.getRole().equals("admin")) {
+            forms = service.getAll();
+            if (forms.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(forms, HttpStatus.OK);
         }
-        return new ResponseEntity<>(forms, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

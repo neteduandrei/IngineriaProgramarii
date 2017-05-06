@@ -4,6 +4,7 @@ import com.b2formeditor.models.authenticationmodels.AuthenticationCredentials;
 import com.b2formeditor.models.authenticationmodels.LoginCredentials;
 import com.b2formeditor.models.authenticationmodels.SignUpCredentials;
 import com.b2formeditor.models.databasemodels.User;
+import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 import com.b2formeditor.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -67,18 +68,24 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setEmail(credentials.getEmail())
                 .setName(credentials.getName())
                 .setNickname(credentials.getNickname())
-                .setPassword(hashPassword(credentials.getPassword()));
+                .setPassword(hashPassword(credentials.getPassword()))
+                .setRole("user");
         return user;
     }
 
     @Override
-    public boolean validCredentials(LoginCredentials credentials) {
+    public ProcessedLoginCredentials validCredentials(LoginCredentials credentials) {
         boolean successfulAuthentication = false;
-        User user = repository.findByEmail(credentials.getEmail());
+        ProcessedLoginCredentials processedCredentials;
 
+        User user = repository.findByEmail(credentials.getEmail());
         if (user != null) {
             successfulAuthentication = equalPassword(credentials.getPassword(), user.getPassword());
         }
-        return successfulAuthentication;
+        if(successfulAuthentication) {
+            processedCredentials = new ProcessedLoginCredentials(credentials, user.getRole());
+            return processedCredentials;
+        }
+        return null;
     }
 }

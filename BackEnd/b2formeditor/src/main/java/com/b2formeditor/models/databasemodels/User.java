@@ -30,6 +30,9 @@ public class User {
     @Size(min = 6)
     private String password;
 
+    @NotBlank
+    private String role;
+
     private String refreshToken;
     private String accessToken;
     private String service;
@@ -104,5 +107,17 @@ public class User {
     public User setService(String service) {
         this.service = service;
         return this;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }

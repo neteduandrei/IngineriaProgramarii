@@ -4,6 +4,7 @@ import com.b2formeditor.models.authenticationmodels.AuthenticationCredentials;
 import com.b2formeditor.models.authenticationmodels.LoginCredentials;
 import com.b2formeditor.models.authenticationmodels.SignUpCredentials;
 import com.b2formeditor.models.databasemodels.User;
+import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 
 /**
  * Created by Dorneanu Dragos-Andrei on 30.04.2017.
@@ -15,5 +16,5 @@ public interface AuthenticationService extends CrudService<AuthenticationCredent
 
     User createUser(SignUpCredentials credentials);
 
-    boolean validCredentials(LoginCredentials credentials);
+    ProcessedLoginCredentials validCredentials(LoginCredentials credentials);
 }

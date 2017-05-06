@@ -15,7 +15,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
         "com.b2formeditor.repositories",
         "com.b2formeditor.services",
         "com.b2formeditor.controllers",
-        "com.b2formeditor.configurations"})
+        "com.b2formeditor.configurations",
+        "com.b2formeditor.filters" })
 public class B2formeditorApplication {
 
     public static void main(String[] args) {

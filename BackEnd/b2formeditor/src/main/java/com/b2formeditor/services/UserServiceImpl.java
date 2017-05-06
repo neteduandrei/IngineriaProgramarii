@@ -8,6 +8,7 @@ import com.b2formeditor.models.databasemodels.User;
 import com.b2formeditor.models.responsemodels.ProcessedUser;
 import com.b2formeditor.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 
@@ -20,6 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ProcessedUser save(ProcessedUser entity) {
+        String salt = BCrypt.gensalt();
+        String hashedPassword = BCrypt.hashpw(entity.getPassword(), salt);
+        entity.setPassword(hashedPassword);
         return (ProcessedUser)this.repository.save(entity);
     }
 
