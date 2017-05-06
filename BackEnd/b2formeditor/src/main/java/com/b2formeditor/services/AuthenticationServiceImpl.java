@@ -82,7 +82,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (user != null) {
             successfulAuthentication = equalPassword(credentials.getPassword(), user.getPassword());
         }
-        if(successfulAuthentication) {
+        if (successfulAuthentication) {
             processedCredentials = new ProcessedLoginCredentials(credentials, user.getRole());
             return processedCredentials;
         }

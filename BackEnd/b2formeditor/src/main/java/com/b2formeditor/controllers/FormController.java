@@ -4,9 +4,9 @@ package com.b2formeditor.controllers;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
+import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 import com.b2formeditor.models.wrappers.FormTemplateWrapper;
-import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.services.FormService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +29,14 @@ public class FormController {
         HttpSession session = request.getSession(true);
         ProcessedLoginCredentials credentials = (ProcessedLoginCredentials) session.getAttribute("credentials");
 
-        if (credentials.getRole().equals("admin")) {
-            forms = service.getAll();
-            if (forms.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (credentials != null) {
+            if (credentials.getRole().equals("admin")) {
+                forms = service.getAll();
+                if (forms.isEmpty()) {
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+                return new ResponseEntity<>(forms, HttpStatus.OK);
             }
-            return new ResponseEntity<>(forms, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
