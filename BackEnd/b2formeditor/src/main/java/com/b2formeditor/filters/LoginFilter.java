@@ -1,6 +1,6 @@
-package com.b2formeditor.filters;
+//package com.b2formeditor.filters;
 
-import com.b2formeditor.models.authenticationmodels.LoginCredentials;
+/*import com.b2formeditor.models.authenticationmodels.LoginCredentials;
 import com.b2formeditor.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -15,6 +15,7 @@ import java.io.IOException;
 /**
  * Created by jolde on 02.05.2017.
  */
+/*
 @Component
 @Order(1)
 public class LoginFilter implements Filter {
@@ -36,7 +37,7 @@ public class LoginFilter implements Filter {
 
         // TODO: De acuma inainte, folosim pull requests sa adaugam cod okay. Doar fixuri faci in master,
         // TODO: features cu pull request si reviable - codul de mai jos nu merge
-        /*LoginCredentials credentials = new LoginCredentials(email, password); // FIXME: compile error
+        LoginCredentials credentials = new LoginCredentials(email, password); // FIXME: compile error
 
         if (session.getAttribute("credentials") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
@@ -48,7 +49,7 @@ public class LoginFilter implements Filter {
                 httpResponse.setDateHeader("Expires", 0);
                 filterChain.doFilter(servletRequest, servletResponse);
             }
-        }*/
+        }
     }
 
     @Override
@@ -56,3 +57,4 @@ public class LoginFilter implements Filter {
 
     }
 }
+*/

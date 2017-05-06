@@ -1,14 +1,15 @@
-package com.b2formeditor;
+/*package com.b2formeditor;
 
 import com.b2formeditor.filters.LoginFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+*/
 
 /**
  * Created by Dorneanu Dragos-Andrei on 02.05.2017.
  */
-@Configuration
+/*@Configuration
 public class FilterConfiguration {
     @Bean
     public FilterRegistrationBean loginFilterRegistrationBean() {
@@ -23,4 +24,4 @@ public class FilterConfiguration {
         registrationBean.addUrlPatterns("/*");
         return registrationBean;
     }
-}
+}*/
