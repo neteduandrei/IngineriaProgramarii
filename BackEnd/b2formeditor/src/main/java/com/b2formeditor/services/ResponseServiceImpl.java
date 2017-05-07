@@ -50,7 +50,7 @@ public class ResponseServiceImpl implements ResponseService {
 
             if(questions[i].getOptions() == null) return true;
 
-            jsonRegex = questions[i].getOptions()[0].toString();
+            jsonRegex = questions[i].getOptions().toString();
 
             String[] equalOperatorParts = jsonRegex.split("=", 2);
 

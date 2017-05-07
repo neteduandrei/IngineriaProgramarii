@@ -17,7 +17,7 @@ public class Question {
     private String type;
     private boolean required;
     private Object value;
-    private Object[] options;
+    private Object options;
 
     public String getTitle() {
         return title;
@@ -67,11 +67,11 @@ public class Question {
         this.type = type;
     }
 
-    public Object[] getOptions() {
+    public Object getOptions() {
         return options;
     }
 
-    public void setOptions(Object[] option) {
+    public void setOptions(Object option) {
         this.options = option;
     }
 
