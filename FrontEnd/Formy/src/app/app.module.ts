@@ -35,6 +35,9 @@ import { FillTypeSingleChoiceComponent } from './components/fill-form/fill-field
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { SimplenavbarComponent } from './shared/components/simplenavbar/simplenavbar.component';
 
+import {BuildFormService} from "./shared/services/build-form/build-form.service";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +74,8 @@ import { SimplenavbarComponent } from './shared/components/simplenavbar/simplena
     ClipboardModule
   ],
   providers: [
-    FillFormService
+    FillFormService,
+    BuildFormService
   ],
   bootstrap: [AppComponent]
 })

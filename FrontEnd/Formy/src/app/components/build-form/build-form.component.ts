@@ -2,6 +2,7 @@ import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {FieldComponent} from "./field/field.component";
 import {FormTemplateGenerator} from "../../shared/models/FormTemplateGenerator";
 import {Form} from "app/shared/models/Form";
+import {BuildFormService} from "../../shared/services/build-form/build-form.service";
 
 @Component({
   selector: 'formy-build-form',
@@ -22,7 +23,7 @@ export class BuildFormComponent implements OnInit {
 
   private formGenerator : FormTemplateGenerator;
 
-  constructor() {
+  constructor(private buildFormService : BuildFormService) {
     this.fields = [];
   }
 
@@ -54,7 +55,13 @@ export class BuildFormComponent implements OnInit {
     this.formGenerator.form.description = this.description;
     this.formGenerator.owner=""; //must ask auth service
     /* should send this to a service */
+
+    this.buildFormService.sendForm(this.formGenerator).subscribe(
+      (response) => console.log(response)
+    );
+
   }
+
 }
 
 
