@@ -7,58 +7,30 @@
           <form>
             <div class="fieldInput">
             <md-input-container class="fullWidth">
-              <input mdInput type="email" placeholder="email" />
+              <input mdInput type="email" #emailInput placeholder="email" required [(ngModel)]="email" [ngModelOptions]="{standalone : true}"/>
             </md-input-container>
             </div>
             <div class="fieldInput">
             <md-input-container class="fullWidth">
-              <input mdInput type="password" placeholder="Password" />
+              <input mdInput type="password" #passwordInput placeholder="Password" required [(ngModel)]="password" [ngModelOptions]="{standalone : true}"/>
             </md-input-container>
             </div>
             <md-checkbox>Remember password</md-checkbox>
           </form>
 
         </md-card-content>
-        <button md-raised-button color="primary">Login</button>
-        <!--<md-card-footer class="text-center" style="background-color: #cbd1db;">-->
-        <!--<div>-->
-        <!--{{status}}-->
-        <!--<p>Login With <button (click)="signIn('facebook')">facebook</button>Login With <button (click)="signIn('google')">google</button></p>-->
-        <!--<div *ngIf="user">-->
-        <!--<table>-->
-        <!--<tr>-->
-        <!--<td>Name:</td>-->
-        <!--<td>{{user.name}}</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--<td>Email</td>-->
-        <!--<td>{{user.email}}</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--<td>UID</td>-->
-        <!--<td>{{user.uid}}</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--<td>Provider</td>-->
-        <!--<td>{{user.provider}}</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--<td>Image</td>-->
-        <!--<td>{{user.image}}</td>-->
-        <!--</tr>-->
-        <!--</table>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</md-card-footer>-->
+        <button md-raised-button color="primary"
+                [disabled]="emailInput.value === '' || passwordInput.value === ''"
+                (click)="manualLogin()">Login</button>
       </md-card>
       <div id="cardFooter" fxLayout="row" fxLayoutAlign="center center">
         <div class="socialNetworkButton" fxFlex="50" fxLayout="row"
-             fxLayoutAlign="center center" (click)="signIn('facebook')">
+             fxLayoutAlign="center center">
           <md-icon svgIcon="facebook"></md-icon>
           Login with Facebook
         </div>
         <div class="socialNetworkButton" fxFlex="50" fxLayout="row"
-             fxLayoutAlign="center center" (click)="signIn('google')">
+             fxLayoutAlign="center center">
           <md-icon svgIcon="google-plus"></md-icon>
           Login with Google plus
         </div>
@@ -81,7 +53,7 @@
           <input mdInput placeholder="Password" type="password" required />
         </md-input-container>
       </md-card-content>
-      <button md-raised-button color="primary">Login</button>
+      <button md-raised-button color="primary">Register</button>
       </md-card>
     </md-tab>
   </md-tab-group>

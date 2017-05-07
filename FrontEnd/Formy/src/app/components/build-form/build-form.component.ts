@@ -57,7 +57,10 @@ export class BuildFormComponent implements OnInit {
     /* should send this to a service */
 
     this.buildFormService.sendForm(this.formGenerator).subscribe(
-      (response) => console.log(response)
+      (response) => console.log('good'),
+      (err) => {console.error(err)
+      },
+      () => console.log('done')
     );
 
   }

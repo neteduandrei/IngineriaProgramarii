@@ -36,6 +36,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { SimplenavbarComponent } from './shared/components/simplenavbar/simplenavbar.component';
 
 import {BuildFormService} from "./shared/services/build-form/build-form.service";
+import {AuthService} from "./shared/services/auth/auth.service";
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import {BuildFormService} from "./shared/services/build-form/build-form.service"
   ],
   providers: [
     FillFormService,
-    BuildFormService
+    BuildFormService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

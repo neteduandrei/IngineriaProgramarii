@@ -14,8 +14,8 @@ export class BuildFormService {
   sendForm(form : FormTemplateGenerator) {
     let headers = new Headers({'Content-Type' :'application/json'});
     let options = new RequestOptions({ headers: headers, withCredentials: true });
-
-    return this.http.post(this.url, form, options);
+    return this.http.post(this.url, {"test" : "da"}, options);
+    //return this.http.post(this.url, form, options);
   }
 
 
