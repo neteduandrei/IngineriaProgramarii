@@ -17,7 +17,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
                 .allowedMethods("GET", "PUT", "POST", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
                 .exposedHeaders("Content-Type", "Accept", "Cache-Control")
-                .allowCredentials(false)
+                .allowCredentials(true)
                 .maxAge(3600);
     }
 }
