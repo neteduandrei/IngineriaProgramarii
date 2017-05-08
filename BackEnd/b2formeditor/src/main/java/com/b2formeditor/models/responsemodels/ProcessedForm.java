@@ -4,6 +4,13 @@ import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.services.QuestionService;
 
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
@@ -48,4 +55,20 @@ public class ProcessedForm extends Form {
         this.fields = fields;
     }
 
+    /*public void buildJsonFile() {
+        BeanInfo objectInfo;
+        PropertyDescriptor[] objectProperties;
+        FileWriter formFile;
+
+        try {
+            formFile = new FileWriter(this.getId());
+            objectInfo = Introspector.getBeanInfo(this.getClass());
+            objectProperties = objectInfo.getPropertyDescriptors();
+            for (PropertyDescriptor property : objectProperties) {
+                System.out.println(property.getName() + " : " + property.getValue(property.getName()));
+            }
+        } catch (IOException | IntrospectionException e) {
+            e.printStackTrace();
+        }
+    }*/
 }
