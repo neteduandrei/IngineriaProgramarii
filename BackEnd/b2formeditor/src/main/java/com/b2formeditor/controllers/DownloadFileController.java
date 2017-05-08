@@ -34,8 +34,9 @@ public class DownloadFileController {
 
         if (form != null) {
             //here we must return Form after refactor controllers, database models and response models
+            System.out.println("form" + form.getId() + ".json");
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"form" + form.getId() + ".txt\"")
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=form" + form.getId() + ".json")
                     .body(form);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
