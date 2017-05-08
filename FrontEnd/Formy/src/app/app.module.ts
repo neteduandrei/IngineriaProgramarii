@@ -76,6 +76,7 @@ import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-
     FillTypeSingleChoiceComponent,
     EditProfileComponent,
     SimplenavbarComponent,
+    AnswersFormComponent,
     AnswerAbstractComponent,
     AnswerTextComponent,
     AnswerLinearScaleComponent,
