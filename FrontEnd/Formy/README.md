@@ -1,3 +1,34 @@
+# How to run the project
+
+## First time use:
++ On Windows:
+  + open cmd as administrator and run:
+  ```npm
+  npm install -g @angular/cli
+  ```
+  + open cmd in normal mode and go to directory Formy and type:
+  ```npm
+  npm install
+  ```
++ On linux:
+  + open terminal and run:
+  ```npm
+  sudo npm install -g @angular/cli
+  ```
+  + change directory to Formy and type:
+  ```npm
+  npm install
+  ```
+  
+## Normal use
++ on any platform open a terminal and go to Formy directory and run:
+  ```npm
+  ng serve
+  ```
+  
+> ##### !Important: some warnings regarding angular cli might appear or some dependencies unmet error, they're normal and don't cause any trouble
+> ##### !Important 2:  the projects takes roughly 20 seconds to 1 minute to compile
+---
 # Communication standard
 ## Template Used to send to the server a form's template
 
