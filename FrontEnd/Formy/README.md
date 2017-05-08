@@ -1,6 +1,8 @@
 # How to run the project
 
 ## First time use:
++ Install node js 6.10.2
+---
 + On Windows:
   + open cmd as administrator and run:
   ```npm
