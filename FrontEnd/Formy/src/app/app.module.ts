@@ -37,6 +37,7 @@ import { SimplenavbarComponent } from './shared/components/simplenavbar/simplena
 
 import {BuildFormService} from "./shared/services/build-form/build-form.service";
 import {AuthService} from "./shared/services/auth/auth.service";
+import { AnswersFormComponent } from './components/answers-form/answers-form.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {AuthService} from "./shared/services/auth/auth.service";
     FillTypeShortTextComponent,
     FillTypeSingleChoiceComponent,
     EditProfileComponent,
-    SimplenavbarComponent
+    SimplenavbarComponent,
+    AnswersFormComponent
   ],
   imports: [
     AppRoutingModule,
