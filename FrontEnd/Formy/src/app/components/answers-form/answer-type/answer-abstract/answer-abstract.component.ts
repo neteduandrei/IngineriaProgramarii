@@ -8,7 +8,6 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 export class AnswerAbstractComponent implements OnInit {
 
   @Input('type') type;
-  
 
   constructor() { }
 
