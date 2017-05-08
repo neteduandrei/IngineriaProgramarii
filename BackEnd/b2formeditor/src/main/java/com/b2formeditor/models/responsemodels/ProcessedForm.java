@@ -54,21 +54,4 @@ public class ProcessedForm extends Form {
     public void setFields(Question[] fields) {
         this.fields = fields;
     }
-
-    /*public void buildJsonFile() {
-        BeanInfo objectInfo;
-        PropertyDescriptor[] objectProperties;
-        FileWriter formFile;
-
-        try {
-            formFile = new FileWriter(this.getId());
-            objectInfo = Introspector.getBeanInfo(this.getClass());
-            objectProperties = objectInfo.getPropertyDescriptors();
-            for (PropertyDescriptor property : objectProperties) {
-                System.out.println(property.getName() + " : " + property.getValue(property.getName()));
-            }
-        } catch (IOException | IntrospectionException e) {
-            e.printStackTrace();
-        }
-    }*/
 }
