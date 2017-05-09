@@ -40,20 +40,24 @@
       <md-card>
       <md-card-title>Register To Your Account</md-card-title>
       <md-card-content>
-        <md-input-container class="fullWidth">
-          <input mdInput placeholder="Name" type="text" required />
-        </md-input-container>
-        <md-input-container class="fullWidth">
-          <input mdInput placeholder="Username" type="text" required />
-        </md-input-container>
-        <md-input-container class="fullWidth">
-          <input mdInput placeholder="Email" type="email" required />
-        </md-input-container>
-        <md-input-container class="fullWidth">
-          <input mdInput placeholder="Password" type="password" required />
-        </md-input-container>
+        <form>
+          <md-input-container class="fullWidth">
+            <input mdInput type="text" #registerNameInput placeholder="Name"  required [(ngModel)]="register_name" [ngModelOptions]="{standalone : true}"/>
+          </md-input-container>
+          <md-input-container class="fullWidth">
+            <input mdInput type="text" #registerUsernameInput placeholder="Username"  required [(ngModel)]="register_username" [ngModelOptions]="{standalone : true}"/>
+          </md-input-container>
+          <md-input-container class="fullWidth">
+            <input mdInput type="email" #registerEmailInput placeholder="Email" required  [(ngModel)]="register_email" [ngModelOptions]="{standalone : true}"/>
+          </md-input-container>
+          <md-input-container class="fullWidth">
+            <input mdInput type="password" #registerPasswordInput placeholder="Password" required [(ngModel)]="register_password" [ngModelOptions]="{standalone : true}"/>
+          </md-input-container>
+        </form>
       </md-card-content>
-      <button md-raised-button color="primary">Register</button>
+      <button md-raised-button color="primary"
+              [disabled]="registerNameInput.value === '' || registerUsernameInput.value === '' || registerEmailInput.value === '' || registerPasswordInput.value === ''"
+              (click)="registerUser()">Register</button>
       </md-card>
     </md-tab>
   </md-tab-group>
