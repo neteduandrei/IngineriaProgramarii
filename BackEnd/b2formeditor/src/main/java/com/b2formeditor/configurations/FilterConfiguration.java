@@ -1,14 +1,13 @@
-/*package com.b2formeditor.configurations;
+package com.b2formeditor.configurations;
 
 import com.b2formeditor.filters.LoginFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-*/
+
 /**
  * Created by Dorneanu Dragos-Andrei on 02.05.2017.
  */
-/*
 @Configuration
 public class FilterConfiguration {
     @Bean
@@ -21,8 +20,11 @@ public class FilterConfiguration {
         registrationBean.setOrder(1);
         registrationBean.setEnabled(true);
         registrationBean.setAsyncSupported(true);
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns("/v1/download/*",
+                                        "/v1/forms/*",
+                                        "/v1/questions/*",
+                                        "/v1/responses/*",
+                                        "/v1/users/*");
         return registrationBean;
     }
 }
-*/

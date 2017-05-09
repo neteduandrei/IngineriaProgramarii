@@ -1,6 +1,5 @@
 package com.b2formeditor.controllers;
 
-import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.datatransferobjects.DownloadedFormDTO;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.services.FormService;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Dorneanu Dragos-Andrei on 02.05.2017.

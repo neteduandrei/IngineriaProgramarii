@@ -53,6 +53,7 @@ public class ResponseController {
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ResponseEntity<Statistic> get(@PathVariable("id") String id) {
         Statistic statistics = new Statistic();
+        //TODO create a class that extends Map<String, Map<String, Integer>>
         Map<String, Map<String, Integer>> finalResult = new HashMap<>();
         List<ProcessedResponse> processedResponses = this.service.getAll();
         statistics.setStatistics(finalResult);
