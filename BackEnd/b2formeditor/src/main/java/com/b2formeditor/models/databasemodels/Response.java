@@ -12,49 +12,54 @@ import java.util.Date;
 @Document(collection = "Responses")
 public class Response {
     @Id
-    private String id;
-    private String createdBy;
-    private Date createdAt;
-    private String formId;
-    private String[] answers;
+    protected String id;
+    protected String createdBy;
+    protected Date createdAt;
+    protected String formId;
+    protected String[] answers;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public Response setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public Response setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+        return this;
     }
 
     public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public Response setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+        return this;
     }
 
     public String getFormId() {
         return formId;
     }
 
-    public void setFormId(String formId) {
+    public Response setFormId(String formId) {
         this.formId = formId;
+        return this;
     }
 
     public Object[] getAnswers() {
         return answers;
     }
 
-    public void setAnswers(String[] answers) {
+    public Response setAnswers(String[] answers) {
         this.answers = answers;
+        return this;
     }
 }
