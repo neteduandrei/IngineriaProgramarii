@@ -46,6 +46,8 @@ public class ResponseServiceImpl implements ResponseService {
             String answer, regex, jsonRegex;
             answer = answers[i];
 
+            if(questions[i] == null) return false;
+
             Boolean required = questions[i].isRequired();
             if(Objects.equals(answer, "")) return !required;
 
@@ -55,7 +57,7 @@ public class ResponseServiceImpl implements ResponseService {
 
             String[] validationType = jsonRegex.split("validationType=", 2);
 
-            if (validationType.length >= 2) {
+            if (validationType.length == 2) {
                 String[] unformattedQuestionType = validationType[1].split(",|}", 2);
 
                 // check for valid value
@@ -75,6 +77,7 @@ public class ResponseServiceImpl implements ResponseService {
                     case "custom":
                         regex = getRegex(jsonRegex);
                         if(regex == null) return true;
+                        break;
                     default:
                         return false;
                 }
