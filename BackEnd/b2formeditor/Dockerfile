@@ -14,4 +14,8 @@ USER ${JUSER}
 RUN cd /b2formeditor && mvn initialize \
 	&& mvn compile \
 	&& mvn -Dmaven.test.skip=true package
-CMD java -jar /b2formeditor/target/b2formeditor-0.0.1-SNAPSHOT.jar 
+EXPOSE 8443
+EXPOSE 8090
+WORKDIR /b2formeditor
+# TODO: create a separate spring profile for changing variables
+CMD java -jar target/b2formeditor-0.0.1-SNAPSHOT.jar --spring.data.mongodb.host=db

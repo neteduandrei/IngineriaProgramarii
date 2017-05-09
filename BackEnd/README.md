@@ -17,20 +17,17 @@ sudo chmod +x /usr/local/bin/docker-compose
 ## Deployment
 
 ### Local
- 
- * Change working directory to the maven project
+ * Change the working directory twhere the BackEnd resources are located:
 ```
-cd b2formeditor
+cd /path/to/project/BackEnd
+``` 
+
+ * Prepare the release - *this step should be done after each change*
+```
+(cd b2formeditor && mvn initialize && mvn compile && mvn -Dmaven.test.skip=true package && cd ..) || cd ..
 ```
 
- * Prepare the release
-```
-mvn initialize
-mvn compile
-mvn -Dmaven.test.skip=true package
-```
-
- * Deploy the database
+ * Deploy the database with docker
 ```
 mkdir database
 docker-compose start db
@@ -38,16 +35,16 @@ docker-compose start db
 
  * Run the server
 ```
-java -jar target/b2formeditor-0.0.1-SNAPSHOT.jar
+bash -c "cd b2formeditor && java -jar target/b2formeditor-0.0.1-SNAPSHOT.jar"
 ```
 
 ### Docker deploy
- * Change working directory to the maven project
+ * Change the working directory twhere the BackEnd resources are located:
 ```
-cd b2formeditor
-```
+cd /path/to/project/BackEnd
+``` 
 
- * Build the docker container with spring
+ * Build the docker container with spring - *this step should be done after each change*
 ```
 docker-compose build
 ```
