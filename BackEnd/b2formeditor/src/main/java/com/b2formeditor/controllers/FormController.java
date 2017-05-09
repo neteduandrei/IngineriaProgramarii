@@ -75,6 +75,8 @@ public class FormController {
         if (credentials != null) {
             savedForm = this.service.getById(updatedForm.getId());
             if (savedForm != null) {
+                updatedForm.setCreatedAt(savedForm.getCreatedAt())
+                           .setCreatedBy(savedForm.getCreatedBy());
                 savedForm = this.service.save(updatedForm);
                 return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
             }

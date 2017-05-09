@@ -63,7 +63,8 @@ public class ProcessedForm extends Form {
         return this.fields;
     }
 
-    public void setFields(Question[] fields) {
+    public ProcessedForm setFields(Question[] fields) {
         this.fields = fields;
+        return this;
     }
 }
