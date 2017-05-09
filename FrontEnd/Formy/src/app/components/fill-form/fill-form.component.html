@@ -1,9 +1,9 @@
 <div id="content" fxLayout="column" fxLayoutAlign="start center">
   <md-card class="container">
-    <md-card-title>{{formTemplateToFill.form.title}}</md-card-title>
-    <md-card-subtitle>{{formTemplateToFill.form.description}}</md-card-subtitle>
+    <md-card-title>{{formTemplateToFill.title}}</md-card-title>
+    <md-card-subtitle>{{formTemplateToFill.description}}</md-card-subtitle>
     <md-card-content fxLayout="column" fxLayoutGap="2%">
-      <div *ngFor="let field of formTemplateToFill.form.fields">
+      <div *ngFor="let field of formTemplateToFill.fields">
         <formy-fill-field [field]="field"></formy-fill-field>
       </div>
     </md-card-content>

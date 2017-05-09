@@ -11,20 +11,19 @@ import {baseUrl} from '../../../shared/globals';
 })
 export class FormPreviewComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() moreInfo: string;
-  @Input() id : string;
+  @Input() form;
 
   constructor(public dialog: MdDialog, private formsService : FormsService) {
   }
 
   public openDialog() {
     let dialogRef = this.dialog.open(DialogShareComponent);
+    dialogRef.componentInstance.link = `http://localhost:4200/form/fill/${ this.form.id}`;
 
   }
 
   public downloadFormAsJson() {
-    this.formsService.downloadFile(this.id);
+    this.formsService.downloadFile(this.form.id);
   }
 
   ngOnInit() {

@@ -2,7 +2,7 @@
   <h1 md-dialog-title class="mat-dialog-title" fxFlex="100%">Share form with others</h1>
   <div md-dialog-content class="mat-dialog-content" fxFlex="100%">
     <md-input-container>
-      <input mdInput readonly="readonly" type="text" placeholder="Link" value="http://formy.com/form/id/1UL9ihueJrqVkfUM43ZDL1K3NMnCzmgGF0lZKp5uMm7w" #linkTarget>
+      <input mdInput readonly="readonly" type="text" placeholder="Link" value="{{link}}" #linkTarget>
     </md-input-container>
     <button md-button type="button" [ngxClipboard]="linkTarget" (click)="openSnackBar()" >
       Copy Link

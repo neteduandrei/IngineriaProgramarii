@@ -1,8 +1,8 @@
 <md-card>
   <img id="templatePreviewImage" md-card-image src="../../../../assets/images/formCard.svg">
-  <md-card-title>{{ title }}</md-card-title>
+  <md-card-title>{{ form.title }}</md-card-title>
   <md-card-subtitle>
-    {{ moreInfo }}
+    {{ form.createdAt | date }}
   </md-card-subtitle>
   <md-card-footer fxLayout="row" fxLayoutAlign="end center">
     <md-menu #formMore="mdMenu">

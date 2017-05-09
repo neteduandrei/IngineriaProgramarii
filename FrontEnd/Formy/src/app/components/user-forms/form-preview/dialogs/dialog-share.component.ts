@@ -7,6 +7,9 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   styleUrls: ['./dialog-share.component.scss']
 })
 export class DialogShareComponent {
+
+  public link : string;
+
   constructor(public dialogRef: MdDialogRef<DialogShareComponent>, public snackBar: MdSnackBar) {}
 
   openSnackBar() {

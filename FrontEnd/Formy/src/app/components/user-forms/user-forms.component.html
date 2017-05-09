@@ -40,6 +40,6 @@
 
   </div>
   <div id="main" fxFlex="90%" fxLayout="row" fxLayoutGap="3%" fxLayoutWrap *ngFor="let form of forms">
-    <formy-form-preview [title]="form.title" [moreInfo]="form.createdAt" [id]="form.id" fxFlex="15%"></formy-form-preview>
+    <formy-form-preview fxFlex="15%" [form]="form"></formy-form-preview>
   </div>
 </div>

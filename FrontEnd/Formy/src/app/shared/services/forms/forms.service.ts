@@ -27,5 +27,10 @@ export class FormsService {
     window.open(`${baseUrl}/v1/download/${id}`);
   }
 
+  public getFromById(id : string) {
+    return this.http.get(`${this.url}/${id}`, {withCredentials: true})
+      .map(response => response.json());
+  }
+
 }
 
