@@ -1,12 +1,12 @@
 package com.b2formeditor.models.databasemodels;
 
+import com.b2formeditor.models.datatransferobjects.UserDTO;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Size;
-
 
 
 /**
@@ -36,6 +36,17 @@ public class User {
     private String refreshToken;
     private String accessToken;
     private String service;
+
+    public User() {
+    }
+
+    public User(UserDTO userDTO) {
+        this.email = userDTO.getEmail();
+        this.name = userDTO.getName();
+        this.nickname = userDTO.getNickname();
+        this.password = userDTO.getPassword();
+        this.role = userDTO.getRole();
+    }
 
     public String getId() {
         return id;
@@ -86,6 +97,10 @@ public class User {
         return refreshToken;
     }
 
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
     public User setRefreshToken(Object refresh_token) {
         this.refreshToken = refreshToken;
         return this;
@@ -115,9 +130,5 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
     }
 }

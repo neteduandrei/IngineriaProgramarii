@@ -4,7 +4,8 @@ package com.b2formeditor.controllers;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
-import com.b2formeditor.models.responsemodels.ProcessedUser;
+import com.b2formeditor.models.databasemodels.User;
+import com.b2formeditor.models.datatransferobjects.UserDTO;
 import com.b2formeditor.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,8 @@ public class UserController {
     private UserService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<ProcessedUser>> get() {
-        List<ProcessedUser> forms = this.service.getAll();
+    public ResponseEntity<List<User>> get() {
+        List<User> forms = this.service.getAll();
         if (forms.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -32,8 +33,9 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProcessedUser> addUser(@RequestBody ProcessedUser user) {
-        ProcessedUser savedUser = this.service.save(user);
+    public ResponseEntity<User> addUser(@RequestBody UserDTO userDTO) {
+        User newUser = new User(userDTO);
+        User savedUser = this.service.save(newUser);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 }

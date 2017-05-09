@@ -5,7 +5,6 @@ package com.b2formeditor.services;
  */
 
 import com.b2formeditor.models.databasemodels.User;
-import com.b2formeditor.models.responsemodels.ProcessedUser;
 import com.b2formeditor.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -20,21 +19,21 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     @Override
-    public ProcessedUser save(ProcessedUser entity) {
+    public User save(User entity) {
         String salt = BCrypt.gensalt();
         String hashedPassword = BCrypt.hashpw(entity.getPassword(), salt);
         entity.setPassword(hashedPassword);
-        return (ProcessedUser)this.repository.save(entity);
+        return repository.save(entity);
     }
 
     @Override
-    public List<ProcessedUser> getAll() {
-        return (List<ProcessedUser>)(Object)this.repository.findAll();
+    public List<User> getAll() {
+        return this.repository.findAll();
     }
 
     @Override
-    public ProcessedUser getById(String id) {
-        return (ProcessedUser)this.repository.findOne(id);
+    public User getById(String id) {
+        return this.repository.findOne(id);
     }
 
     @Override

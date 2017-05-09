@@ -1,0 +1,17 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'text'">
+    <formy-answer-text #field></formy-answer-text>
+  </div>
+  <div *ngSwitchCase="'single'">
+    <formy-answer-single-choice #field></formy-answer-single-choice>
+  </div>
+  <div *ngSwitchCase="'multiple'">
+    <formy-answer-multiple-choice #field></formy-answer-multiple-choice>
+  </div>
+  <div *ngSwitchCase="'date'">
+    <formy-answer-date #field></formy-answer-date>
+  </div>
+  <div *ngSwitchCase="'linear'">
+    <formy-answer-linear-scale #field></formy-answer-linear-scale>
+  </div>
+</div>

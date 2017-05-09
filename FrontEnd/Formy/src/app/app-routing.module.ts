@@ -17,6 +17,7 @@ import { DialogDeleteComponent } from "./components/edit-password/edit-password.
 import { AuthentificationComponent } from "./components/authentification/authentification.component";
 import {FillFormComponent} from "app/components/fill-form/fill-form.component";
 import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
+import {AnswersFormComponent} from "./components/answers-form/answers-form.component";
 
 let providers = {
     "google": {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'form/fill/:id',
     component: FillFormComponent
+  },
+  {
+    path: 'form/answers',
+    component: AnswersFormComponent
   },
   {
     path: 'dialogDelete',

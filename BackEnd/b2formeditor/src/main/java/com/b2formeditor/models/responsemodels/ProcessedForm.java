@@ -2,16 +2,35 @@ package com.b2formeditor.models.responsemodels;
 
 import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
+import com.b2formeditor.models.datatransferobjects.FormDTO;
+import com.b2formeditor.models.datatransferobjects.QuestionDTO;
 import com.b2formeditor.services.QuestionService;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.Date;
 
 /**
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 public class ProcessedForm extends Form {
+    @Field
     private Question[] fields;
 
     public ProcessedForm() {
         // default constructor for json
+    }
+
+    public ProcessedForm(FormDTO formDTO) {
+        QuestionDTO[] dtoFields = formDTO.getFields();
+
+        this.createdAt = new Date();
+        this.title = formDTO.getTitle();
+        this.description = formDTO.getDescription();
+        this.fields = new Question[dtoFields.length];
+
+        for (int i = 0; i < dtoFields.length; ++i) {
+            this.fields[i] = new Question(dtoFields[i]);
+        }
     }
 
     public ProcessedForm(QuestionService questionService, Form baseForm) {
@@ -44,8 +63,8 @@ public class ProcessedForm extends Form {
         return this.fields;
     }
 
-    public void setFields(Question[] fields) {
+    public ProcessedForm setFields(Question[] fields) {
         this.fields = fields;
+        return this;
     }
-
 }
