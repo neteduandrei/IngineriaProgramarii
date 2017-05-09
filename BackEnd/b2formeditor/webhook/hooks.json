@@ -1,0 +1,8 @@
+[
+  {
+    "id": "pull",
+    "execute-command": "/var/scripts/pull.sh",
+    "command-working-directory": "/root/fiiforms",
+    "include-command-output-in-response": true
+  }
+]
