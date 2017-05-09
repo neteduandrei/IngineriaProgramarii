@@ -15,47 +15,53 @@ public class QuestionDTO {
         return title;
     }
 
-    public void setTitle(String title) {
+    public QuestionDTO setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public QuestionDTO setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public QuestionDTO setType(String type) {
         this.type = type;
+        return this;
     }
 
     public boolean isRequired() {
         return required;
     }
 
-    public void setRequired(boolean required) {
+    public QuestionDTO setRequired(boolean required) {
         this.required = required;
+        return this;
     }
 
     public Object getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public QuestionDTO setValue(Object value) {
         this.value = value;
+        return this;
     }
 
     public Object getOptions() {
         return options;
     }
 
-    public void setOptions(Object options) {
+    public QuestionDTO setOptions(Object options) {
         this.options = options;
+        return this;
     }
 }

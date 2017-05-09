@@ -15,27 +15,27 @@ import javax.validation.constraints.Size;
 @Document(collection = "Users")
 public class User {
     @Id
-    protected String id;
+    private String id;
 
     @Indexed(unique = true)
-    protected String email;
+    private String email;
 
     @NotBlank
-    protected String name;
+    private String name;
 
     @Indexed(unique = true)
-    protected String nickname;
+    private String nickname;
 
     @NotBlank
     @Size(min = 6)
-    protected String password;
+    private String password;
 
     @NotBlank
-    protected String role;
+    private String role;
 
-    protected String refreshToken;
-    protected String accessToken;
-    protected String service;
+    private String refreshToken;
+    private String accessToken;
+    private String service;
 
     public User() {
     }

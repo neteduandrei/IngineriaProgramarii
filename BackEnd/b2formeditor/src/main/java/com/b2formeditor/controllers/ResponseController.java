@@ -35,18 +35,17 @@ public class ResponseController {
         ProcessedResponse savedResponse = this.service.save(response);
         return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
     }
-    
-        @RequestMapping(value = "{id}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Statistic>> get(@PathVariable("id") String id) {
         List<ProcessedResponse> forms = this.service.getAll();
-        List<Statistic> result = new ArrayList<Statistic>();
+        List<Statistic> result = new ArrayList<>();
 
-        for(ProcessedResponse processedResponse : forms){
+        for (ProcessedResponse processedResponse : forms) {
             System.out.println("ID: " + processedResponse.getFormId());
-            if(processedResponse.getFormId().equals(id))
-            {
+            if (processedResponse.getFormId().equals(id)) {
                 Statistic st = new Statistic();
-                Object [] ans = processedResponse.getAnswers();
+                Object[] ans = processedResponse.getAnswers();
                 st.setAnswers(ans);
                 result.add(st);
             }
@@ -56,5 +55,5 @@ public class ResponseController {
         }
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
+
 }

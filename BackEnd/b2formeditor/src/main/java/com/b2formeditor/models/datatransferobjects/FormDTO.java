@@ -12,23 +12,26 @@ public class FormDTO {
         return title;
     }
 
-    public void setTitle(String title) {
+    public FormDTO setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public FormDTO setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public QuestionDTO[] getFields() {
         return fields;
     }
 
-    public void setFields(QuestionDTO[] fields) {
+    public FormDTO setFields(QuestionDTO[] fields) {
         this.fields = fields;
+        return this;
     }
 }
