@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface FormService extends CrudService<ProcessedForm> {
     List<ProcessedForm> getByUserId(String id);
+
+    List<ProcessedForm> getByCreator(String email);
 }

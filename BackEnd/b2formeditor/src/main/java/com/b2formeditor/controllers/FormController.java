@@ -33,11 +33,13 @@ public class FormController {
         if (credentials != null) {
             if (credentials.getRole().equals("admin")) {
                 forms = service.getAll();
-                if (forms.isEmpty()) {
-                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-                return new ResponseEntity<>(forms, HttpStatus.OK);
+            } else {
+                forms = service.getByCreator(credentials.getEmail());
             }
+            if (forms.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(forms, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }

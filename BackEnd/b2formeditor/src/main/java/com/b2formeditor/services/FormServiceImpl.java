@@ -34,6 +34,7 @@ public class FormServiceImpl implements FormService {
         return processForms(this.repository.findAll());
     }
 
+
     @Override
     public ProcessedForm getById(String id) {
         Form form = this.repository.findOne(id);
@@ -51,6 +52,14 @@ public class FormServiceImpl implements FormService {
     @Override
     public List<ProcessedForm> getByUserId(String id) {
         return processForms(this.repository.findByCreatedBy(id));
+    }
+
+    @Override
+    public List<ProcessedForm> getByCreator(String email) {
+        List<ProcessedForm> result = new ArrayList<>();
+        List<Form> forms = repository.findByCreatedBy(email);
+        forms.forEach((Form form) -> result.add(new ProcessedForm(questionService, form)));
+        return result;
     }
 
     private List<ProcessedForm> processForms (List<Form> formList) {
