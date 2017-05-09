@@ -3,7 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import {MdIconRegistry} from "@angular/material";
 import {DomSanitizer} from "@angular/platform-browser";
 import {AuthService} from "../../shared/services/auth/auth.service";
-import {Register} from "ts-node/dist";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'formy-authentification',
@@ -21,9 +21,12 @@ export class AuthentificationComponent implements  OnDestroy {
   public register_email : string;
   public register_password : string;
 
+  public error_message : string;
+
+
   public user;
   sub: any;
-  constructor(mdIconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private auth : AuthService){
+  constructor(mdIconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private auth : AuthService, private router : Router){
     mdIconRegistry
       .addSvgIcon('facebook',
         sanitizer.bypassSecurityTrustResourceUrl('../assets/images/facebook.svg'));
@@ -40,8 +43,18 @@ export class AuthentificationComponent implements  OnDestroy {
   }
   */
   public manualLogin() {
+
     this.auth.manualLogin(this.email, this.password)
-      .subscribe((response) => console.log(response));
+      .subscribe(
+        (data) => {
+          console.log("succes");
+          this.error_message = "";
+          this.router.navigate(['/user']);
+        },
+        (err) => {
+          console.log(err);
+          this.error_message = "Your email and password don't match"
+        });
 
   }
   public registerUser(){
@@ -56,6 +69,6 @@ export class AuthentificationComponent implements  OnDestroy {
   }
 */
   ngOnDestroy(){
-    this.sub.unsubscribe();
+    //this.sub.unsubscribe();
   }
 }

@@ -37,6 +37,8 @@ import { SimplenavbarComponent } from './shared/components/simplenavbar/simplena
 
 import {BuildFormService} from "./shared/services/build-form/build-form.service";
 import {AuthService} from "./shared/services/auth/auth.service";
+import {FormsService} from "./shared/services/forms/forms.service";
+
 import { AnswersFormComponent } from './components/answers-form/answers-form.component';
 import { AnswerAbstractComponent } from './components/answers-form/answer-type/answer-abstract/answer-abstract.component';
 import { AnswerTextComponent } from './components/answers-form/answer-type/answer-text/answer-text.component';
@@ -44,6 +46,8 @@ import { AnswerLinearScaleComponent } from './components/answers-form/answer-typ
 import { AnswerDateComponent } from './components/answers-form/answer-type/answer-date/answer-date.component';
 import { AnswerSingleChoiceComponent } from './components/answers-form/answer-type/answer-single-choice/answer-single-choice.component';
 import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-type/answer-multiple-choice/answer-multiple-choice.component';
+
+
 
 
 @NgModule({
@@ -91,7 +95,8 @@ import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-
   providers: [
     FillFormService,
     BuildFormService,
-    AuthService
+    AuthService,
+    FormsService
   ],
   bootstrap: [AppComponent]
 })

@@ -17,7 +17,7 @@
             </div>
             <md-checkbox>Remember password</md-checkbox>
           </form>
-
+          <p class="warning">{{error_message}}</p>
         </md-card-content>
         <button md-raised-button color="primary"
                 [disabled]="emailInput.value === '' || passwordInput.value === ''"

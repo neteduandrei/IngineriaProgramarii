@@ -1,6 +1,7 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {FormPreviewComponent} from './form-preview/form-preview.component'
 import {MdDialog} from "@angular/material";
+import {FormsService} from "../../shared/services/forms/forms.service";
 
 @Component({
   selector: 'formy-user-forms',
@@ -12,13 +13,15 @@ import {MdDialog} from "@angular/material";
 })
 export class UserFormsComponent implements OnInit {
 
-  public forms: FormPreviewComponent[];
+  public forms;
 
-  constructor() {
+  constructor(private formsService : FormsService) {
     this.forms = [];
   }
 
   ngOnInit() {
+    this.formsService.getAllForms()
+      .subscribe((data) => this.forms = data);
   }
 
   public addForm(form: FormPreviewComponent){
