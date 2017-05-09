@@ -1,0 +1,216 @@
+body{
+	display: flex;
+	flex-direction: column;
+	margin:0;
+	padding:0;
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.5em;
+}
+
+header{
+	position:fixed; 
+	width:100%;
+   	color: white;
+   	background-color: rgb(61, 117, 232);
+   	display: flex;
+   	flex-direction: row;
+   	font-family: 'Roboto', sans-serif;
+}
+
+.logo{
+height: 60px;
+
+	width: 15%;
+	background-color: rgb(61, 110, 232);
+	display: flex;
+	justify-content: center;
+}
+
+.logo h1{
+	padding-top: 5%;
+}
+
+.meniu{
+	display: flex;
+	width: 85%;
+	justify-content: flex-end;
+}
+
+.linkuri{
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	padding-right: 0;
+	justify-content: space-around;
+}
+
+.linkuri li{
+	font-size: 120%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.linkuri a{
+	text-decoration: none;
+	color: #fff;
+}
+
+footer{
+    color: white;
+    background-color: rgb(61, 117, 232);
+    font-family: 'Roboto',"Helvetica Neue",sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mail{
+	color: white;
+}
+
+.telefon{
+	color: white;
+}
+
+#wrapper {
+	padding-top: 4%;			
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	height: 100%;
+}
+			
+main {
+	width: 85%;
+	order: 2;
+	padding-bottom: 4%;	
+}
+		
+.intro{
+	width: 90%;
+	padding-left: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+#subm{
+	padding-top: 2%;
+}
+
+.submodule{
+	display: flex;
+	flex-direction: row;
+	padding-top: 2%;
+}
+
+.submodule div{
+	background-color: rgb(61, 117, 232);
+	padding-right: 6%;
+	padding-left: 6%;
+	border-radius: 2%;
+	margin-right: 1%;
+	margin-left: 1%;
+	width: 100%;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.avatar{
+	display: flex;
+}
+
+.avatar img{
+	width: 50%;
+	padding-top: 5%;
+}
+
+.submodule div h3{
+	align-self: center;
+	color: white;
+	text-transform: uppercase;
+}
+
+.submodule div ol{
+	width: 140%;
+	margin-left: -30%;
+	padding-bottom: 1%;
+}
+
+.submodule div ol li{
+	width: 100%;
+	color: white;
+}
+
+#nav {
+	order: 1;
+	width: 15%;	
+	background-color: #f4f4f4;
+	font-family: 'Roboto', sans-serif;
+}
+			
+.innertube{
+	padding-top: 50px;
+	margin: 15px; 
+	margin-top: 0;
+}
+
+.innertube > h1{
+	padding-top: 1%;
+	padding-left: 1%;
+}
+
+.principal{
+	padding-top: 8%;
+}
+	
+.titlu{
+	display: flex;
+	flex-direction: row;
+}
+
+.diagrame{
+	padding-left: 20%;
+}
+
+.titlu img{
+	height: 100%;
+	width: 20%;
+	padding-top: 5%;
+}
+
+.fisa li{
+	display: flex;
+	flex-direction: row;
+}
+
+.fisa li img{
+	height: 100%;
+	width: 20%;
+	padding-top: 5%;	
+}
+
+.fisa li a{
+	padding-top: 10%;
+}
+
+.informatii{
+	padding-left: 20%;
+}
+
+p {
+	color: #555;
+}
+	
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+			
+nav ul a {
+	color: grey;
+	text-decoration: none;
+}
