@@ -15,5 +15,9 @@ export class AuthService {
     let options = new RequestOptions({headers : headers, withCredentials : true});
     return this.http.post(this.url, {email: email, password: password}, options);
   }
-
+  public registerUser(name : string, username : string, email : string, password : string) {
+    let headers = new Headers({'Content-Type' : 'application/json'});
+    let options = new RequestOptions({headers : headers, withCredentials : true});
+    return this.http.post(this.url, {name: name, username: username, email: email, password: password}, options);
+  }
 }

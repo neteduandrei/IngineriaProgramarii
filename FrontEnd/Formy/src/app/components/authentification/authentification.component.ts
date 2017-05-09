@@ -3,6 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import {MdIconRegistry} from "@angular/material";
 import {DomSanitizer} from "@angular/platform-browser";
 import {AuthService} from "../../shared/services/auth/auth.service";
+import {Register} from "ts-node/dist";
 
 @Component({
   selector: 'formy-authentification',
@@ -15,6 +16,10 @@ import {AuthService} from "../../shared/services/auth/auth.service";
 export class AuthentificationComponent implements  OnDestroy {
   public email : string;
   public password : string;
+  public register_name : string;
+  public register_username : string;
+  public register_email : string;
+  public register_password : string;
 
   public user;
   sub: any;
@@ -37,6 +42,11 @@ export class AuthentificationComponent implements  OnDestroy {
   public manualLogin() {
     this.auth.manualLogin(this.email, this.password)
       .subscribe((response) => console.log(response));
+
+  }
+  public registerUser(){
+    this.auth.registerUser(this.register_name, this.register_username,this.register_email,this.register_password)
+        .subscribe((response) => console.log(response));
   }
 /*
   logout(){
