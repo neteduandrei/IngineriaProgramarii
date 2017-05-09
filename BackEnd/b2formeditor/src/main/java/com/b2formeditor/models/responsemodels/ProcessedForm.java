@@ -67,4 +67,12 @@ public class ProcessedForm extends Form {
         this.fields = fields;
         return this;
     }
+
+    public Question getQuestionById(String id){
+        for(Question question : fields){
+            if(question.getId().equals(id))
+                return question;
+        }
+        return null;
+    }
 }
