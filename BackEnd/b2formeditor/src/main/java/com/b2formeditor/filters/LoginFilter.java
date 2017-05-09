@@ -21,10 +21,11 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+        String httpMethod = httpRequest.getMethod();
         HttpSession session = httpRequest.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
 
-        if (credentials != null) {
+        if (httpMethod.equalsIgnoreCase("OPTIONS") || credentials != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             httpResponse.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
