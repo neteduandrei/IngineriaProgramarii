@@ -36,7 +36,11 @@ public class FormServiceImpl implements FormService {
 
     @Override
     public ProcessedForm getById(String id) {
-        return new ProcessedForm(questionService, this.repository.findOne(id));
+        Form form = this.repository.findOne(id);
+        if (form != null) {
+            return new ProcessedForm(questionService, form);
+        }
+        return null;
     }
 
     @Override
