@@ -1,5 +1,5 @@
 
-import { Component, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MdIconRegistry} from "@angular/material";
 import {DomSanitizer} from "@angular/platform-browser";
 import {AuthService} from "../../shared/services/auth/auth.service";
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
     'class' : 'page'
   }
 })
-export class AuthentificationComponent implements  OnDestroy {
+export class AuthentificationComponent implements OnInit, OnDestroy {
   public email : string;
   public password : string;
   public register_name : string;
@@ -22,6 +22,7 @@ export class AuthentificationComponent implements  OnDestroy {
   public register_password : string;
 
   public error_message : string;
+  public error_register : string;
 
 
   public user;
@@ -34,14 +35,22 @@ export class AuthentificationComponent implements  OnDestroy {
       .addSvgIcon('google-plus',
         sanitizer.bypassSecurityTrustResourceUrl('../assets/images/google-plus.svg'));
   }
-/*
-  signIn(provider){
-    this.sub = this._auth.login(provider).subscribe(
-      (data) => {
-        console.log(data);this.user=data;}
-    )
+  /*
+   signIn(provider){
+   this.sub = this._auth.login(provider).subscribe(
+   (data) => {
+   console.log(data);this.user=data;}
+   )
+   }
+   */
+
+  ngOnInit() {
+    console.log(this.auth.getLoginStatus());
+    if(this.auth.getLoginStatus() === true) {
+      this.router.navigate(['/user']);
+    }
   }
-  */
+
   public manualLogin() {
 
     this.auth.manualLogin(this.email, this.password)
@@ -59,15 +68,23 @@ export class AuthentificationComponent implements  OnDestroy {
   }
   public registerUser(){
     this.auth.registerUser(this.register_name, this.register_username,this.register_email,this.register_password)
-        .subscribe((response) => console.log(response));
+      .subscribe(
+        (response) => {
+          this.error_register = "";
+          this.router.navigate(['/user']);
+        },
+        (err) => {
+          this.error_register = 'A user with this email is already registered';
+        }
+      );
   }
-/*
-  logout(){
-    this._auth.logout().subscribe(
-      (data)=>{console.log(data);this.user=null;}
-    )
-  }
-*/
+  /*
+   logout(){
+   this._auth.logout().subscribe(
+   (data)=>{console.log(data);this.user=null;}
+   )
+   }
+   */
   ngOnDestroy(){
     //this.sub.unsubscribe();
   }

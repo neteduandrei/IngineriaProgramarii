@@ -46,6 +46,7 @@ import { AnswerLinearScaleComponent } from './components/answers-form/answer-typ
 import { AnswerDateComponent } from './components/answers-form/answer-type/answer-date/answer-date.component';
 import { AnswerSingleChoiceComponent } from './components/answers-form/answer-type/answer-single-choice/answer-single-choice.component';
 import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-type/answer-multiple-choice/answer-multiple-choice.component';
+import {QuestionsService} from './shared/services/questions/questions.service';
 
 
 
@@ -96,7 +97,8 @@ import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-
     FillFormService,
     BuildFormService,
     AuthService,
-    FormsService
+    FormsService,
+    QuestionsService
   ],
   bootstrap: [AppComponent]
 })

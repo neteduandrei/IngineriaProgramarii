@@ -25,6 +25,10 @@ export class AuthService {
   public registerUser(name : string, username : string, email : string, password : string) {
     let headers = new Headers({'Content-Type' : 'application/json'});
     let options = new RequestOptions({headers : headers, withCredentials : true});
-    return this.http.post(this.url, {name: name, username: username, email: email, password: password}, options);
+    return this.http.post(`${baseUrl}/v1/authentication/signup`, {name: name, nickname: username, email: email, password: password}, options);
+  }
+
+  public getLoginStatus() {
+    return this.loginStatus === true;
   }
 }

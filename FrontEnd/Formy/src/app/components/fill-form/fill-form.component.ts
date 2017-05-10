@@ -48,7 +48,8 @@ export class FillFormComponent implements OnInit {
   public submit() {
     this.responses = [];
     this.childFields.forEach(field => {
-      this.responses.push(field.field.value);
+      field.submit();
+      //this.responses.push(field.field.value);
     });
   }
 
