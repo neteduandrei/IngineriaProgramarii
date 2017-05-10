@@ -1,4 +1,4 @@
-<md-radio-group>
+<md-radio-group [(ngModel)]="selectedButton">
   <div *ngFor="let option of values">
     <md-radio-button  [value]="option">{{option}}</md-radio-button>
   </div>

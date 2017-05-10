@@ -1,20 +1,20 @@
 <div [ngSwitch]="field.type">
   <div *ngSwitchCase="'shortText'">
-    <formy-fill-type-short-text #field2 [options]="field.options" [required]="field.required"></formy-fill-type-short-text>
+    <formy-fill-type-short-text #field2 [field]="field"></formy-fill-type-short-text>
   </div>
   <div *ngSwitchCase="'longText'">
-    <formy-fill-type-long-text #field2 [options]="field.options" [required]="field.required"></formy-fill-type-long-text>
+    <formy-fill-type-long-text #field2 [field]="field"></formy-fill-type-long-text>
   </div>
   <div *ngSwitchCase="'singleChoice'">
-    <formy-fill-type-single-choice #field2 [values]="field.value"></formy-fill-type-single-choice>
+    <formy-fill-type-single-choice #field2 [values]="field.value" [field]="field"></formy-fill-type-single-choice>
   </div>
   <div *ngSwitchCase="'multipleChoice'">
-    <formy-fill-type-multiple-choice #field2 [values]="field.value"></formy-fill-type-multiple-choice>
+    <formy-fill-type-multiple-choice #field2 [values]="field.value" [field]="field"></formy-fill-type-multiple-choice>
   </div>
   <div *ngSwitchCase="'date'">
-    <formy-fill-type-date #field2></formy-fill-type-date>
+    <formy-fill-type-date #field2 [field]="field"></formy-fill-type-date>
   </div>
   <div *ngSwitchCase="'linearScale'">
-    <formy-fill-type-linear-scale #field2 [values]="field.value"></formy-fill-type-linear-scale>
+    <formy-fill-type-linear-scale #field2 [values]="field.value" [field]="field"></formy-fill-type-linear-scale>
   </div>
 </div>

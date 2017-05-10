@@ -1,14 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {forEach} from "@angular/router/src/utils/collection";
+import {Field} from '../../../../../shared/models/Field';
+import {FormTransfer} from '../../../../../shared/interfaces/FormTransfer';
 
 @Component({
   selector: 'formy-fill-type-multiple-choice',
   templateUrl: './fill-type-multiple-choice.component.html',
   styleUrls: ['./fill-type-multiple-choice.component.scss']
 })
-export class FillTypeMultipleChoiceComponent implements OnInit {
+export class FillTypeMultipleChoiceComponent implements OnInit, FormTransfer {
 
   @Input() values : Array<string>;
+  @Input() field : Field;
 
   public selectedValues;
 
@@ -26,8 +28,13 @@ export class FillTypeMultipleChoiceComponent implements OnInit {
   }
 
   public getSelectedValues() {
-    this.selectedValues
+    return this.selectedValues
       .filter(value => value.checked === true)
       .forEach(value => console.log(value));
+  }
+
+  getJson(): Field {
+    this.field.value = this.getSelectedValues();
+    return this.field;
   }
 }

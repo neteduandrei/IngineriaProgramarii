@@ -1,5 +1,5 @@
 <md-input-container>
-  <input mdInput #answer placeholder="Your answer" [required]="required"
-         [maxlength]="options.maxLength" type="text" [(ngModel)]="value">
+  <input mdInput #answer placeholder="Your answer" [required]="field.required"
+         [maxlength]="field.options.maxLength" type="text" [(ngModel)]="field.value">
   <md-error>Field cannot be empty</md-error>
 </md-input-container>
