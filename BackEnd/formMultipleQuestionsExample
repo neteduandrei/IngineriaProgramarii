@@ -1,0 +1,52 @@
+
+Form:
+{
+  "description": "string",
+  "fields": [
+    {
+      "description": "Tell us a story about you",
+      "options": {
+         "validationType": "textArea"
+       },
+      "required": true,
+      "title": "TextField",
+      "type": "string",
+      "value": {}
+    },
+    {
+      "description": "Write your age",
+      "options": {
+         "validationType": "number"
+       },
+      "required": true,
+      "title": "Age",
+      "type": "string",
+      "value": {}
+    },
+    {
+      "description": "Tell us the secret key(you can leave it blank)",
+      "options": {
+         "validationType": "textField"
+       },
+      "required": false,
+      "title": "SecretKey",
+      "type": "string",
+      "value": {}
+    }
+
+  ],
+  "title": "string"
+}
+
+
+Response:
+{
+  "answers": [
+    "Andrei este &quote Mamut &quote",
+    "543",
+    ""
+  ],
+  "formId": "5912413fe60d305d9568d5e8",
+  "questionId": "string",
+  "questionType": "string"
+}
