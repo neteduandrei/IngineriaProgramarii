@@ -54,7 +54,7 @@ public class Response {
         return this;
     }
 
-    public Object[] getAnswers() {
+    public String[] getAnswers() {
         return answers;
     }
 

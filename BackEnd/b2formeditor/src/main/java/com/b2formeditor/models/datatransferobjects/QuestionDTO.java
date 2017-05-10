@@ -8,7 +8,7 @@ public class QuestionDTO {
     protected String description;
     protected String type;
     protected boolean required;
-    protected Object value;
+    protected Object[] value;
     protected Object options;
 
     public String getTitle() {
@@ -47,11 +47,11 @@ public class QuestionDTO {
         return this;
     }
 
-    public Object getValue() {
+    public Object[] getValue() {
         return value;
     }
 
-    public QuestionDTO setValue(Object value) {
+    public QuestionDTO setValue(Object[] value) {
         this.value = value;
         return this;
     }
