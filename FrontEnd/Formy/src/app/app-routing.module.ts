@@ -31,8 +31,7 @@ let providers = {
 const routes: Routes = [
   {
     path: '',
-    pathMatch : 'full',
-    redirectTo: 'authentification'
+    component: AuthentificationComponent
   },
   {
     path: 'build-form',
@@ -45,10 +44,6 @@ const routes: Routes = [
   {
     path: 'edit-password',
     component: EditPasswordComponent
-  },
-  {
-    path: 'authentification',
-    component: AuthentificationComponent
   },
   {
     path: 'form/fill/:id',

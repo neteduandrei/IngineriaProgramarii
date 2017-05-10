@@ -4,7 +4,7 @@
     <md-card-subtitle>{{formTemplateToFill.description}}</md-card-subtitle>
     <md-card-content fxLayout="column" fxLayoutGap="2%">
       <div *ngFor="let field of formTemplateToFill.fields">
-        <formy-fill-field [field]="field"></formy-fill-field>
+        <formy-fill-field [field]="field" [formId]="id"></formy-fill-field>
       </div>
     </md-card-content>
     <md-card-actions>

@@ -55,6 +55,7 @@
           </md-input-container>
         </form>
       </md-card-content>
+        <p class="warning">{{error_register}}</p>
       <button md-raised-button color="primary"
               [disabled]="registerNameInput.value === '' || registerUsernameInput.value === '' || registerEmailInput.value === '' || registerPasswordInput.value === ''"
               (click)="registerUser()">Register</button>
