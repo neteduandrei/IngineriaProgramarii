@@ -48,7 +48,7 @@ public class ResponseController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProcessedResponse> addResponse(HttpServletRequest request, @RequestBody ResponseDTO responseDTO) {
+    public ResponseEntity addResponse(HttpServletRequest request, @RequestBody ResponseDTO responseDTO) {
         ProcessedResponse savedResponse;
         ProcessedResponse newResponse = new ProcessedResponse(responseDTO);
         HttpSession session = request.getSession(true);
@@ -79,11 +79,11 @@ public class ResponseController {
                     savedResponse = this.service.save(newResponse);
                     return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
                 }
-                return new ResponseEntity<>(HttpStatus.CONFLICT);
+                return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
             }
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

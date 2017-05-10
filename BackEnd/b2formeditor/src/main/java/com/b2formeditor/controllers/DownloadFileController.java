@@ -22,7 +22,7 @@ public class DownloadFileController {
     private FormService service;
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<DownloadedFormDTO> sendFile(@PathVariable("id") String id) {
+    public ResponseEntity sendFile(@PathVariable("id") String id) {
         ProcessedForm form = service.getById(id);
         DownloadedFormDTO responseForm;
 
@@ -32,6 +32,6 @@ public class DownloadFileController {
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=form" + form.getId() + ".json")
                     .body(responseForm);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
     }
 }
