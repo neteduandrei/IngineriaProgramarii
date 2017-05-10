@@ -14,17 +14,3 @@ services:
                 ports:
                         - "localhost:8443:8443"
                         - "localhost:8090:8090"
-
-        webhooks:
-                build:
-                        context: b2formeditor
-                        dockerfile: Dockerfile.webhook
-                image: git-webhook
-                restart: always
-                volumes:
-                        - "./b2formeditor/webhook/hooks.json:/etc/webhook/hooks.json"
-                        - "./b2formeditor/webhook/scripts:/var/scripts"
-                        - "../:/root/fiiforms"
-                command: "-verbose -hooks=/etc/webhook/hooks.json -hotreload"
-                ports:
-                        - "9000:9000"
