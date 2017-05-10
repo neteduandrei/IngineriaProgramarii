@@ -54,27 +54,34 @@ public class ResponseController {
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
         boolean okToBeAdded = false;
-        ProcessedForm form = this.formService.getById(newResponse.getFormId());
-        for(Question q : form.getFields())  //check if question is part of form
-            if(q.getId().equals(newResponse.getQuestionId())){
-                okToBeAdded=true;
-                break;
-            }
-        Question question = this.formService.getById(newResponse.getFormId()).getQuestionById(newResponse.getQuestionId());
-        Object[] validAnswers =  question.getValue();
-        String[] stringValidAnswers = new String[question.getValue().length];
-        for(int i=0;i<validAnswers.length;i++)
-            stringValidAnswers[i]=validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length()-1);
+        ProcessedForm form;
+
+        if (credentials != null) {
+            form = this.formService.getById(newResponse.getFormId());
+            if (form != null) {
+                for (Question q : form.getFields()) { //check if question is part of form
+                    if (q.getId().equals(newResponse.getQuestionId())) {
+                        okToBeAdded = true;
+                        break;
+                    }
+                }
+                Question question = form.getQuestionById(newResponse.getQuestionId());
+                Object[] validAnswers = question.getValue();
+                String[] stringValidAnswers = new String[question.getValue().length];
+                for (int i = 0; i < validAnswers.length; i++)
+                    stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
 
 
-        if (!isIn(stringValidAnswers, newResponse.getAnswers()))
-            okToBeAdded = false;
-        if(okToBeAdded) {
-            if (credentials != null) {
-                newResponse.setCreatedBy(credentials.getEmail());
-                savedResponse = this.service.save(newResponse);
-                return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+                if (!isIn(stringValidAnswers, newResponse.getAnswers()))
+                    okToBeAdded = false;
+                if (okToBeAdded) {
+                    newResponse.setCreatedBy(credentials.getEmail());
+                    savedResponse = this.service.save(newResponse);
+                    return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+                }
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
