@@ -1,0 +1,61 @@
+{
+	"__help": "The description of the form",
+	"description": "Test form created by libcurl",
+	
+	"__help": "I think this are the questions",
+	"fields": [
+		{
+			"__help": "Question description",
+			"description": "Test Question created by libcurl",
+
+			"__help": "vvv Restriction like regex. Also missing paranthesis here",
+			"options": 
+				"__help": "Regex for the whole word ^.*$",
+				"regex": ".*",
+
+				"__help": "For linear scale. This should be ignored as the input type is number",
+				"min": 0,
+
+				"__help": "Max for linea scale. This should be ignores as the input type is number",
+				"max": 1000
+			},
+
+			"__help": "create this field as required",
+			"required": true,
+
+			"__help": "The title of the question",
+			"title": "QuestionTest1",
+
+			"__help": "question for numbers. I think this will trigger some validations",
+			"type": "number",
+
+			"__help": "I don't know what this is :(",
+			"value": {}
+		},
+		{
+			"__help": "Question description",
+			"description": "Test Question created by libcurl",
+
+			"__help": "I don't know what this is :(",
+			"options": {
+				"__help": "require at least 1 character",
+				"regex": "+*"
+			},
+
+			"__help": "this field is not required",
+			"required": false,
+
+			"__help": "The title of the question",
+			"title": "QuestionTest2",
+
+			"__help": "question for random?. What will happend if we do this?",
+			"type": "custom",
+
+			"__help": "I don't know what this is :(",
+			"value": {}
+		}
+	],
+
+	"__help": "The title of the form",
+	"title": "FormTest"
+}
