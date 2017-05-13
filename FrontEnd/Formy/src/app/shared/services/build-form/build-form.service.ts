@@ -10,5 +10,10 @@ export class BuildFormService {
 
   public setForm(form : FormTemplateReceive) {
     this.formTemplateReceive = form;
+    console.log(this.formTemplateReceive);
+  }
+
+  public getFormTemplate() {
+    return this.formTemplateReceive;
   }
 }

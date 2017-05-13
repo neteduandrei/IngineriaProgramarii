@@ -3,6 +3,8 @@ import {DialogShareComponent} from "./dialogs/dialog-share.component";
 import {MdDialog} from "@angular/material";
 import {FormsService} from '../../../shared/services/forms/forms.service';
 import {baseUrl} from '../../../shared/globals';
+import {BuildFormService} from '../../../shared/services/build-form/build-form.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'formy-form-preview',
@@ -13,7 +15,10 @@ export class FormPreviewComponent implements OnInit {
 
   @Input() form;
 
-  constructor(public dialog: MdDialog, private formsService : FormsService) {
+  constructor(public dialog: MdDialog,
+              private formsService : FormsService,
+              private buildFormService : BuildFormService,
+              private router : Router) {
   }
 
   public openDialog() {
@@ -28,6 +33,11 @@ export class FormPreviewComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  public editForm(){
+    this.buildFormService.setForm(this.form);
+    this.router.navigate(['/build-form']);
   }
 
 }

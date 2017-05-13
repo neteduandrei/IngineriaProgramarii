@@ -24,7 +24,8 @@ export class BuildFormComponent implements OnInit {
 
   private formGenerator : FormTemplateGenerator;
 
-  constructor(private formsService : FormsService, private router : Router) {
+  constructor(private formsService : FormsService,
+              private router : Router) {
     this.fields = [];
   }
 

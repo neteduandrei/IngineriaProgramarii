@@ -1,5 +1,5 @@
 <md-card>
-  <img id="templatePreviewImage" md-card-image src="../../../../assets/images/formCard.svg">
+  <img id="templatePreviewImage" md-card-image src="../../../../assets/images/formCard.svg" (click)="editForm()">
   <md-card-title>{{ form.title }}</md-card-title>
   <md-card-subtitle>
     {{ form.createdAt | date }}
