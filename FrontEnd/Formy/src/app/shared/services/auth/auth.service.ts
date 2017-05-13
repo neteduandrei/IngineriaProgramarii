@@ -7,12 +7,14 @@ import { baseUrl } from '../../globals';
 export class AuthService {
 
   private url = `${baseUrl}/v1/authentication/login`;
+  private username : string;
 
   private loginStatus : boolean = false;
 
   constructor(private http : Http) { }
 
   public manualLogin(email : string, password : string) {
+    this.username = email;
     let headers = new Headers({'Content-Type' : 'application/json'});
     let options = new RequestOptions({headers : headers, withCredentials : true});
     return this.http.post(this.url, {email: email, password: password}, options)
@@ -31,4 +33,13 @@ export class AuthService {
   public getLoginStatus() {
     return this.loginStatus === true;
   }
+
+  public setLoginStatus(status : boolean) {
+    this.loginStatus = status;
+  }
+
+  public getUsername() {
+    return this.username;
+  }
+
 }

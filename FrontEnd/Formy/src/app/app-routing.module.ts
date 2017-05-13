@@ -19,6 +19,7 @@ import {FillFormComponent} from "app/components/fill-form/fill-form.component";
 import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 import {AnswersFormComponent} from "./components/answers-form/answers-form.component";
 
+
 let providers = {
     "google": {
       "clientId": "GOOGLE_CLIENT_ID"

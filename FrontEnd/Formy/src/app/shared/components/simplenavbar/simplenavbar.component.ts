@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'formy-simplenavbar',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimplenavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+
+  public logout() {
+    this.authService.setLoginStatus(false);
+  }
 
   ngOnInit() {
   }

@@ -3,7 +3,7 @@
     <a [routerLink]="['/user']" hreg="." fxFlex="20"
        style="text-decoration: none; color:white">
       <div id="logo" >
-      <img src="../assets/images/LogoFiiForm-01.svg" style="width:68%; margin-left:-8%">
+        <img src="../assets/images/LogoFiiForm-01.svg" style="width:68%; margin-left:-8%">
       </div>
     </a>
     <div id="controls" fxFlex="65" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
@@ -12,19 +12,22 @@
         <md-icon>search</md-icon>
       </div>
       <a [routerLink]="['/build-form']" style="text-decoration: none; color:white">
-        <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%" >
-        <md-icon>add_circle</md-icon>
+        <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
+          <md-icon>add_circle</md-icon>
         <span>New Form</span>
         </span>
       </a>
-      <span fxLayout="row" fxLayoutAlign="start center">
-        <md-icon>file_upload</md-icon>
-        <span>Upload</span>
-      </span>
+      <input id="fileUpload" type="file" ng2FileSelect [uploader]="uploader" (change)="uploader.uploadAll()" />
+      <label for="fileUpload">
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <md-icon>file_upload</md-icon>
+          <span>Upload</span>
+        </span>
+      </label>
     </div>
     <div id="options" fxFlex="15" fxLayout="row" fxLayoutAlign="space-around center">
       <md-icon>account_circle</md-icon>
-      <p>Username</p>
+      <p>{{username}}</p>
       <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
         <md-icon>settings</md-icon>
       </button>
@@ -32,7 +35,7 @@
       <md-menu #settingsMenu="mdMenu">
         <button md-menu-item [routerLink]="['/editProfile']">Change settings</button>
         <button md-menu-item [routerLink]="['/edit-password']">Change password</button>
-        <button md-menu-item [routerLink]="['']">Logout</button>
+        <button md-menu-item [routerLink]="['']" (click)="logout()">Logout</button>
       </md-menu>
     </div>
   </div>
