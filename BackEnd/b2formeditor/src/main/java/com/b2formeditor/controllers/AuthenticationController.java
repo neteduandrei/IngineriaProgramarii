@@ -28,7 +28,7 @@ public class AuthenticationController {
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     public ResponseEntity singUp(@Valid @RequestBody SignUpCredentials credentials) {
         if (service.save(credentials) == null) {
-            return new ResponseEntity(HttpStatus.CONFLICT);
+            return new ResponseEntity<>("User already exists", HttpStatus.CONFLICT);
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }
@@ -43,6 +43,6 @@ public class AuthenticationController {
             session.setAttribute("credentials", processedCredentials);
             return new ResponseEntity(HttpStatus.OK);
         }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Invalid credentials", HttpStatus.NOT_FOUND);
     }
 }

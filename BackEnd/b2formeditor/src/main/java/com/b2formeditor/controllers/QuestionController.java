@@ -21,10 +21,10 @@ public class QuestionController {
     private QuestionService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Question> get(@RequestParam String title) {
+    public ResponseEntity get(@RequestParam String title) {
         Question responseQuestion = this.service.getOneByTitle(title);
         if (responseQuestion == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Requested question not found", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(responseQuestion, HttpStatus.OK);
     }

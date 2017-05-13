@@ -1,0 +1,49 @@
+{
+	"__help": "The description of the form",
+	"description": "Test form created by libcurl",
+	
+	"__help": "I think this are the questions",
+	"fields": [
+		{
+			"__help": "Question description",
+			"description": "Test Question created by libcurl",
+
+			"__help": "I don't know what this is :(",
+			"options": {},
+
+			"__help": "create this field as required",
+			"required": true,
+
+			"__help": "The title of the question",
+			"title": "QuestionTest1",
+
+			"__help": "question for numbers. I think this will trigger some validations",
+			"type": "number",
+
+			"__help": "I don't know what this is :(",
+			"value": {}
+		},
+		{
+			"__help": "Question description",
+			"description": "Test Question created by libcurl",
+
+			"__help": "I don't know what this is :(",
+			"options": {},
+
+			"__help": "this field is not required",
+			"required": false,
+
+			"__help": "The title of the question",
+			"title": "QuestionTest2",
+
+			"__help": "question for random?. What will happend if we do this?",
+			"type": "random",
+
+			"__help": "I don't know what this is :(",
+			"value": {}
+		}
+	],
+
+	"__help": "The title of the form",
+	"title": "FormTest"
+}

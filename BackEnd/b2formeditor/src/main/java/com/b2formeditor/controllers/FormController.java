@@ -11,12 +11,14 @@ import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 import com.b2formeditor.services.FormService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/forms")
@@ -25,7 +27,7 @@ public class FormController {
     private FormService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<ProcessedForm>> getAll(HttpServletRequest request) {
+    public ResponseEntity getAll(HttpServletRequest request) {
         List<ProcessedForm> forms;
         HttpSession session = request.getSession(true);
         ProcessedLoginCredentials credentials = (ProcessedLoginCredentials) session.getAttribute("credentials");
@@ -37,24 +39,24 @@ public class FormController {
                 forms = service.getByCreator(credentials.getEmail());
             }
             if (forms.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(forms, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<ProcessedForm> get(@PathVariable("id") String id) {
+    public ResponseEntity get(@PathVariable("id") String id) {
         ProcessedForm form = this.service.getById(id);
         if (form == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Requested resource not found", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(form, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProcessedForm> addForm(HttpServletRequest request, @RequestBody FormDTO formDto) {
+    public ResponseEntity addForm(HttpServletRequest request, @RequestBody FormDTO formDto) {
         ProcessedForm savedForm;
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
@@ -65,11 +67,11 @@ public class FormController {
             savedForm = this.service.save(savedForm);
             return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<ProcessedForm> updateForm(HttpServletRequest request, @RequestBody ProcessedForm updatedForm) {
+    public ResponseEntity updateForm(HttpServletRequest request, @RequestBody ProcessedForm updatedForm) {
         ProcessedForm savedForm;
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
@@ -82,8 +84,8 @@ public class FormController {
                 savedForm = this.service.save(updatedForm);
                 return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
             }
-            return new ResponseEntity<>(HttpStatus.FAILED_DEPENDENCY);
+            return new ResponseEntity<>("Resource not found", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 }
