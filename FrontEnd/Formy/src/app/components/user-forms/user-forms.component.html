@@ -39,7 +39,7 @@
     </md-list>
 
   </div>
-  <div id="main" fxFlex="90%" fxLayout="row" fxLayoutGap="3%" fxLayoutWrap *ngFor="let form of forms">
-    <formy-form-preview fxFlex="15%" [form]="form"></formy-form-preview>
+  <div id="main" fxFlex="90%" fxLayout="row" fxLayoutGap="3%" >
+    <formy-form-preview *ngFor="let form of forms" fxFlex="15%" [form]="form"></formy-form-preview>
   </div>
 </div>
