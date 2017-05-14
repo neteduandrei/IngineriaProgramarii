@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DomSanitizer} from "@angular/platform-browser";
-import {MdIconRegistry} from "@angular/material";
+import {AuthService} from '../../services/auth/auth.service';
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import {baseUrl} from '../../globals';
 
 @Component({
   selector: 'formy-navbar',
@@ -9,10 +10,18 @@ import {MdIconRegistry} from "@angular/material";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {
+  public uploader:FileUploader = new FileUploader({url: `${baseUrl}/v1/forms`, method: 'PUT', disableMultipart : true});
+  public username : string;
+
+  constructor(private authService : AuthService) {
+  }
+
+  public logout() {
+    this.authService.setLoginStatus(false);
   }
 
   ngOnInit() {
+    this.username = this.authService.getUsername();
   }
 
 }

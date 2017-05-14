@@ -47,6 +47,7 @@ import { AnswerDateComponent } from './components/answers-form/answer-type/answe
 import { AnswerSingleChoiceComponent } from './components/answers-form/answer-type/answer-single-choice/answer-single-choice.component';
 import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-type/answer-multiple-choice/answer-multiple-choice.component';
 import {QuestionsService} from './shared/services/questions/questions.service';
+import {FileDropDirective, FileSelectDirective} from 'ng2-file-upload';
 
 
 
@@ -87,7 +88,9 @@ import {QuestionsService} from './shared/services/questions/questions.service';
     AnswerLinearScaleComponent,
     AnswerDateComponent,
     AnswerSingleChoiceComponent,
-    AnswerMultipleChoiceComponent
+    AnswerMultipleChoiceComponent,
+    FileSelectDirective,
+    FileDropDirective,
   ],
   imports: [
     AppRoutingModule,

@@ -20,3 +20,11 @@ md-icon {
   outline: 0;
   font:inherit;
 }
+
+#fileUpload {
+  display: none;
+}
+
+label[for="fileUpload"] {
+  cursor: pointer;
+}

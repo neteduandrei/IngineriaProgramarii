@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Http, RequestOptions, Headers} from "@angular/http";
-import {FormTemplateGenerator} from "../../models/FormTemplateGenerator";
-
-import { baseUrl } from '../../globals';
+import {FormTemplateReceive} from '../../modelsV2/FormTemplateReceive';
 
 @Injectable()
 export class BuildFormService {
 
-  private url = `${baseUrl}/v1/forms`;
+  public formTemplateReceive : FormTemplateReceive;
 
-  constructor(private http : Http) { }
+  constructor() { }
 
-  sendForm(form : FormTemplateGenerator) {
-    let headers = new Headers({'Content-Type' :'application/json'});
-    let options = new RequestOptions({ headers: headers, withCredentials: true });
-    return this.http.post(this.url, {"test" : "da"}, options);
-    //return this.http.post(this.url, form, options);
+  public setForm(form : FormTemplateReceive) {
+    this.formTemplateReceive = form;
+    console.log(this.formTemplateReceive);
   }
 
-
+  public getFormTemplate() {
+    return this.formTemplateReceive;
+  }
 }
