@@ -5,6 +5,7 @@ package com.b2formeditor.services;
  * Copyright @ Andrei Netedu <andrei.netedu2009@gmail.com>
  */
 
+import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.models.responsemodels.ProcessedResponse;
@@ -31,6 +32,9 @@ public class ResponseServiceImpl implements ResponseService {
 
     @Autowired
     private QuestionService questionsService;
+
+    @Autowired
+    private EmailService emailService;
 
     private boolean check(ProcessedResponse entity) {
         String[] answers;
@@ -65,8 +69,6 @@ public class ResponseServiceImpl implements ResponseService {
                 return false;
             }
         }
-
-
         return true;
     }
 
@@ -94,5 +96,19 @@ public class ResponseServiceImpl implements ResponseService {
     @Override
     public void delete(String id) {
         this.repository.delete(id);
+    }
+
+    @Override
+    public void notifyOwner(String formId) {
+        Form databaseForm =  formRepository.findOne(formId);
+        ProcessedForm form;
+        String formOwner, formTitle;
+
+        if (databaseForm != null) {
+            form = new ProcessedForm(questionsService, databaseForm);
+            formOwner = form.getCreatedBy();
+            formTitle = form.getTitle();
+            emailService.sendFormResponseNotification(formOwner, formTitle);
+        }
     }
 }

@@ -68,8 +68,9 @@ public class ResponseController {
                 Question question = form.getQuestionById(newResponse.getQuestionId());
                 Object[] validAnswers = question.getValue();
                 String[] stringValidAnswers = new String[question.getValue().length];
-                for (int i = 0; i < validAnswers.length; i++)
+                for (int i = 0; i < validAnswers.length; i++) {
                     stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
+                }
 
 
                 if (!isIn(stringValidAnswers, newResponse.getAnswers()))
@@ -77,6 +78,7 @@ public class ResponseController {
                 if (okToBeAdded) {
                     newResponse.setCreatedBy(credentials.getEmail());
                     savedResponse = this.service.save(newResponse);
+                    service.notifyOwner(savedResponse.getFormId());
                     return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
                 }
                 return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);

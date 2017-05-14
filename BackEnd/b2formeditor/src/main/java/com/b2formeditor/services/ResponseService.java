@@ -7,4 +7,5 @@ package com.b2formeditor.services;
 import com.b2formeditor.models.responsemodels.ProcessedResponse;
 
 public interface ResponseService extends CrudService<ProcessedResponse> {
+    void notifyOwner(String formId);
 }
