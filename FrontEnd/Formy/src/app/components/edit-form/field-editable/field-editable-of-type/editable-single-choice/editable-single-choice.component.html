@@ -1,0 +1,19 @@
+<md-radio-group>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%"
+       *ngFor="let radioValue of shareFromEditableService.form.fields[positionInArray].value; trackBy:trackByFnChange(shareFromEditableService.form.fields[positionInArray].value); let i = index;">
+    <md-radio-button
+      [value]="shareFromEditableService.form.fields[positionInArray].value[i]"
+      disabled>
+    </md-radio-button>
+    <md-input-container>
+      <input mdInput type="text" maxlength="64"
+             [(ngModel)]="shareFromEditableService.form.fields[positionInArray].value[i]">
+    </md-input-container>
+  </div>
+  <div id="newOption" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%" (click)="addOption()">
+    <md-radio-button [value]="''" disabled></md-radio-button>
+    <md-input-container class="cursorPointer">
+      <input mdInput value="Add new option" disabled>
+    </md-input-container>
+  </div>
+</md-radio-group>

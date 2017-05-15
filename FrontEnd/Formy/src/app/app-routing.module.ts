@@ -3,30 +3,32 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MaterialModule } from "@angular/material";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { Angular2SocialLoginModule } from "angular2-social-login";
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Angular2SocialLoginModule } from 'angular2-social-login';
 
 
-import { BuildFormComponent } from "./components/build-form/build-form.component";
-import { EditPasswordComponent } from "./components/edit-password/edit-password.component";
-import { UserFormsComponent } from "./components/user-forms/user-forms.component";
-import { DialogShareComponent } from "./components/user-forms/form-preview/dialogs/dialog-share.component"
-import { DialogDeleteComponent } from "./components/edit-password/edit-password.component";
-import { AuthentificationComponent } from "./components/authentification/authentification.component";
-import {FillFormComponent} from "app/components/fill-form/fill-form.component";
-import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
-import {AnswersFormComponent} from "./components/answers-form/answers-form.component";
+import { BuildFormComponent } from './components/build-form/build-form.component';
+import { EditPasswordComponent } from './components/edit-password/edit-password.component';
+import { UserFormsComponent } from './components/user-forms/user-forms.component';
+import { DialogShareComponent } from './components/user-forms/form-preview/dialogs/dialog-share.component'
+import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
+import {FillFormComponent} from 'app/components/fill-form/fill-form.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import {AnswersFormComponent} from './components/answers-form/answers-form.component';
+import {EditFormComponent} from './components/edit-form/edit-form.component';
+import {EditFormGuard} from 'app/shared/guards/edit-form/edit-form.guard';
 
 
 let providers = {
-    "google": {
-      "clientId": "GOOGLE_CLIENT_ID"
+    'google': {
+      'clientId': 'GOOGLE_CLIENT_ID'
     },
-    "facebook": {
-      "clientId": "FACEBOOK_CLIENT_ID",
-      "apiVersion": "v2.4"
+    'facebook': {
+      'clientId': 'FACEBOOK_CLIENT_ID',
+      'apiVersion': 'v2.4'
     }
   };
 const routes: Routes = [
@@ -51,7 +53,7 @@ const routes: Routes = [
     component: FillFormComponent
   },
   {
-    path: 'form/answers',
+    path: 'form/answers/:id',
     component: AnswersFormComponent
   },
   {
@@ -63,8 +65,18 @@ const routes: Routes = [
     component: DialogShareComponent
   },
   {
-    path: 'editProfile',
+    path: 'edit-profile',
     component: EditProfileComponent
+  },
+  {
+    path: 'form/edit/:id',
+    component: EditFormComponent,
+    canActivate: [EditFormGuard]
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

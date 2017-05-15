@@ -23,7 +23,7 @@ export class FormPreviewComponent implements OnInit {
 
   public openDialog() {
     let dialogRef = this.dialog.open(DialogShareComponent);
-    dialogRef.componentInstance.link = `http://localhost:4200/form/fill/${ this.form.id}`;
+    dialogRef.componentInstance.link = window.location.hostname + `:4200/form/fill/${ this.form.id}`;
 
   }
 
@@ -37,7 +37,7 @@ export class FormPreviewComponent implements OnInit {
 
   public editForm(){
     this.buildFormService.setForm(this.form);
-    this.router.navigate(['/build-form']);
+    this.router.navigate([`/form/edit/${this.form.id}`]);
   }
 
 }

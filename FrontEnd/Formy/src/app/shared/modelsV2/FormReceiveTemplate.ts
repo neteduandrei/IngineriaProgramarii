@@ -3,7 +3,7 @@ import {FieldReceiveTemplate} from './FieldReceiveTemplate';
  * Created by stefan on 13.05.2017.
  */
 
-export class FormTemplateReceive {
+export class FormReceiveTemplate {
   public id : string;
   public createdBy : string;
   public createdAt : string;

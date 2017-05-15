@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import {FormTemplateReceive} from '../../modelsV2/FormTemplateReceive';
+import {FormReceiveTemplate} from '../../modelsV2/FormReceiveTemplate';
 
 @Injectable()
 export class BuildFormService {
 
-  public formTemplateReceive : FormTemplateReceive;
+  public formReceiveTemplate : FormReceiveTemplate;
 
   constructor() { }
 
-  public setForm(form : FormTemplateReceive) {
-    this.formTemplateReceive = form;
-    console.log(this.formTemplateReceive);
+  public setForm(form : FormReceiveTemplate) {
+    this.formReceiveTemplate = form;
   }
 
   public getFormTemplate() {
-    return this.formTemplateReceive;
+    return this.formReceiveTemplate;
   }
 }

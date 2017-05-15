@@ -1,0 +1,24 @@
+<nav><formy-navbar></formy-navbar></nav>
+<div id="content" fxLayout="column" fxLayoutAlign="start center">
+  <md-card id="formContainer">
+    <md-card-title>
+      <md-input-container>
+        <input mdInput type="text" maxlength="64" placeholder="Title" [(ngModel)]="shareFromEditableService.form.title">
+      </md-input-container>
+    </md-card-title>
+    <md-card-subtitle>
+      <md-input-container>
+        <input mdInput type="text" maxlength="64" placeholder="Form description" [(ngModel)]="shareFromEditableService.form.description">
+      </md-input-container>
+    </md-card-subtitle>
+    <md-card-content fxLayout="column" fxLayoutGap="2%">
+      <div *ngFor="let field of fields; let i = index">
+        <formy-field-editable [positionInArray]="i" (delete)="delete(i)"></formy-field-editable>
+      </div>
+    </md-card-content>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button md-mini-fab (click)="addField()"><md-icon>add</md-icon></button>
+    </div>
+    <button md-raised-button color="primary" (click)="save()">Save</button>
+  </md-card>
+</div>

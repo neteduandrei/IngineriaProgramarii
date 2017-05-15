@@ -1,0 +1,20 @@
+<div [ngSwitch]="shareFromEditableService.form.fields[positionInArray].type">
+  <div *ngSwitchCase="'shortText'">
+    <formy-editable-short-text [positionInArray]="positionInArray" #field></formy-editable-short-text>
+  </div>
+  <div *ngSwitchCase="'longText'">
+    <formy-editable-long-text [positionInArray]="positionInArray" #field></formy-editable-long-text>
+  </div>
+  <div *ngSwitchCase="'singleChoice'">
+    <formy-editable-single-choice [positionInArray]="positionInArray" #field></formy-editable-single-choice>
+  </div>
+  <div *ngSwitchCase="'multipleChoice'">
+    <formy-editable-multiple-choice [positionInArray]="positionInArray" #field></formy-editable-multiple-choice>
+  </div>
+  <div *ngSwitchCase="'date'">
+    <formy-editable-date #field></formy-editable-date>
+  </div>
+  <div *ngSwitchCase="'linearScale'">
+    <formy-editable-linear-scale [positionInArray]="positionInArray" #field></formy-editable-linear-scale>
+  </div>
+</div>
