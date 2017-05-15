@@ -1,13 +1,15 @@
 package com.b2formeditor.models.authenticationmodels;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 /**
  * Created by Dorneanu Dragos-Andrei on 30.04.2017.
  */
 public class SignUpCredentials extends AuthenticationCredentials {
-    @NotEmpty
+    @Indexed(unique = true)
     private String nickname;
+
     @NotEmpty
     private String name;
 

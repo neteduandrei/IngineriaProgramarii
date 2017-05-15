@@ -23,8 +23,7 @@ public class FilterConfiguration {
         registrationBean.addUrlPatterns("/v1/download/*",
                                         "/v1/forms/*",
                                         "/v1/questions/*",
-                                        "/v1/responses/*",
-                                        "/v1/users/*");
+                                        "/v1/responses/*");
         return registrationBean;
     }
 }

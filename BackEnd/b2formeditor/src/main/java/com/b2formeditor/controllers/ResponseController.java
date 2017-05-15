@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,11 @@ public class ResponseController {
     @Autowired
     private FormService formService;
 
+    public static boolean isIn(String[] outer, String[] inner) {
+
+        return Arrays.asList(outer).containsAll(Arrays.asList(inner));
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<ProcessedResponse>> get() {
         List<ProcessedResponse> forms = this.service.getAll();
@@ -41,14 +47,8 @@ public class ResponseController {
         return new ResponseEntity<>(forms, HttpStatus.OK);
     }
 
-
-    public static boolean isIn(String[] outer, String[] inner) {
-
-        return Arrays.asList(outer).containsAll(Arrays.asList(inner));
-    }
-
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addResponse(HttpServletRequest request, @RequestBody ResponseDTO responseDTO) {
+    public ResponseEntity addResponse(HttpServletRequest request, @Valid @RequestBody ResponseDTO responseDTO) {
         ProcessedResponse savedResponse;
         ProcessedResponse newResponse = new ProcessedResponse(responseDTO);
         HttpSession session = request.getSession(true);
@@ -92,7 +92,7 @@ public class ResponseController {
     public ResponseEntity<Statistic> get(@PathVariable("id") String id) {
         //System.out.println(id);
         ProcessedForm form = this.formService.getById(id);
-       //System.out.println(form.getId());
+        //System.out.println(form.getId());
         Statistic statistics = new Statistic();
         //TODO create a class that extends Map<String, Map<String, Integer>>
         Map<String, Map<String, Integer>> finalResult = new HashMap<>();
@@ -124,15 +124,14 @@ public class ResponseController {
             }
         }
         statistics.setStatistics(finalResult);
-        for (String key : statistics.getStatistics().keySet())
-        {
-            int total=0;
-            for(String s : statistics.getStatistics().get(key).keySet())
-                total+=statistics.getStatistics().get(key).get(s);
+        for (String key : statistics.getStatistics().keySet()) {
+            int total = 0;
+            for (String s : statistics.getStatistics().get(key).keySet())
+                total += statistics.getStatistics().get(key).get(s);
             Map<String, Integer> aux = statistics.getStatistics().get(key);
-            for(String s : statistics.getStatistics().get(key).keySet()) {
+            for (String s : statistics.getStatistics().get(key).keySet()) {
                 //System.out.println(aux.get(s));
-                aux.put(s, aux.get(s)*100/total);
+                aux.put(s, aux.get(s) * 100 / total);
             }
         }
         if (statistics.getStatistics().isEmpty()) {

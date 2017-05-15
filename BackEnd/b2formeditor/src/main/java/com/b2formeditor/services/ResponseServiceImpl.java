@@ -100,7 +100,7 @@ public class ResponseServiceImpl implements ResponseService {
 
     @Override
     public void notifyOwner(String formId) {
-        Form databaseForm =  formRepository.findOne(formId);
+        Form databaseForm = formRepository.findOne(formId);
         ProcessedForm form;
         String formOwner, formTitle;
 

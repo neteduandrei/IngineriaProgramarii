@@ -12,6 +12,7 @@ public abstract class AuthenticationCredentials {
     @NotEmpty
     @Email
     protected String email;
+
     @NotEmpty
     @Size(min = 6)
     protected String password;

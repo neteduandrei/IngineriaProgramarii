@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -54,7 +55,7 @@ public class FormController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addForm(HttpServletRequest request, @RequestBody FormDTO formDto) {
+    public ResponseEntity addForm(HttpServletRequest request, @Valid @RequestBody FormDTO formDto) {
         ProcessedForm savedForm;
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
@@ -69,7 +70,7 @@ public class FormController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity updateForm(HttpServletRequest request, @RequestBody ProcessedForm updatedForm) {
+    public ResponseEntity updateForm(HttpServletRequest request, @Valid @RequestBody ProcessedForm updatedForm) {
         ProcessedForm savedForm;
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");

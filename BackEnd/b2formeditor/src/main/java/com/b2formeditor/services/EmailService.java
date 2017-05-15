@@ -13,20 +13,6 @@ import java.util.Properties;
 @Service
 public class EmailService {
 
-    private class EmailAuthenticator extends Authenticator {
-        private String email, password;
-
-        public EmailAuthenticator(String email, String password) {
-            this.email = email;
-            this.password = password;
-        }
-
-        @Override
-        protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(email, password);
-        }
-    }
-
     public void sendFormResponseNotification(String destination, String formTitle) {
         Properties systemProperties = System.getProperties();
         Session session;
@@ -46,12 +32,26 @@ public class EmailService {
             message.setFrom(new InternetAddress("b2formeditor@gmail.com"));
             message.setSubject("Someone completed your form");
             message.setText("You are receiving this because you are the owner of the form called \"" +
-                            formTitle + "\" that has just been completed.\n" +
-                            "Check more information about your forms status on http://89.203.249.188:4200/");
+                    formTitle + "\" that has just been completed.\n" +
+                    "Check more information about your forms status on http://89.203.249.188:4200/");
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destination));
             Transport.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
+        }
+    }
+
+    private class EmailAuthenticator extends Authenticator {
+        private String email, password;
+
+        public EmailAuthenticator(String email, String password) {
+            this.email = email;
+            this.password = password;
+        }
+
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(email, password);
         }
     }
 }
