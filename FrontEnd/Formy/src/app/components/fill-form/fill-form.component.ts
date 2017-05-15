@@ -1,8 +1,4 @@
 import {AfterContentInit, Component, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
-import { FillFormService } from "../../shared/services/fill-form/fill-form.service";
-import { FormTemplateToFill } from "../../shared/models/FormTemplateToFill";
-import { Form } from "../../shared/models/Form";
-import { Field } from "../../shared/models/Field";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormsService} from '../../shared/services/forms/forms.service';
 import {FillFieldComponent} from './fill-field/fill-field.component';

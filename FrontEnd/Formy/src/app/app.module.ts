@@ -48,6 +48,19 @@ import { AnswerSingleChoiceComponent } from './components/answers-form/answer-ty
 import { AnswerMultipleChoiceComponent } from './components/answers-form/answer-type/answer-multiple-choice/answer-multiple-choice.component';
 import {QuestionsService} from './shared/services/questions/questions.service';
 import {FileDropDirective, FileSelectDirective} from 'ng2-file-upload';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { FieldEditableComponent } from './components/edit-form/field-editable/field-editable.component';
+import {ShareFormEditableService} from './components/edit-form/services/share-form-editable.service';
+import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {EditFormGuard} from './shared/guards/edit-form/edit-form.guard';
+import { FieldEditableOfTypeComponent } from './components/edit-form/field-editable/field-editable-of-type/field-editable-of-type.component';
+import { EditableDateComponent } from './components/edit-form/field-editable/field-editable-of-type/editable-date/editable-date.component';
+import { EditableLinearScaleComponent } from './components/edit-form/field-editable/field-editable-of-type/editable-linear-scale/editable-linear-scale.component';
+import { EditableLongTextComponent } from './components/edit-form/field-editable/field-editable-of-type/editable-long-text/editable-long-text.component';
+import { EditableMultipleChoiceComponent } from './components/edit-form/field-editable/field-editable-of-type/editable-multiple-choice/editable-multiple-choice.component';
+import { EditableShortTextComponent } from './components/edit-form/field-editable/field-editable-of-type/editable-short-text/editable-short-text.component';
+import { EditableSingleChoiceComponent } from './components/edit-form/field-editable/field-editable-of-type/editable-single-choice/editable-single-choice.component';
+
 
 
 
@@ -91,6 +104,15 @@ import {FileDropDirective, FileSelectDirective} from 'ng2-file-upload';
     AnswerMultipleChoiceComponent,
     FileSelectDirective,
     FileDropDirective,
+    EditFormComponent,
+    FieldEditableComponent,
+    FieldEditableOfTypeComponent,
+    EditableDateComponent,
+    EditableLinearScaleComponent,
+    EditableLongTextComponent,
+    EditableMultipleChoiceComponent,
+    EditableShortTextComponent,
+    EditableSingleChoiceComponent
   ],
   imports: [
     AppRoutingModule,
@@ -101,7 +123,9 @@ import {FileDropDirective, FileSelectDirective} from 'ng2-file-upload';
     BuildFormService,
     AuthService,
     FormsService,
-    QuestionsService
+    QuestionsService,
+    ShareFormEditableService,
+    EditFormGuard
   ],
   bootstrap: [AppComponent]
 })

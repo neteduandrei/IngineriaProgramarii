@@ -1,0 +1,23 @@
+<md-card>
+  <md-card-title class="fieldChild" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="3%">
+    <md-input-container fxFlexAlign="80%" id="fieldTitle">
+      <input mdInput type="text" maxlength="64" placeholder="Question" [(ngModel)]="shareFromEditableService.form.fields[positionInArray].title">
+    </md-input-container>
+    <md-select fxFlexAlign="20%" placeholder="Options" id="fieldOptions" [(ngModel)]="shareFromEditableService.form.fields[positionInArray].type">
+      <md-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</md-option>
+    </md-select>
+  </md-card-title>
+  <md-card-subtitle>
+    <md-input-container>
+      <input mdInput type="text" maxlength="64" placeholder="Description" [(ngModel)]="shareFromEditableService.form.fields[positionInArray].description">
+    </md-input-container>
+  </md-card-subtitle>
+  <md-card-content>
+    <p></p>
+    <formy-field-editable-of-type [positionInArray]="positionInArray"></formy-field-editable-of-type>
+  </md-card-content>
+  <md-card-footer fxLayout="row" fxLayoutAlign="end center">
+    <md-icon id="deleteButton" (click)="deleteItem()">delete</md-icon>
+    <md-slide-toggle (change)="changeToggle()" labelPosition="before" [checked]="shareFromEditableService.form.fields[positionInArray].required">Required</md-slide-toggle>
+  </md-card-footer>
+</md-card>

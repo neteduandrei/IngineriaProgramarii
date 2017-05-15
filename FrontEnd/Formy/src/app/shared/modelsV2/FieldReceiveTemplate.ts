@@ -8,6 +8,6 @@ export class FieldReceiveTemplate {
   public type : string;
   public required : boolean;
   public value : any;
-  public options: object;
+  public options: any;
   public id : string;
 }
