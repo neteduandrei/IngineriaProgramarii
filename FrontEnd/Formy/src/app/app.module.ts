@@ -22,6 +22,7 @@ import { FormPreviewComponent } from './components/user-forms/form-preview/form-
 import { DialogShareComponent } from './components/user-forms/form-preview/dialogs/dialog-share.component';
 import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {FillFormService} from "app/shared/services/fill-form/fill-form.service";
 import { FillFieldComponent } from './components/fill-form/fill-field/fill-field.component';
@@ -116,7 +117,8 @@ import { EditableSingleChoiceComponent } from './components/edit-form/field-edit
   ],
   imports: [
     AppRoutingModule,
-    ClipboardModule
+    ClipboardModule,
+    NgxChartsModule
   ],
   providers: [
     FillFormService,

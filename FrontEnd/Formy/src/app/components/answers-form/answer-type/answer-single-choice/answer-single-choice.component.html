@@ -1,3 +1,14 @@
-<p>
-  answer-single-choice works!
-</p>
+<h3>{{title}}</h3>
+<div class="chart">
+<ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="dummy"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+</ngx-charts-pie-chart>
+</div>
