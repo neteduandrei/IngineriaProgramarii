@@ -1,8 +1,9 @@
 package com.b2formeditor.models.databasemodels;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 import java.util.Date;
 
@@ -13,9 +14,15 @@ import java.util.Date;
 public class Response {
     @Id
     protected String id;
+
+    @NotBlank
     protected String createdBy;
+
     protected Date createdAt;
+
+    @NotEmpty
     protected String formId;
+
     protected String[] answers;
 
     public String getId() {

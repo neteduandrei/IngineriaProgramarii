@@ -1,11 +1,12 @@
 package com.b2formeditor.models.databasemodels;
 
 import com.b2formeditor.models.datatransferobjects.UserDTO;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
@@ -20,17 +21,18 @@ public class User {
     @Indexed(unique = true)
     private String email;
 
-    @NotBlank
+    @NotEmpty
     private String name;
 
     @Indexed(unique = true)
     private String nickname;
 
-    @NotBlank
+    @NotEmpty
     @Size(min = 6)
     private String password;
 
-    @NotBlank
+    @NotEmpty
+    @Pattern(regexp = "(admin)|(user)")
     private String role;
 
     private String refreshToken;

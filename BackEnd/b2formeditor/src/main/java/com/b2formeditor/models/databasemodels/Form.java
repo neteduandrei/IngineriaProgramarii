@@ -1,6 +1,6 @@
 package com.b2formeditor.models.databasemodels;
 
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,8 +17,9 @@ public class Form {
     protected String createdBy;
     protected Date createdAt;
 
-    @NotBlank
+    @NotEmpty
     protected String title;
+
     protected String description;
     protected String[] questionIds;
     protected String font;

@@ -19,11 +19,11 @@ public class DownloadedFormDTO extends FormDTO {
         for (int i = 0; i < questions.length; ++i) {
             this.fields[i] = new QuestionDTO();
             this.fields[i].setValue(questions[i].getValue())
-                          .setType(questions[i].getType())
-                          .setTitle(questions[i].getTitle())
-                          .setRequired(questions[i].isRequired())
-                          .setOptions(questions[i].getOptions())
-                          .setDescription(questions[i].getDescription());
+                    .setType(questions[i].getType())
+                    .setTitle(questions[i].getTitle())
+                    .setRequired(questions[i].getRequired())
+                    .setOptions(questions[i].getOptions())
+                    .setDescription(questions[i].getDescription());
         }
     }
 

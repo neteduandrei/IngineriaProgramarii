@@ -1,12 +1,23 @@
 package com.b2formeditor.models.datatransferobjects;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
+
 /**
  * Created by Dorneanu on 5/9/2017.
  */
 public class ResponseDTO {
     private String[] answers;
+
+    @NotEmpty
     private String formId;
+
+    @NotEmpty
     private String questionId;
+
+    @NotEmpty
+    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multiChoice)|(linearScale)")
     private String questionType;
 
     public String[] getAnswers() {
