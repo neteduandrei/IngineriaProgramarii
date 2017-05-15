@@ -10,7 +10,6 @@ import com.b2formeditor.repositories.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class FormServiceImpl implements FormService {
         return result;
     }
 
-    private List<ProcessedForm> processForms (List<Form> formList) {
+    private List<ProcessedForm> processForms(List<Form> formList) {
         List<ProcessedForm> processedFormList = new ArrayList<>();
         formList.forEach((Form form) -> processedFormList.add(new ProcessedForm(questionService, form)));
         return processedFormList;

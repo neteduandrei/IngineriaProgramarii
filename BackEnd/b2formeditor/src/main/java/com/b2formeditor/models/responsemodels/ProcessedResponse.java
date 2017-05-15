@@ -10,16 +10,17 @@ import java.util.Date;
  */
 public class ProcessedResponse extends Response {
     private String questionId;
-    private  String questionType;
+    private String questionType;
 
-    public ProcessedResponse() { }
+    public ProcessedResponse() {
+    }
 
     public ProcessedResponse(ResponseDTO responseDTO) {
         this.setQuestionId(responseDTO.getQuestionId())
-            .setQuestionType(responseDTO.getQuestionType())
-            .setAnswers(responseDTO.getAnswers())
-            .setFormId(responseDTO.getFormId())
-            .setCreatedAt(new Date());
+                .setQuestionType(responseDTO.getQuestionType())
+                .setAnswers(responseDTO.getAnswers())
+                .setFormId(responseDTO.getFormId())
+                .setCreatedAt(new Date());
     }
 
     public String getQuestionId() {

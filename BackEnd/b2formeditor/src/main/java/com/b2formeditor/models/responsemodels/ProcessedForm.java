@@ -26,6 +26,7 @@ public class ProcessedForm extends Form {
         this.createdAt = new Date();
         this.title = formDTO.getTitle();
         this.description = formDTO.getDescription();
+        this.font = formDTO.getFont();
         this.fields = new Question[dtoFields.length];
 
         for (int i = 0; i < dtoFields.length; ++i) {
@@ -45,6 +46,8 @@ public class ProcessedForm extends Form {
         this.createdAt = baseForm.getCreatedAt();
         this.title = baseForm.getTitle();
         this.description = baseForm.getDescription();
+        this.questionIds = baseForm.getQuestionIds();
+        this.font = baseForm.getFont();
     }
 
     public void commit(QuestionService questionService) {
@@ -68,9 +71,9 @@ public class ProcessedForm extends Form {
         return this;
     }
 
-    public Question getQuestionById(String id){
-        for(Question question : fields){
-            if(question.getId().equals(id))
+    public Question getQuestionById(String id) {
+        for (Question question : fields) {
+            if (question.getId().equals(id))
                 return question;
         }
         return null;

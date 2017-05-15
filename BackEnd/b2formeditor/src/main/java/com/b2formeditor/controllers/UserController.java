@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<User> addUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<User> addUser(@Valid @RequestBody UserDTO userDTO) {
         User newUser = new User(userDTO);
         User savedUser = this.service.save(newUser);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);

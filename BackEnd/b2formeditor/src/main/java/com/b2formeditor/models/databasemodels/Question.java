@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-
 /**
  * Created by Dorneanu Dragos-Andrei on 29.04.2017.
  */
@@ -14,12 +13,13 @@ public class Question extends QuestionDTO {
     @Id
     private String id;
 
-    public Question() { }
+    public Question() {
+    }
 
     public Question(QuestionDTO questionDTO) {
         this.description = questionDTO.getDescription();
         this.options = questionDTO.getOptions();
-        this.required = questionDTO.isRequired();
+        this.required = questionDTO.getRequired();
         this.title = questionDTO.getTitle();
         this.type = questionDTO.getType();
         this.value = questionDTO.getValue();

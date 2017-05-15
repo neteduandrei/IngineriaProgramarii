@@ -5,7 +5,6 @@ import com.b2formeditor.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 
 /**
@@ -36,7 +35,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question save (Question question) {
+    public Question save(Question question) {
         List<Question> existing = this.repository.findByTitleAndTypeAndOptions(question.getTitle(), question.getType(), question.getOptions());
         if (existing.isEmpty()) {
             return this.repository.save(question);
@@ -44,7 +43,7 @@ public class QuestionServiceImpl implements QuestionService {
         return existing.get(0);
     }
 
-    public Question getOneByTitle (String title) {
+    public Question getOneByTitle(String title) {
         return this.repository.findByTitle(title);
     }
 }

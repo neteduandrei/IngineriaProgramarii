@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.util.List;
 
 /**
@@ -23,16 +25,24 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public AuthenticationCredentials save(AuthenticationCredentials credentials) {
         User newUser;
-        User user = repository.findByEmail(credentials.getEmail());
+        InternetAddress emailAddress;
+        User user;
 
-        if (credentials instanceof SignUpCredentials) {
-            if (user == null) {
-                newUser = createUser((SignUpCredentials) credentials);
-                repository.save(newUser);
-                return credentials;
+        try {
+            emailAddress = new InternetAddress(credentials.getEmail(), true);
+            emailAddress.validate();
+            user = repository.findByEmail(credentials.getEmail());
+            if (credentials instanceof SignUpCredentials) {
+                if (user == null) {
+                    newUser = createUser((SignUpCredentials) credentials);
+                    repository.save(newUser);
+                    return credentials;
+                }
             }
+            return null;
+        } catch (AddressException e) {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -77,15 +87,22 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public ProcessedLoginCredentials validCredentials(LoginCredentials credentials) {
         boolean successfulAuthentication = false;
         ProcessedLoginCredentials processedCredentials;
-
+        InternetAddress emailAddress;
         User user = repository.findByEmail(credentials.getEmail());
-        if (user != null) {
-            successfulAuthentication = equalPassword(credentials.getPassword(), user.getPassword());
+
+        try {
+            emailAddress = new InternetAddress(credentials.getEmail(), true);
+            emailAddress.validate();
+            if (user != null) {
+                successfulAuthentication = equalPassword(credentials.getPassword(), user.getPassword());
+            }
+            if (successfulAuthentication) {
+                processedCredentials = new ProcessedLoginCredentials(credentials, user.getRole());
+                return processedCredentials;
+            }
+            return null;
+        } catch (AddressException e) {
+            return null;
         }
-        if (successfulAuthentication) {
-            processedCredentials = new ProcessedLoginCredentials(credentials, user.getRole());
-            return processedCredentials;
-        }
-        return null;
     }
 }

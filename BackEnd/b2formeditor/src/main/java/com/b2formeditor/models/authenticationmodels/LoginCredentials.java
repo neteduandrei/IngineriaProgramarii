@@ -5,7 +5,8 @@ package com.b2formeditor.models.authenticationmodels;
  */
 public class LoginCredentials extends AuthenticationCredentials {
 
-    public LoginCredentials() { }
+    public LoginCredentials() {
+    }
 
     public LoginCredentials(String email, String password) {
         this.email = email;

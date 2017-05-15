@@ -28,7 +28,7 @@ public class AuthenticationController {
     @RequestMapping(value = "signup", method = RequestMethod.POST)
     public ResponseEntity singUp(@Valid @RequestBody SignUpCredentials credentials) {
         if (service.save(credentials) == null) {
-            return new ResponseEntity<>("User already exists", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("User already exists or invalid email address", HttpStatus.CONFLICT);
         }
         return new ResponseEntity(HttpStatus.CREATED);
     }

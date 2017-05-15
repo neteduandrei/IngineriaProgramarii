@@ -6,7 +6,6 @@ package com.b2formeditor.services;
 
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 
-
 import java.util.List;
 
 public interface FormService extends CrudService<ProcessedForm> {
