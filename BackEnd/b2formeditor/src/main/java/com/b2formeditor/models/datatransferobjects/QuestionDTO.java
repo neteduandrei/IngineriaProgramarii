@@ -15,7 +15,7 @@ public class QuestionDTO {
     protected String description;
 
     @NotEmpty
-    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multiChoice)|(linearScale)")
+    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multipleChoice)|(linearScale)")
     protected String type;
 
     @NotNull

@@ -17,7 +17,7 @@ public class ResponseDTO {
     private String questionId;
 
     @NotEmpty
-    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multiChoice)|(linearScale)")
+    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multipleChoice)|(linearScale)")
     private String questionType;
 
     public String[] getAnswers() {
