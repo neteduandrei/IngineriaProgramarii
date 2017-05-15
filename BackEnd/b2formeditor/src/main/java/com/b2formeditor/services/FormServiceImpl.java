@@ -62,7 +62,7 @@ public class FormServiceImpl implements FormService {
         return result;
     }
 
-    private List<ProcessedForm> processForms (List<Form> formList) {
+    private List<ProcessedForm> processForms(List<Form> formList) {
         List<ProcessedForm> processedFormList = new ArrayList<>();
         formList.forEach((Form form) -> processedFormList.add(new ProcessedForm(questionService, form)));
         return processedFormList;

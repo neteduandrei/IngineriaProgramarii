@@ -21,6 +21,7 @@ public class Form {
     protected String title;
     protected String description;
     protected String[] questionIds;
+    protected String font;
 
     public String getId() {
         return id;
@@ -65,5 +66,21 @@ public class Form {
     public Form setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    public String[] getQuestionIds() {
+        return questionIds;
+    }
+
+    public void setQuestionIds(String[] questionIds) {
+        this.questionIds = questionIds;
+    }
+
+    public String getFont() {
+        return font;
+    }
+
+    public void setFont(String font) {
+        this.font = font;
     }
 }

@@ -14,7 +14,8 @@ public class DownloadedFormDTO extends FormDTO {
         this.fields = new QuestionDTO[questions.length];
         this.setFormId(form.getId())
                 .setDescription(form.getDescription())
-                .setTitle(form.getTitle());
+                .setTitle(form.getTitle())
+                .setFont(form.getFont());
         for (int i = 0; i < questions.length; ++i) {
             this.fields[i] = new QuestionDTO();
             this.fields[i].setValue(questions[i].getValue())

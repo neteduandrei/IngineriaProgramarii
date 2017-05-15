@@ -7,6 +7,7 @@ public class FormDTO {
     protected String title;
     protected String description;
     protected QuestionDTO[] fields;
+    protected String font;
 
     public String getTitle() {
         return title;
@@ -32,6 +33,15 @@ public class FormDTO {
 
     public FormDTO setFields(QuestionDTO[] fields) {
         this.fields = fields;
+        return this;
+    }
+
+    public String getFont() {
+        return font;
+    }
+
+    public FormDTO setFont(String font) {
+        this.font = font;
         return this;
     }
 }

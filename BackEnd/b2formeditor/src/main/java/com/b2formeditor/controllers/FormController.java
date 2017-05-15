@@ -11,14 +11,12 @@ import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 import com.b2formeditor.services.FormService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/forms")
@@ -80,7 +78,7 @@ public class FormController {
             savedForm = this.service.getById(updatedForm.getId());
             if (savedForm != null) {
                 updatedForm.setCreatedAt(savedForm.getCreatedAt())
-                           .setCreatedBy(savedForm.getCreatedBy());
+                        .setCreatedBy(savedForm.getCreatedBy());
                 savedForm = this.service.save(updatedForm);
                 return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
             }
