@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,6 +26,7 @@ public class FormServiceImpl implements FormService {
     @Override
     public ProcessedForm save(ProcessedForm entity) {
         entity.commit(questionService);
+        entity.setLastModifiedTime(new Date());
         return this.repository.save(entity);
     }
 
@@ -32,8 +34,7 @@ public class FormServiceImpl implements FormService {
     public List<ProcessedForm> getAll() {
         return processForms(this.repository.findAll());
     }
-
-
+    
     @Override
     public ProcessedForm getById(String id) {
         Form form = this.repository.findOne(id);

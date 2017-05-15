@@ -16,6 +16,7 @@ public class Form {
     protected String id;
     protected String createdBy;
     protected Date createdAt;
+    protected Date lastModifiedTime;
 
     @NotEmpty
     protected String title;
@@ -49,6 +50,14 @@ public class Form {
     public Form setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
         return this;
+    }
+
+    public Date getLastModifiedTime() {
+        return lastModifiedTime;
+    }
+
+    public void setLastModifiedTime(Date lastModifiedTime) {
+        this.lastModifiedTime = lastModifiedTime;
     }
 
     public String getTitle() {

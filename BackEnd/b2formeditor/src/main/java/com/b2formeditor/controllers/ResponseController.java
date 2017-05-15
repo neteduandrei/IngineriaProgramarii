@@ -17,13 +17,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/v1/responses")
@@ -47,7 +46,7 @@ public class ResponseController {
         return new ResponseEntity<>(forms, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public ResponseEntity addResponse(HttpServletRequest request, @Valid @RequestBody ResponseDTO responseDTO) {
         ProcessedResponse savedResponse;
         ProcessedResponse newResponse = new ProcessedResponse(responseDTO);
@@ -55,6 +54,7 @@ public class ResponseController {
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
         boolean okToBeAdded = false;
         ProcessedForm form;
+        List<Cookie> cookies;
 
         if (credentials != null) {
             form = this.formService.getById(newResponse.getFormId());
@@ -66,22 +66,29 @@ public class ResponseController {
                     }
                 }
                 Question question = form.getQuestionById(newResponse.getQuestionId());
-                Object[] validAnswers = question.getValue();
-                String[] stringValidAnswers = new String[question.getValue().length];
-                for (int i = 0; i < validAnswers.length; i++) {
-                    stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
-                }
+                if (question != null) {
+                    Object[] validAnswers = question.getValue();
+                    String[] stringValidAnswers = new String[question.getValue().length];
+                    for (int i = 0; i < validAnswers.length; i++) {
+                        stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
+                    }
 
 
-                if (!isIn(stringValidAnswers, newResponse.getAnswers()))
-                    okToBeAdded = false;
-                if (okToBeAdded) {
-                    newResponse.setCreatedBy(credentials.getEmail());
-                    savedResponse = this.service.save(newResponse);
-                    service.notifyOwner(savedResponse.getFormId());
-                    return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+                    if (!isIn(stringValidAnswers, newResponse.getAnswers()))
+                        okToBeAdded = false;
+                    if (okToBeAdded) {
+                        newResponse.setCreatedBy(credentials.getEmail());
+                        cookies = Arrays.asList(request.getCookies());
+                        if (!formWasChanged(cookies, form)) {
+                            savedResponse = this.service.save(newResponse);
+                            service.notifyOwner(savedResponse.getFormId());
+                            return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+                        }
+                        return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
+                    }
+                    return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
                 }
-                return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
+                return new ResponseEntity<>("Question not found", HttpStatus.NOT_FOUND);
             }
             return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
         }
@@ -138,5 +145,30 @@ public class ResponseController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity(statistics, HttpStatus.OK);
+    }
+
+    private boolean formWasChanged(List<Cookie> cookies, ProcessedForm form) {
+        int formCompletingCookieIndex = -1;
+        Cookie formCompletingCookie;
+        Date startCompletingTime;
+        Date formLastModifiedTime;
+        String formCompletingCookieTime;
+        Long startTime;
+
+        for (int index = 0; index < cookies.size() && formCompletingCookieIndex == -1; ++index) {
+            if (cookies.get(index).getName().equals(form.getId())) {
+                formCompletingCookieIndex = index;
+            }
+        }
+        if (formCompletingCookieIndex != -1) {
+            formCompletingCookie = cookies.get(formCompletingCookieIndex);
+            formCompletingCookieTime = formCompletingCookie.getValue();
+            startTime = Long.parseLong(formCompletingCookieTime);
+            startCompletingTime = new Date(startTime);
+            formLastModifiedTime = form.getLastModifiedTime();
+            formCompletingCookie.setMaxAge(0);
+            return startCompletingTime.compareTo(formLastModifiedTime) < 0;
+        }
+        return true;
     }
 }
