@@ -2,14 +2,14 @@
 
 # Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
 
-
+backend_endpoint="https://b2formeditor.ddns.net/api/v1"
 
 # Return response code from string curl output
 get_code() {
-	response=$1
+	resp=$1
 
 	# get last reponse code - there will be a trailing whitespace
-	response_code=$(echo -n "$response" | grep "HTTP/.*" | tail -1 | grep -oP "[ ].*?$")
+	response_code=$(echo -n "$resp" | grep "HTTP/.*" | tail -1 | grep -oP "[ ].*?$")
 	
 	# remove trailing whitespaces
 	response_code=$(echo -e "${response_code}" | tr -d '[:space:]')
@@ -29,7 +29,7 @@ test_status() {
 	# get first number of code
 	response_status=$(get_first_char $response_code)
 	if [[ $response_status != '2' ]]; then
-		printf "Status ${YELLOW}${response_code}${NC}\n${RED}Test failed! $2${NC}\n"
+		printf "Status ${YELLOW}${response_code}${NC}\n${RED}Test failed! $2${NC}\n\n ${RED}Response body is:${NC}\n$1"
 		exit 1;
 	fi;
 }
@@ -61,12 +61,11 @@ printf "> Starting sign up procedure. Sending ${YELLOW}POST${NC} request ... "
 response=$(curl -X POST 					` # do a post request` \
 	 -H "Content-Type: application/json" 	` # set the header app type - warn the server of json format` \
 	 -H "Accept: application/json"			` # set the header app type - tell the server to send back json` \
-	 -k 									` # connect insecure - for invalid https` \
 	 -c cookies.txt 						` # use the local cookie file` \
 	 -d @user.json 							` # send user.json file as request body` \
 	 -i 									` # include HTTP-header in response` \
 	 2>/dev/null 							` # discard curl loading message` \
-	 https://localhost:8443/v1/authentication/signup)
+	 ${backend_endpoint}/authentication/signup)
 
 code=$(get_code "$response")
 
@@ -90,12 +89,11 @@ printf "> Starting login procedure. Sending ${YELLOW}POST${NC} request ... "
 response=$(curl -X POST 					` # do a post request` \
 	 -H "Content-Type: application/json" 	` # set the header app type - warn the server of json format` \
 	 -H "Accept: application/json"			` # set the header app type - tell the server to send back json` \
-	 -k 									` # connect insecure - for invalid https` \
 	 -c cookies.txt 						` # use the local cookie file` \
 	 -d @user.json 							` # send user.json file as request body` \
 	 -i 									` # include HTTP-header in response` \
 	 2>/dev/null 							` # discard curl loading message` \
-	 https://localhost:8443/v1/authentication/login)
+	 ${backend_endpoint}/authentication/login)
 
 code=$(get_code "$response")
 test_status "$response" "Could not login!"
@@ -115,14 +113,12 @@ for file in $(find forms -type f | grep -e "/pass_.*.json$"); do
 		-X POST 								` # do a post request` \
 		-H "Content-Type: application/json" 	` # set the header app type - warn the server of json format` \
 	 	-H "Accept: application/json"			` # set the header app type - tell the server to send back json` \
-	 	-k 										` # connect insecure - for invalid https` \
 	 	-c cookies.txt 							` # use the local cookie file for storage` \
 	 	-b cookies.txt							` # send the cookie file to server for the session` \
 	    -d @${file} 							` # send form json as request body for form creation` \
 	    -i 										` # include HTTP-header in response` \
 	 	2>/dev/null 							` # discard curl loading message` \
-	 	https://localhost:8443/v1/forms)
-
+	 	${backend_endpoint}/forms)
 
 	code=$(get_code "$response")
 	test_status "$response" "Could not create form!"
@@ -136,13 +132,12 @@ for file in $(find forms -type f | grep -e "/pass_.*.json$"); do
 		-X GET	 								` # do a get request` \
 		-H "Content-Type: application/json" 	` # set the header app type - warn the server of json format` \
 	 	-H "Accept: application/json"			` # set the header app type - tell the server to send back json` \
-	 	-k 										` # connect insecure - for invalid https` \
 	 	-c cookies.txt 							` # use the local cookie file for storage` \
 	 	-b cookies.txt							` # send the cookie file to server for the session` \
 	 	-I 										` # fetch the HTTP-header only` \
 	 	2>/dev/null 							` # discard curl loading message` \
-	 	https://localhost:8443/v1/forms/${formId})
-
+	 	${backend_endpoint}/forms/${formId})
+	
 	code=$(get_code "$response")
 	test_status "$response" "Could not retrieve form!"
 	printf "Status ${GREEN}${code}${NC}\n"
@@ -166,13 +161,12 @@ for file in $(find forms -type f | grep -e "/fail_.*.json$"); do
 		-X POST 								` # do a post request` \
 		-H "Content-Type: application/json" 	` # set the header app type - warn the server of json format` \
 	 	-H "Accept: application/json"			` # set the header app type - tell the server to send back json` \
-	 	-k 										` # connect insecure - for invalid https` \
 	 	-c cookies.txt 							` # use the local cookie file for storage` \
 	 	-b cookies.txt							` # send the cookie file to server for the session` \
 	    -d @${file} 							` # send form json as request body for form creation` \
 	    -i 										` # include HTTP-header in response` \
 	 	2>/dev/null 							` # discard curl loading message` \
-	 	https://localhost:8443/v1/forms)
+	 	${backend_endpoint}/forms)
 
 
 	code=$(get_code "$response")
