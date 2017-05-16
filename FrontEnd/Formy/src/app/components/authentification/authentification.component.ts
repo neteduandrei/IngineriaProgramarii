@@ -45,8 +45,8 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
    */
 
   ngOnInit() {
-    console.log(this.auth.getLoginStatus());
-    if(this.auth.getLoginStatus() === true) {
+    console.log(AuthService.getLoginStatus());
+    if(AuthService.getLoginStatus() === true) {
       this.router.navigate(['/user']);
     }
   }

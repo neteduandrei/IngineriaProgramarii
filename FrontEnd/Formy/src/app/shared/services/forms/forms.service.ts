@@ -36,7 +36,7 @@ export class FormsService {
   public update(form : FormReceiveTemplate) {
     let headers = new Headers({'Content-Type' : 'application/json'});
     let options = new RequestOptions({headers : headers, withCredentials : true});
-    return this.http.post(this.url, form, options)
+    return this.http.put(this.url, form, options)
       .map(response => response.json());
   }
 

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import {ShareFormEditableService} from '../services/share-form-editable.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class FieldEditableComponent implements OnInit {
   constructor(public shareFromEditableService : ShareFormEditableService) { }
 
   ngOnInit() {
-    console.log(this.shareFromEditableService.form);
+
   }
 
   public changeToggle() {
