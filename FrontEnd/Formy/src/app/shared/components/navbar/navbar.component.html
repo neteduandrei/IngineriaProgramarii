@@ -27,7 +27,7 @@
     </div>
     <div id="options" fxFlex="15" fxLayout="row" fxLayoutAlign="space-around center">
       <md-icon>account_circle</md-icon>
-      <p>{{username}}</p>
+      <p>{{username | slice:0:14}}<span *ngIf="username.length > 15">...</span></p>
       <button md-icon-button [mdMenuTriggerFor]="settingsMenu">
         <md-icon>settings</md-icon>
       </button>
