@@ -13,6 +13,7 @@ import { BuildFormComponent } from './components/build-form/build-form.component
 import { EditPasswordComponent } from './components/edit-password/edit-password.component';
 import { UserFormsComponent } from './components/user-forms/user-forms.component';
 import { DialogShareComponent } from './components/user-forms/form-preview/dialogs/dialog-share.component'
+import { DialogLabelComponent } from './components/user-forms/form-preview/dialogs/dialog-label.component'
 import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import {FillFormComponent} from 'app/components/fill-form/fill-form.component';
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'dialogShare',
     component: DialogShareComponent
+  },
+  {
+    path: 'dialogLabel',
+    component: DialogLabelComponent
   },
   {
     path: 'edit-profile',
