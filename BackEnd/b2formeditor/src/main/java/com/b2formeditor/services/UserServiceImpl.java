@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     @Override
+    public User saveWithoutPasswordHash(User entity) {
+        return repository.save(entity);
+    }
+
+    @Override
     public User save(User entity) {
         String salt = BCrypt.gensalt();
         String hashedPassword = BCrypt.hashpw(entity.getPassword(), salt);
@@ -46,5 +51,9 @@ public class UserServiceImpl implements UserService {
 
     public void delete(User user) {
         this.repository.delete(user);
+    }
+
+    public User findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 }
