@@ -21,7 +21,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.text.ParseException;
 import java.util.*;
 
 @RestController
@@ -56,43 +55,42 @@ public class ResponseController {
         ProcessedForm form;
         List<Cookie> cookies;
 
-        if (credentials != null) {
-            form = this.formService.getById(newResponse.getFormId());
-            if (form != null) {
-                for (Question q : form.getFields()) { //check if question is part of form
-                    if (q.getId().equals(newResponse.getQuestionId())) {
-                        okToBeAdded = true;
-                        break;
-                    }
+        form = this.formService.getById(newResponse.getFormId());
+        if (form != null) {
+            for (Question q : form.getFields()) { //check if question is part of form
+                if (q.getId().equals(newResponse.getQuestionId())) {
+                    okToBeAdded = true;
+                    break;
                 }
-                Question question = form.getQuestionById(newResponse.getQuestionId());
-                if (question != null) {
-                    Object[] validAnswers = question.getValue();
-                    String[] stringValidAnswers = new String[question.getValue().length];
-                    for (int i = 0; i < validAnswers.length; i++) {
-                        stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
-                    }
-
-
-                    if (!isIn(stringValidAnswers, newResponse.getAnswers()))
-                        okToBeAdded = false;
-                    if (okToBeAdded) {
-                        newResponse.setCreatedBy(credentials.getEmail());
-                        cookies = Arrays.asList(request.getCookies());
-                        if (!formWasChanged(cookies, form)) {
-                            savedResponse = this.service.save(newResponse);
-                            service.notifyOwner(savedResponse.getFormId());
-                            return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
-                        }
-                        return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
-                    }
-                    return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
-                }
-                return new ResponseEntity<>("Question not found", HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
+            Question question = form.getQuestionById(newResponse.getQuestionId());
+            if (question != null) {
+                Object[] validAnswers = question.getValue();
+                String[] stringValidAnswers = new String[question.getValue().length];
+                for (int i = 0; i < validAnswers.length; i++) {
+                    stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
+                }
+
+
+                if (!isIn(stringValidAnswers, newResponse.getAnswers()))
+                    okToBeAdded = false;
+                if (okToBeAdded) {
+                    if (credentials != null) {
+                        newResponse.setCreatedBy(credentials.getEmail());
+                    }
+                    cookies = Arrays.asList(request.getCookies());
+                    if (!formWasChanged(cookies, form)) {
+                        savedResponse = this.service.save(newResponse);
+                        service.notifyOwner(savedResponse.getFormId());
+                        return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+                    }
+                    return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
+                }
+                return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
+            }
+            return new ResponseEntity<>("Question not found", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
