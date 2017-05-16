@@ -4,5 +4,5 @@ RUN cd /formy && \
 	npm install -g @angular/cli && \
 	npm install
 COPY ./ /formy
-RUN cd /formy/src/app/shared && sed -e "s^https://89.203.249.188:8443^http://b2formeditor.ddns.net:8090^g" -i globals.ts
+RUN cd /formy/src/app/shared && sed -e "s^https://.+:8443^https://b2formeditor.ddns.net/api^g" -i globals.ts
 CMD cd /formy && ng serve --host 0.0.0.0 
