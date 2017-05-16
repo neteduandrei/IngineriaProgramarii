@@ -4,7 +4,7 @@
     <md-input-container>
       <input mdInput readonly="readonly" type="text" placeholder="Link" value="{{link}}" #linkTarget>
     </md-input-container>
-    <button md-button type="button" [ngxClipboard]="linkTarget" (click)="openSnackBar()" >
+    <button md-button id="copyButton" type="button" [ngxClipboard]="linkTarget" (click)="openSnackBar()" >
       Copy Link
     </button>
   </div>
