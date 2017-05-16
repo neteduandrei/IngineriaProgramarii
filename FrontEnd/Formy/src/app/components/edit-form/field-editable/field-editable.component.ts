@@ -24,7 +24,6 @@ export class FieldEditableComponent implements OnInit {
   constructor(public shareFromEditableService : ShareFormEditableService) { }
 
   ngOnInit() {
-    console.log(this.shareFromEditableService.form);
   }
 
   public changeToggle() {
