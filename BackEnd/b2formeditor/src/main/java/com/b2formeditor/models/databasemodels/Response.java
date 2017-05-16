@@ -15,7 +15,6 @@ public class Response {
     @Id
     protected String id;
 
-    @NotBlank
     protected String createdBy;
 
     protected Date createdAt;

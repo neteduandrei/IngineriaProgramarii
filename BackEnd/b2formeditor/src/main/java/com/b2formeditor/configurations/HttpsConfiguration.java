@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by Dorneanu Dragos-Andrei on 06.05.2017.
  */
+/*
 @Configuration
 public class HttpsConfiguration {
 
@@ -42,4 +43,4 @@ public class HttpsConfiguration {
 
         return connector;
     }
-}
+}*/

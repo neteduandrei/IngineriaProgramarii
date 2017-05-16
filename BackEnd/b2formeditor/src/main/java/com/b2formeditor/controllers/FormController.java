@@ -15,8 +15,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -46,12 +50,20 @@ public class FormController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity get(@PathVariable("id") String id) {
+    public ResponseEntity get(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") String id) {
         ProcessedForm form = this.service.getById(id);
-        if (form == null) {
-            return new ResponseEntity<>("Requested resource not found", HttpStatus.NOT_FOUND);
+        String currentTime;
+        Cookie formCompletingInfo;
+
+        if (form != null) {
+            currentTime = String.valueOf(System.currentTimeMillis());
+            formCompletingInfo = new Cookie(form.getId(), currentTime);
+            formCompletingInfo.setPath(request.getContextPath() + "/v1/responses/add");
+            formCompletingInfo.setMaxAge(60 * 30);
+            response.addCookie(formCompletingInfo);
+            return new ResponseEntity<>(form, HttpStatus.OK);
         }
-        return new ResponseEntity<>(form, HttpStatus.OK);
+        return new ResponseEntity<>("Requested resource not found", HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(method = RequestMethod.POST)

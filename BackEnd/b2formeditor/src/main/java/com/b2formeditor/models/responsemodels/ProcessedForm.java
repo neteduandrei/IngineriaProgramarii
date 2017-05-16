@@ -5,15 +5,15 @@ import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.models.datatransferobjects.FormDTO;
 import com.b2formeditor.models.datatransferobjects.QuestionDTO;
 import com.b2formeditor.services.QuestionService;
-import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 public class ProcessedForm extends Form {
-    @Field
+    @Valid
     private Question[] fields;
 
     public ProcessedForm() {
@@ -24,6 +24,7 @@ public class ProcessedForm extends Form {
         QuestionDTO[] dtoFields = formDTO.getFields();
 
         this.createdAt = new Date();
+        this.lastModifiedTime = this.createdAt;
         this.title = formDTO.getTitle();
         this.description = formDTO.getDescription();
         this.font = formDTO.getFont();
@@ -44,6 +45,7 @@ public class ProcessedForm extends Form {
         this.id = baseForm.getId();
         this.createdBy = baseForm.getCreatedBy();
         this.createdAt = baseForm.getCreatedAt();
+        this.lastModifiedTime = baseForm.getLastModifiedTime();
         this.title = baseForm.getTitle();
         this.description = baseForm.getDescription();
         this.questionIds = baseForm.getQuestionIds();
