@@ -71,17 +71,27 @@ public class UserController {
     }
 
     @RequestMapping(value = "/changepassword", method = RequestMethod.PATCH)
-    public ResponseEntity changePassword(HttpServletRequest request, @Size(min = 6) @RequestBody String newPassword) {
+    public ResponseEntity changePassword(HttpServletRequest request, @RequestBody String newPassword) {
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
         User user;
 
         if (credentials != null) {
+            if (newPassword.length() < 6) {
+                return new ResponseEntity<>("Password too small. Password should have at least 6 characters.", HttpStatus.BAD_REQUEST);
+            }
             user = service.findByEmail(credentials.getEmail());
             user.setPassword(newPassword);
             user = service.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public ResponseEntity deleteAllUsers() {
+        List<User> users = service.getAll();
+        users.forEach(user -> service.delete(user.getId()));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
