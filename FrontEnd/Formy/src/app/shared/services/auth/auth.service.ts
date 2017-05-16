@@ -7,19 +7,18 @@ import { baseUrl } from '../../globals';
 export class AuthService {
 
   private url = `${baseUrl}/v1/authentication/login`;
-  private username : string;
 
-  private loginStatus : boolean = false;
+  //private loginStatus : boolean = false;
 
   constructor(private http : Http) { }
 
   public manualLogin(email : string, password : string) {
-    this.username = email;
+    sessionStorage.setItem("username", email);
     let headers = new Headers({'Content-Type' : 'application/json'});
     let options = new RequestOptions({headers : headers, withCredentials : true});
     return this.http.post(this.url, {email: email, password: password}, options)
       ._do((response) => {
-        this.loginStatus = response.status == 200;
+        sessionStorage.setItem("loginStatus", (response.status == 200).toString());
       });
 
   }
@@ -30,16 +29,16 @@ export class AuthService {
     return this.http.post(`${baseUrl}/v1/authentication/signup`, {name: name, nickname: username, email: email, password: password}, options);
   }
 
-  public getLoginStatus() {
-    return this.loginStatus === true;
+  public static getLoginStatus() {
+    return sessionStorage.getItem('loginStatus') === 'true';
   }
 
   public setLoginStatus(status : boolean) {
-    this.loginStatus = status;
+    sessionStorage.setItem('loginStatus', status.toString());
   }
 
   public getUsername() {
-    return this.username;
+    return sessionStorage.getItem("username");
   }
 
 }
