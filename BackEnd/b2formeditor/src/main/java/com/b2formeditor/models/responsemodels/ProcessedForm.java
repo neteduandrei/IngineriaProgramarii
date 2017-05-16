@@ -6,12 +6,14 @@ import com.b2formeditor.models.datatransferobjects.FormDTO;
 import com.b2formeditor.models.datatransferobjects.QuestionDTO;
 import com.b2formeditor.services.QuestionService;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 public class ProcessedForm extends Form {
+    @Valid
     private Question[] fields;
 
     public ProcessedForm() {

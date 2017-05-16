@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.*;
@@ -46,7 +47,7 @@ public class ResponseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public ResponseEntity addResponse(HttpServletRequest request, @Valid @RequestBody ResponseDTO responseDTO) {
+    public ResponseEntity addResponse(HttpServletRequest request, HttpServletResponse response, @Valid @RequestBody ResponseDTO responseDTO) {
         ProcessedResponse savedResponse;
         ProcessedResponse newResponse = new ProcessedResponse(responseDTO);
         HttpSession session = request.getSession(true);
@@ -82,6 +83,7 @@ public class ResponseController {
                     if (!formWasChanged(cookies, form)) {
                         savedResponse = this.service.save(newResponse);
                         service.notifyOwner(savedResponse.getFormId());
+                        cookies.forEach(response::addCookie);
                         return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
                     }
                     return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);

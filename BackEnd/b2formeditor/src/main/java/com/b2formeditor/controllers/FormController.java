@@ -59,7 +59,7 @@ public class FormController {
             currentTime = String.valueOf(System.currentTimeMillis());
             formCompletingInfo = new Cookie(form.getId(), currentTime);
             formCompletingInfo.setPath(request.getContextPath() + "/v1/responses/add");
-            formCompletingInfo.setMaxAge(60 * 5);
+            formCompletingInfo.setMaxAge(60 * 30);
             response.addCookie(formCompletingInfo);
             return new ResponseEntity<>(form, HttpStatus.OK);
         }
