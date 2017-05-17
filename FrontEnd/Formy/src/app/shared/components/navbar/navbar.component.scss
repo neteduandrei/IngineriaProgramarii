@@ -10,7 +10,7 @@ md-icon {
   background: white;
   border: hidden;
   border-radius: 50px;
-  height: 2em;
+  height: 2.29em;
   color: black;
   padding:10px;
 }
@@ -27,4 +27,21 @@ md-icon {
 
 label[for="fileUpload"] {
   cursor: pointer;
+}
+
+#navbarContent #controls a, label {
+  padding: 10px;
+  border-radius: 26px;
+}
+
+#navbarContent #controls a:hover, label:hover {
+  background-color: #8272ff;
+}
+
+a span md-icon {
+  color: #ffffff;
+}
+
+md-toolbar.mat-toolbar.mat-primary {
+  background-color: slateblue;
 }
