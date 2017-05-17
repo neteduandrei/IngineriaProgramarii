@@ -19,7 +19,7 @@ public class Response {
 
     protected Date createdAt;
 
-    @NotEmpty()
+    @NotEmpty(message = "Form ID should not be empty")
     protected String formId;
 
     protected String[] answers;
