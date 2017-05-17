@@ -7,4 +7,7 @@ package com.b2formeditor.services;
 import com.b2formeditor.models.databasemodels.User;
 
 public interface UserService extends CrudService<User> {
+    User saveWithoutPasswordHash(User entity);
+
+    User findByEmail(String email);
 }

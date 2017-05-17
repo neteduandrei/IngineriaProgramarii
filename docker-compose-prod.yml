@@ -1,0 +1,20 @@
+version: '2.0'
+services:
+        mongodb:
+                image: mongo
+                environment:
+                        - XYZ_DB_PASSWORD="48d1a4f047d1f228f82496cf24c535ea5720c5bb0fc34e6355207653f2a1225"
+                volumes:
+                        - ./database:/data/db
+        b2formeditor:
+                image: quay.io/fistinflame/b2formeditor
+                links:
+                        - mongodb:db
+        watchtower:
+                image: centurylink/watchtower
+                privileged: true
+                command: "ingineriaprogramarii_b2formeditor_1 ingineriaprogramarii_formy_1 --debug"
+                volumes:
+                        - "/var/run/docker.sock:/var/run/docker.sock"
+        formy:
+                image: quay.io/fistinflame/formy

@@ -19,3 +19,39 @@
   padding-left: 1%;
 //  background: #fff;
 }
+
+#sidebar button {
+  text-align: left;
+  width: 100%;
+}
+
+
+#sidebar md-list-item button i.material-icons.sand {
+  color: sandybrown;
+}
+
+#sidebar md-list-item button i.material-icons.red {
+  color: red;
+}
+
+#sidebar md-list-item button i.material-icons.green {
+  color: #009900;
+}
+
+#sidebar md-list-item button i.material-icons.blue {
+  color: blue;
+}
+
+#sidebar md-list-item button i.material-icons.violet {
+  color: blueviolet;
+}
+
+#sidebar md-list-item button i.material-icons.yellow {
+  color: yellow;
+}
+
+h3.mat-subheader {
+  font-size: 20px;
+  font-weight: 900;
+  color: midnightblue;
+}

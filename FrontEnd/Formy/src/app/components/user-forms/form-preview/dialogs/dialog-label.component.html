@@ -1,0 +1,11 @@
+<div class="dialog-wrapper" fxLayout="column" fxLayoutAlign="start left" fxLayoutWrap>
+  <h1 md-dialog-title class="mat-dialog-title" fxFlex="80%">Adăugăm label</h1>
+  <div md-dialog-content class="mat-dialog-content" fxFlex="100%">
+    <md-input-container>
+      <input mdInput type="text" placeholder="Label" id="addLabelInput">
+    </md-input-container>
+    <button md-button id="addLabel" type="button" (click)="openSnackBar()" >
+      Adaugă label
+    </button>
+  </div>
+</div>

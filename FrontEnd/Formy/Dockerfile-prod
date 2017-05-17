@@ -1,9 +1,19 @@
 FROM node:6.10.2
+
+# Precache node and angular dependencies
 COPY ./*.json /formy/
 RUN cd /formy && \
 	npm install -g @angular/cli && \
 	npm install
+
+# Precache node and angular dependencies
 COPY ./ /formy
+
+# Precache node and angular dependencies
 RUN cd /formy/src/app/shared && sed -e "s^https://.*:8443^https://b2formeditor.ddns.net/api^g" -i globals.ts
+
+# Expose ssl server for nginx
 EXPOSE 443
+
+# Precache node and angular dependencies
 CMD cd /formy && ng serve --host 0.0.0.0 --port 443
