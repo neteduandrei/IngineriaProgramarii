@@ -1,16 +1,19 @@
 <nav><formy-navbar></formy-navbar></nav>
 <div id="content" fxLayout="column" fxLayoutAlign="start center">
-  <md-card id="answersContainer">
-    <md-tab-group>
+
+    <md-tab-group id="answersContainer">
       <md-tab label="Summary">
-        <formy-answer-abstract type='text'></formy-answer-abstract>
-        <formy-answer-abstract type='single'></formy-answer-abstract>
-        <formy-answer-abstract type='multiple'></formy-answer-abstract>
-        <formy-answer-abstract type='linear'></formy-answer-abstract>
+        <md-card>
+          <formy-answer-abstract type='text'></formy-answer-abstract>
+          <formy-answer-abstract type='single'></formy-answer-abstract>
+          <formy-answer-abstract type='multiple'></formy-answer-abstract>
+          <formy-answer-abstract type='linear'></formy-answer-abstract>
+        </md-card>
       </md-tab>
       <md-tab label="Individual">
-        Individual answers here.
+        <md-card>
+          Individual answers here.
+        </md-card>
       </md-tab>
     </md-tab-group>
-  </md-card>
 </div>
