@@ -10,14 +10,15 @@ import javax.validation.constraints.Pattern;
 public class ResponseDTO {
     private String[] answers;
 
-    @NotEmpty
+    @NotEmpty(message = "Form ID should not be empty")
     private String formId;
 
-    @NotEmpty
+    @NotEmpty(message = "Question ID should not be empty")
     private String questionId;
 
-    @NotEmpty
-    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multipleChoice)|(linearScale)")
+    @NotEmpty(message = "Question type should not be empty")
+    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multipleChoice)|(linearScale)",
+             message = "Question type should be \"shortText\", \"longText\", \"date\", \"singleChoice\", \"multipleChoice\" or \"linearScale\"")
     private String questionType;
 
     public String[] getAnswers() {

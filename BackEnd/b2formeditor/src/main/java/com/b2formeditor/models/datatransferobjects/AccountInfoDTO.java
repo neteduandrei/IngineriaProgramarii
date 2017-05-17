@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Email;
  * Created by Dorneanu Dragos-Andrei on 16.05.2017.
  */
 public class AccountInfoDTO {
-    @Email
+    @Email(message = "You must respect an email format. Ex: user@domain.com")
     private String email;
 
     private String name;

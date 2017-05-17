@@ -10,7 +10,7 @@ public class SignUpCredentials extends AuthenticationCredentials {
     @Indexed(unique = true)
     private String nickname;
 
-    @NotEmpty
+    @NotEmpty(message = "Name should not be empty")
     private String name;
 
     public String getNickname() {

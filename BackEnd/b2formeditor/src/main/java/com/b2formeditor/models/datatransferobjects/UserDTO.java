@@ -13,21 +13,21 @@ import javax.validation.constraints.Size;
  */
 public class UserDTO {
     @Id
-    @Email
+    @Email(message = "You must respect an email format. Ex: user@domain.com")
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Name should not be empty")
     private String name;
 
     @Indexed(unique = true)
     private String nickname;
 
-    @NotEmpty
-    @Size(min = 6)
+    @NotEmpty(message = "Password should not be empty")
+    @Size(min = 6, message = "Password should have at least 6 characters")
     private String password;
 
     @NotEmpty
-    @Pattern(regexp = "(admin)|(user)")
+    @Pattern(regexp = "(admin)|(user)", message = "Role should be \"admin\" or \"user\"")
     private String role;
 
     public String getEmail() {

@@ -9,12 +9,12 @@ import javax.validation.constraints.Size;
  * Created by Dorneanu Dragos-Andrei on 30.04.2017.
  */
 public abstract class AuthenticationCredentials {
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "Email should not be empty")
+    @Email(message = "You must respect an email format. Ex: user@domain.com")
     protected String email;
 
-    @NotEmpty
-    @Size(min = 6)
+    @NotEmpty(message = "Password should not be empty")
+    @Size(min = 6, message = "Password size should be at least 6")
     protected String password;
 
     public String getEmail() {

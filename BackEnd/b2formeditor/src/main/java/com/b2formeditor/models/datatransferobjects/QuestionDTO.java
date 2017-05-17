@@ -9,16 +9,17 @@ import javax.validation.constraints.Pattern;
  * Created by Dorneanu Dragos-Andrei on 08.05.2017.
  */
 public class QuestionDTO {
-    @NotEmpty
+    @NotEmpty(message = "Question title should not be empty")
     protected String title;
 
     protected String description;
 
-    @NotEmpty
-    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multipleChoice)|(linearScale)")
+    @NotEmpty(message = "Question type should not be empty")
+    @Pattern(regexp = "(shortText)|(longText)|(date)|(singleChoice)|(multipleChoice)|(linearScale)",
+             message = "Question type should be \"shortText\", \"longText\", \"date\", \"singleChoice\", \"multipleChoice\" or \"linearScale\"")
     protected String type;
 
-    @NotNull
+    @NotNull(message = "\"required\" field should not be null")
     protected Boolean required;
 
     protected Object[] value;

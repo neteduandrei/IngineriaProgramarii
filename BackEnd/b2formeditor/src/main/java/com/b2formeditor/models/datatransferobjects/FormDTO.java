@@ -8,7 +8,7 @@ import javax.validation.Valid;
  * Created by Dorneanu Dragos-Andrei on 08.05.2017.
  */
 public class FormDTO {
-    @NotEmpty
+    @NotEmpty(message = "Form title should not be empty")
     protected String title;
 
     protected String description;

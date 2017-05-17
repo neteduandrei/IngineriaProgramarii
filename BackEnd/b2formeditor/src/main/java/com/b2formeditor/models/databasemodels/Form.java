@@ -18,7 +18,7 @@ public class Form {
     protected Date createdAt;
     protected Date lastModifiedTime;
 
-    @NotEmpty
+    @NotEmpty(message = "Form title should not be empty")
     protected String title;
 
     protected String description;

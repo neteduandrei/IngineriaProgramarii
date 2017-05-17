@@ -19,7 +19,7 @@ public class Response {
 
     protected Date createdAt;
 
-    @NotEmpty
+    @NotEmpty()
     protected String formId;
 
     protected String[] answers;

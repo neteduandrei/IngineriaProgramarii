@@ -1,6 +1,7 @@
 package com.b2formeditor.models.databasemodels;
 
 import com.b2formeditor.models.datatransferobjects.UserDTO;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -19,20 +20,21 @@ public class User {
     private String id;
 
     @Indexed(unique = true)
+    @Email(message = "You must respect an email format. Ex: user@domain.com")
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Name should not be empty")
     private String name;
 
     @Indexed(unique = true)
     private String nickname;
 
-    @NotEmpty
-    @Size(min = 6)
+    @NotEmpty(message = "Password should not be empty")
+    @Size(min = 6, message = "Password size should be at least 6")
     private String password;
 
-    @NotEmpty
-    @Pattern(regexp = "(admin)|(user)")
+    @NotEmpty(message = "User role should not be empty")
+    @Pattern(regexp = "(admin)|(user)", message = "Role should be \"admin\" or \"user\"")
     private String role;
 
     private String refreshToken;
