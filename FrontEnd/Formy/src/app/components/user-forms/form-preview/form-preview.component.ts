@@ -23,7 +23,7 @@ export class FormPreviewComponent implements OnInit {
 
   public openDialog() {
     let dialogRef = this.dialog.open(DialogShareComponent);
-    dialogRef.componentInstance.link = window.location.hostname + `:4200/form/fill/${ this.form.id}`;
+    dialogRef.componentInstance.link = window.location.hostname + (location.port != '' ? `:${location.port}` : '') +`/form/fill/${ this.form.id}`;
 
   }
 

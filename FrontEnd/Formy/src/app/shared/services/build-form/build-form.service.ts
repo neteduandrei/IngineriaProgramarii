@@ -13,6 +13,8 @@ export class BuildFormService {
   }
 
   public getFormTemplate() {
-    return this.formReceiveTemplate;
+    let temp = this.formReceiveTemplate;
+    this.formReceiveTemplate = null;
+    return temp;
   }
 }

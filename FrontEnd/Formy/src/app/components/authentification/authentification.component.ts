@@ -62,7 +62,7 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
         },
         (err) => {
           console.log(err);
-          this.error_message = "Your email and password don't match"
+          this.error_message = err._body || 'There was a problem on the server';
         });
 
   }
@@ -74,7 +74,8 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
           this.router.navigate(['/user']);
         },
         (err) => {
-          this.error_register = 'A user with this email is already registered';
+          console.log(err);
+          this.error_register = err._body || 'There was a problem on the server';
         }
       );
   }

@@ -3,4 +3,5 @@
  */
 'use strict';
 
-export const baseUrl = 'https://89.203.249.188:8443';
+//export const baseUrl = 'https://89.203.249.188:8443';
+export const baseUrl = 'https://b2formeditor.ddns.net/api';
