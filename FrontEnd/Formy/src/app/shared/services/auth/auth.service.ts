@@ -31,8 +31,13 @@ export class AuthService {
       {name: name, nickname: username, email: email, password: password}, options)
       ._do((response) => {
         if (response.status == 201) {
-          sessionStorage.setItem('loginStatus', 'true');
-          sessionStorage.setItem('username', email);
+          this.manualLogin(email, password)
+            .subscribe(response => {
+              if(response.status == 200) {
+                sessionStorage.setItem('loginStatus', 'true');
+                sessionStorage.setItem('username', email);
+              }
+            });
         }
       });
   }

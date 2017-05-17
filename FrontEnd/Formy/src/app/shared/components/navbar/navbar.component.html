@@ -2,8 +2,8 @@
   <div id="navbarContent" fxLayout="row" fxLayoutAlign="space-between center">
     <a [routerLink]="['/user']" hreg="." fxFlex="20"
        style="text-decoration: none; color:white">
-      <div id="logo" >
-        <img src="../assets/images/LogoFiiForm-01.svg" style="width:68%; margin-left:-8%">
+      <div id="logo">
+        <img src="../assets/images/LogoFiiForm-01.svg" style="width:78%; margin-left:-8%">
       </div>
     </a>
     <div id="controls" fxFlex="65" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
@@ -14,13 +14,14 @@
       <a [routerLink]="['/build-form']" style="text-decoration: none; color:white">
         <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2%">
           <md-icon>add_circle</md-icon>
-        <span>New Form</span>
+          <span>New Form</span>
         </span>
       </a>
-      <input id="fileUpload" type="file" ng2FileSelect [uploader]="uploader" (change)="uploader.uploadAll()" />
+      <input id="fileUpload" type="file" ng2FileSelect [uploader]="uploader" (change)="uploader.uploadAll()"/>
       <label for="fileUpload">
         <span fxLayout="row" fxLayoutAlign="start center">
-          <md-icon>file_upload</md-icon>
+          <!--<md-icon>file_upload</md-icon>-->
+          <md-icon class="myIcon" svgIcon="upload"></md-icon>
           <span>Upload</span>
         </span>
       </label>
