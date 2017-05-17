@@ -20,6 +20,7 @@ import { TypeDateComponent } from './components/build-form/field/field-of-type/t
 import { TypeLinearScaleComponent } from './components/build-form/field/field-of-type/type-linear-scale/type-linear-scale.component';
 import { FormPreviewComponent } from './components/user-forms/form-preview/form-preview.component';
 import { DialogShareComponent } from './components/user-forms/form-preview/dialogs/dialog-share.component';
+import { DialogLabelComponent } from './components/user-forms/form-preview/dialogs/dialog-label.component';
 import { DialogDeleteComponent } from './components/edit-password/edit-password.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
@@ -72,6 +73,7 @@ import { EditableSingleChoiceComponent } from './components/edit-form/field-edit
     AuthentificationComponent,
     DialogDeleteComponent,
     DialogShareComponent,
+    DialogLabelComponent,
     EditPasswordComponent,
     UserFormsComponent,
     FillFormComponent,
