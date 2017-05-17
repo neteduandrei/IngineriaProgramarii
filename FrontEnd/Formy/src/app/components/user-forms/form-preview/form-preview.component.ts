@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DialogShareComponent} from "./dialogs/dialog-share.component";
-import {MdDialog} from "@angular/material";
+import {DialogLabelComponent} from "./dialogs/dialog-label.component";
+import {MdDialog, MdSnackBar} from "@angular/material";
 import {FormsService} from '../../../shared/services/forms/forms.service';
 import {baseUrl} from '../../../shared/globals';
 import {BuildFormService} from '../../../shared/services/build-form/build-form.service';
@@ -25,6 +26,10 @@ export class FormPreviewComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogShareComponent);
     dialogRef.componentInstance.link = window.location.hostname + `:4200/form/fill/${ this.form.id}`;
 
+  }
+
+  public openLabelDialog() {
+    let labelDialogRef = this.dialog.open(DialogLabelComponent);
   }
 
   public downloadFormAsJson() {
