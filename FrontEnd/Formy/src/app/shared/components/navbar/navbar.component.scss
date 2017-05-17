@@ -43,5 +43,15 @@ a span md-icon {
 }
 
 md-toolbar.mat-toolbar.mat-primary {
-  background-color: slateblue;
+  //background-color: slateblue;
+}
+
+md-toolbar {
+  height: 90px;
+  box-shadow: 0 5px 20px rgba(51, 51, 51, 0.49);
+}
+
+.myIcon {
+  width: 2em;
+  height: 2em;
 }
