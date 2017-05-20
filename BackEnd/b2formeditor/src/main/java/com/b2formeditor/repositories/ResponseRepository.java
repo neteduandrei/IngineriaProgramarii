@@ -22,7 +22,7 @@ public interface ResponseRepository extends MongoRepository<Response, String> {
 
     List<Response> findByCreatedBy(String createdBy);
 
-    List<Response> findByFormId(String formId);
+//    List<Response> findByFormId(String formId);
 
     void delete(String id);
 }

@@ -1,10 +1,11 @@
 package com.b2formeditor.models.databasemodels;
 
-import org.hibernate.validator.constraints.NotBlank;
+import com.b2formeditor.models.responsemodels.ProcessedForm;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
@@ -13,16 +14,22 @@ import java.util.Date;
 @Document(collection = "Responses")
 public class Response {
     @Id
-    protected String id;
+    private String id;
 
-    protected String createdBy;
+    private String createdBy;
 
-    protected Date createdAt;
+    private Date createdAt;
 
-    @NotEmpty(message = "Form ID should not be empty")
-    protected String formId;
+    @Valid
+    private ProcessedForm form;
 
-    protected String[] answers;
+    public Response() {
+
+    }
+
+    public Response(ProcessedForm form) {
+        this.form = form;
+    }
 
     public String getId() {
         return id;
@@ -30,6 +37,15 @@ public class Response {
 
     public Response setId(String id) {
         this.id = id;
+        return this;
+    }
+
+    public ProcessedForm getForm() {
+        return form;
+    }
+
+    public Response setForm(ProcessedForm form) {
+        this.form = form;
         return this;
     }
 
@@ -48,24 +64,6 @@ public class Response {
 
     public Response setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-        return this;
-    }
-
-    public String getFormId() {
-        return formId;
-    }
-
-    public Response setFormId(String formId) {
-        this.formId = formId;
-        return this;
-    }
-
-    public String[] getAnswers() {
-        return answers;
-    }
-
-    public Response setAnswers(String[] answers) {
-        this.answers = answers;
         return this;
     }
 }

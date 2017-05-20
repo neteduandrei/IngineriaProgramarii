@@ -5,11 +5,9 @@ package com.b2formeditor.controllers;
  */
 
 import com.b2formeditor.models.authenticationmodels.LoginCredentials;
-import com.b2formeditor.models.databasemodels.Question;
+import com.b2formeditor.models.databasemodels.Response;
 import com.b2formeditor.models.databasemodels.Statistic;
-import com.b2formeditor.models.datatransferobjects.ResponseDTO;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
-import com.b2formeditor.models.responsemodels.ProcessedResponse;
 import com.b2formeditor.services.FormService;
 import com.b2formeditor.services.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,116 +36,147 @@ public class ResponseController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<ProcessedResponse>> get() {
-        List<ProcessedResponse> forms = this.service.getAll();
+    public ResponseEntity<List<Response>> get() {
+        List<Response> forms = this.service.getAll();
         if (forms.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(forms, HttpStatus.OK);
     }
 
+//    @RequestMapping(value = "add", method = RequestMethod.POST)
+//    public ResponseEntity addResponse(HttpServletRequest request, HttpServletResponse response, @Valid @RequestBody ResponseDTO responseDTO) {
+//        Response savedResponse;
+//        Response newResponse = new Response(responseDTO);
+//        HttpSession session = request.getSession(true);
+//        LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
+//        boolean okToBeAdded = false;
+//        ProcessedForm form;
+//        List<Cookie> cookies;
+//
+//        form = this.formService.getById(newResponse.getFormId());
+//        if (form != null) {
+//            for (Question q : form.getFields()) { //check if question is part of form
+//                if (q.getId().equals(newResponse.getQuestionId())) {
+//                    okToBeAdded = true;
+//                    break;
+//                }
+//            }
+//            Question question = form.getQuestionById(newResponse.getQuestionId());
+//            if (question != null) {
+//                Object[] validAnswers = question.getValue();
+//                String[] stringValidAnswers = new String[question.getValue().length];
+//                for (int i = 0; i < validAnswers.length; i++) {
+//                    stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
+//                }
+//
+//
+//                if (!isIn(stringValidAnswers, newResponse.getAnswers()))
+//                    okToBeAdded = false;
+//                if (okToBeAdded) {
+//                    if (credentials != null) {
+//                        newResponse.setCreatedBy(credentials.getEmail());
+//                    }
+//                    cookies = Arrays.asList(request.getCookies());
+//                    if (!formWasChanged(cookies, form)) {
+//                        savedResponse = this.service.save(newResponse);
+//                        service.notifyOwner(savedResponse.getFormId());
+//                        cookies.forEach(response::addCookie);
+//                        return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+//                    }
+//                    return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
+//                }
+//                return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
+//            }
+//            return new ResponseEntity<>("Question not found", HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
+//    }
+
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public ResponseEntity addResponse(HttpServletRequest request, HttpServletResponse response, @Valid @RequestBody ResponseDTO responseDTO) {
-        ProcessedResponse savedResponse;
-        ProcessedResponse newResponse = new ProcessedResponse(responseDTO);
+    public ResponseEntity addResponse(HttpServletRequest request, HttpServletResponse response, @Valid @RequestBody ProcessedForm formResponse) {
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
-        boolean okToBeAdded = false;
+        List<Cookie> cookies = Arrays.asList(request.getCookies());
+        Response savedResponse, toSaveResponse;
         ProcessedForm form;
-        List<Cookie> cookies;
+        Boolean formWasEdited;
 
-        form = this.formService.getById(newResponse.getFormId());
+        form = formService.getById(formResponse.getId());
         if (form != null) {
-            for (Question q : form.getFields()) { //check if question is part of form
-                if (q.getId().equals(newResponse.getQuestionId())) {
-                    okToBeAdded = true;
-                    break;
-                }
+            toSaveResponse = new Response(form).setCreatedAt(new Date());
+            if (credentials != null) {
+                toSaveResponse.setCreatedBy(credentials.getEmail());
             }
-            Question question = form.getQuestionById(newResponse.getQuestionId());
-            if (question != null) {
-                Object[] validAnswers = question.getValue();
-                String[] stringValidAnswers = new String[question.getValue().length];
-                for (int i = 0; i < validAnswers.length; i++) {
-                    stringValidAnswers[i] = validAnswers[i].toString().substring(validAnswers[i].toString().indexOf('=') + 1, validAnswers[i].toString().length() - 1);
-                }
-
-
-                if (!isIn(stringValidAnswers, newResponse.getAnswers()))
-                    okToBeAdded = false;
-                if (okToBeAdded) {
-                    if (credentials != null) {
-                        newResponse.setCreatedBy(credentials.getEmail());
-                    }
-                    cookies = Arrays.asList(request.getCookies());
-                    if (!formWasChanged(cookies, form)) {
-                        savedResponse = this.service.save(newResponse);
-                        service.notifyOwner(savedResponse.getFormId());
-                        cookies.forEach(response::addCookie);
-                        return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
-                    }
-                    return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
-                }
-                return new ResponseEntity<>("Some resources could not be added", HttpStatus.CONFLICT);
+            formWasEdited = formWasChanged(cookies, form);
+            if (formWasEdited == null) {
+                return new ResponseEntity<>("You must make a request for the form that you respond to", HttpStatus.FORBIDDEN);
             }
-            return new ResponseEntity<>("Question not found", HttpStatus.NOT_FOUND);
+            if (!formWasEdited) {
+                savedResponse = this.service.save(toSaveResponse);
+                service.notifyOwner(savedResponse.getForm().getId());
+                cookies.forEach(response::addCookie);
+                return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+            }
+            cookies.forEach(response::addCookie);
+            return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
         }
-        return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Form not found", HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Statistic> get(@PathVariable("id") String id) {
-        //System.out.println(id);
-        ProcessedForm form = this.formService.getById(id);
-        //System.out.println(form.getId());
-        Statistic statistics = new Statistic();
-        //TODO create a class that extends Map<String, Map<String, Integer>>
-        Map<String, Map<String, Integer>> finalResult = new HashMap<>();
-        List<ProcessedResponse> processedResponses = this.service.getAll();
-        statistics.setStatistics(finalResult);
-        //System.out.println(form.getId());
-        for (ProcessedResponse processedResponse : processedResponses) {
-            //System.out.println("ID: " + processedResponse.getFormId());
-            if (processedResponse.getFormId().equals(id)) {
-                //System.out.println(processedResponse.getId() + " " + processedResponse.getQuestionType() + " " + processedResponse.getQuestionId());
-                Object[] ans = processedResponse.getAnswers();
-                for (int i = 0; i < ans.length; i++) {
-                    if (form.getQuestionById(processedResponse.getQuestionId()) != null) {
-                        if (finalResult.containsKey(form.getQuestionById(processedResponse.getQuestionId()).getTitle())) {
-                            Map<String, Integer> aux = finalResult.get(form.getQuestionById(processedResponse.getQuestionId()).getTitle());
-                            if (aux.containsKey(ans[i].toString()))
-                                aux.put(ans[i].toString(), aux.get(ans[i].toString()) + 1);
-                            else aux.put(ans[i].toString(), 1);
-                            finalResult.put(form.getQuestionById(processedResponse.getQuestionId()).getTitle(), aux);
-                        } else {
-                            Map<String, Integer> aux = new HashMap<>();
-                            if (aux.containsKey(ans[i].toString()))
-                                aux.put(ans[i].toString(), aux.get(ans[i].toString()) + 1);
-                            else aux.put(ans[i].toString(), 1);
-                            finalResult.put(form.getQuestionById(processedResponse.getQuestionId()).getTitle(), aux);
-                        }
-                    }
-                }
-            }
-        }
-        statistics.setStatistics(finalResult);
-        for (String key : statistics.getStatistics().keySet()) {
-            int total = 0;
-            for (String s : statistics.getStatistics().get(key).keySet())
-                total += statistics.getStatistics().get(key).get(s);
-            Map<String, Integer> aux = statistics.getStatistics().get(key);
-            for (String s : statistics.getStatistics().get(key).keySet()) {
-                //System.out.println(aux.get(s));
-                aux.put(s, aux.get(s) * 100 / total);
-            }
-        }
-        if (statistics.getStatistics().isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity(statistics, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+//    public ResponseEntity<Statistic> get(@PathVariable("id") String id) {
+//        //System.out.println(id);
+//        ProcessedForm form = this.formService.getById(id);
+//        //System.out.println(form.getId());
+//        Statistic statistics = new Statistic();
+//        //TODO create a class that extends Map<String, Map<String, Integer>>
+//        Map<String, Map<String, Integer>> finalResult = new HashMap<>();
+//        List<Response> Responses = this.service.getAll();
+//        statistics.setStatistics(finalResult);
+//        //System.out.println(form.getId());
+//        for (Response Response : Responses) {
+//            //System.out.println("ID: " + Response.getFormId());
+//            if (Response.getFormId().equals(id)) {
+//                //System.out.println(Response.getId() + " " + Response.getQuestionType() + " " + Response.getQuestionId());
+//                Object[] ans = Response.getAnswers();
+//                for (int i = 0; i < ans.length; i++) {
+//                    if (form.getQuestionById(Response.getQuestionId()) != null) {
+//                        if (finalResult.containsKey(form.getQuestionById(Response.getQuestionId()).getTitle())) {
+//                            Map<String, Integer> aux = finalResult.get(form.getQuestionById(Response.getQuestionId()).getTitle());
+//                            if (aux.containsKey(ans[i].toString()))
+//                                aux.put(ans[i].toString(), aux.get(ans[i].toString()) + 1);
+//                            else aux.put(ans[i].toString(), 1);
+//                            finalResult.put(form.getQuestionById(Response.getQuestionId()).getTitle(), aux);
+//                        } else {
+//                            Map<String, Integer> aux = new HashMap<>();
+//                            if (aux.containsKey(ans[i].toString()))
+//                                aux.put(ans[i].toString(), aux.get(ans[i].toString()) + 1);
+//                            else aux.put(ans[i].toString(), 1);
+//                            finalResult.put(form.getQuestionById(Response.getQuestionId()).getTitle(), aux);
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        statistics.setStatistics(finalResult);
+//        for (String key : statistics.getStatistics().keySet()) {
+//            int total = 0;
+//            for (String s : statistics.getStatistics().get(key).keySet())
+//                total += statistics.getStatistics().get(key).get(s);
+//            Map<String, Integer> aux = statistics.getStatistics().get(key);
+//            for (String s : statistics.getStatistics().get(key).keySet()) {
+//                //System.out.println(aux.get(s));
+//                aux.put(s, aux.get(s) * 100 / total);
+//            }
+//        }
+//        if (statistics.getStatistics().isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity(statistics, HttpStatus.OK);
+//    }
 
-    private boolean formWasChanged(List<Cookie> cookies, ProcessedForm form) {
+    private Boolean formWasChanged(List<Cookie> cookies, ProcessedForm form) {
         int formCompletingCookieIndex = -1;
         Cookie formCompletingCookie;
         Date startCompletingTime;
@@ -166,9 +195,15 @@ public class ResponseController {
             startTime = Long.parseLong(formCompletingCookieTime);
             startCompletingTime = new Date(startTime);
             formLastModifiedTime = form.getLastModifiedTime();
-            formCompletingCookie.setMaxAge(0);
+            markCookieAsGoodToDestroy(formCompletingCookie);
             return startCompletingTime.compareTo(formLastModifiedTime) < 0;
         }
-        return true;
+        return null;
+    }
+
+    private void markCookieAsGoodToDestroy(Cookie cookie) {
+        cookie.setMaxAge(0);
+        cookie.setValue(null);
+        cookie.setPath("/v1/responses/add");
     }
 }
