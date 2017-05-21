@@ -23,6 +23,10 @@ public class Question extends BaseQuestion {
         this.id = id;
     }
 
+    public String acquireId() {
+        return id;
+    }
+
     public Question(QuestionDTO questionDTO) {
         BaseQuestion baseQuestion = (BaseQuestion)questionDTO;
         setDescription(baseQuestion.getDescription());

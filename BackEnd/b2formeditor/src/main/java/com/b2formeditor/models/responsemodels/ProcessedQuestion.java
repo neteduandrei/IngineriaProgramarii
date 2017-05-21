@@ -40,7 +40,7 @@ public class ProcessedQuestion extends Question {
         setType(question.getType());
         setTitle(question.getTitle());
         setDescription(question.getDescription());
-        setId (((ProcessedQuestion)question).getId());
+        setId (question.acquireId());
     }
 
     public ProcessedQuestion (QuestionService questionService, FormQuestion formQuestion) {

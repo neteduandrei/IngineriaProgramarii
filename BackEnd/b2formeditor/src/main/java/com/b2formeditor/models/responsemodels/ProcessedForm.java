@@ -22,7 +22,7 @@ public class ProcessedForm extends Form {
     }
 
     public ProcessedForm(QuestionService questionService, Form baseForm) {
-        FormQuestion[] formQuestions = ((ProcessedForm) baseForm).formQuestions;
+        FormQuestion[] formQuestions = baseForm.acquireFromQuestion();
         fields = new ProcessedQuestion[formQuestions.length];
 
         for (int i = 0; i < formQuestions.length; i++) {

@@ -72,6 +72,10 @@ public abstract class BaseForm {
         this.description = description;
     }
 
+    public FormQuestion[] acquireFromQuestion() {
+        return formQuestions;
+    }
+
     public void setFormQuestions(FormQuestion[] formQuestions) {
         this.formQuestions = formQuestions;
     }

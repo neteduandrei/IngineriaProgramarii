@@ -72,12 +72,12 @@ public class FormController {
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
 
-        if (credentials != null) {
-            formDto.setCreatedBy(credentials.getEmail());
+//        if (credentials != null) {
+            formDto.setCreatedBy(credentials == null ? null : credentials.getEmail());
             savedForm = this.service.save(formDto);
             return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
+//        }
+        //return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
