@@ -52,10 +52,10 @@ QuestionDTO {
 ```
 
 
-### ResponseDTO
+### FormResponseDTO
 
 ```
-ResponseDTO {
+FormResponseDTO {
 	formId: Integer
 	fields: QuestionResponseDTO[]
 }
