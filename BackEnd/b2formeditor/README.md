@@ -2,7 +2,7 @@
 
 ## Database models and generic objects
 
-### User
+### User - Database object
 
 ```
 User: {
@@ -17,7 +17,7 @@ User: {
 }
 ```
 
-### Form
+### Form - Database object
 
 ```
 Form: {
@@ -32,16 +32,16 @@ Form: {
 }
 ```
 
-### FormQuestion
+### FormQuestion - Intermediate objects
 
 ```
 FormQuestion: {
-	id: String
+	questionId: String
 	required: Boolean
 }
 ```
 
-### Question
+### Question - Database objects
 
 ```
 Question: {
@@ -54,7 +54,7 @@ Question: {
 }
 ```
 
-### FormResponse
+### FormResponse - Database objects
 
 ```
 FormResponse: {
@@ -66,7 +66,7 @@ FormResponse: {
 }
 ```
 
-### QuestionResponse
+### QuestionResponse - Intermediate objects
 
 ```
 QuestionResponse: {
@@ -75,7 +75,7 @@ QuestionResponse: {
 }	
 ```
 
-### AutenticationCredentials
+### AutenticationCredentials - Database objects
 
 ```
 AutenticationCredentials: {
@@ -84,7 +84,7 @@ AutenticationCredentials: {
 }
 ```
 
-### LoginCredentials
+### LoginCredentials - Database objects
 
 ```
 LoginCredentials: {
@@ -93,7 +93,7 @@ LoginCredentials: {
 }
 ```
 
-### SignUpCredentials
+### SignUpCredentials - Database objects
 
 ```
 SignUpCredentials: {
