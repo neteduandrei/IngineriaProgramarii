@@ -4,6 +4,7 @@ import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Question;
 import com.b2formeditor.models.datatransferobjects.FormDTO;
 import com.b2formeditor.models.datatransferobjects.QuestionDTO;
+import com.b2formeditor.models.intermediatemodels.FormQuestion;
 import com.b2formeditor.services.QuestionService;
 
 import javax.validation.Valid;
@@ -14,33 +15,18 @@ import java.util.Date;
  */
 public class ProcessedForm extends Form {
     @Valid
-    private Question[] fields;
+    private ProcessedQuestion[] fields;
 
     public ProcessedForm() {
         // default constructor for json
     }
 
-    public ProcessedForm(FormDTO formDTO) {
-        QuestionDTO[] dtoFields = formDTO.getFields();
-
-        this.createdAt = new Date();
-        this.lastModifiedTime = this.createdAt;
-        this.title = formDTO.getTitle();
-        this.description = formDTO.getDescription();
-        this.font = formDTO.getFont();
-        this.fields = new Question[dtoFields.length];
-
-        for (int i = 0; i < dtoFields.length; ++i) {
-            this.fields[i] = new Question(dtoFields[i]);
-        }
-    }
-
     public ProcessedForm(QuestionService questionService, Form baseForm) {
-        String[] base_fields = ((ProcessedForm) baseForm).questionIds;
-        fields = new Question[base_fields.length];
+        FormQuestion[] formQuestions = ((ProcessedForm) baseForm).formQuestions;
+        fields = new ProcessedQuestion[formQuestions.length];
 
-        for (int i = 0; i < base_fields.length; i++) {
-            fields[i] = questionService.getById(base_fields[i]);
+        for (int i = 0; i < formQuestions.length; i++) {
+            fields[i] = new ProcessedQuestion(questionService, formQuestions[i]);
         }
         this.id = baseForm.getId();
         this.createdBy = baseForm.getCreatedBy();
@@ -48,33 +34,19 @@ public class ProcessedForm extends Form {
         this.lastModifiedTime = baseForm.getLastModifiedTime();
         this.title = baseForm.getTitle();
         this.description = baseForm.getDescription();
-        this.questionIds = baseForm.getQuestionIds();
         this.font = baseForm.getFont();
     }
 
-    public void commit(QuestionService questionService) {
-        String[] scopeQuestionsIds = new String[fields.length];
-
-        for (int i = 0; i < fields.length; i++) {
-            String questionId = questionService.save(fields[i]).getId();
-            fields[i].setId(questionId);
-            scopeQuestionsIds[i] = questionId;
-        }
-
-        this.questionIds = scopeQuestionsIds;
-    }
-
-    public Question[] getFields() {
+    public ProcessedQuestion[] getFields() {
         return this.fields;
     }
 
-    public ProcessedForm setFields(Question[] fields) {
+    public void setFields(ProcessedQuestion[] fields) {
         this.fields = fields;
-        return this;
     }
 
-    public Question getQuestionById(String id) {
-        for (Question question : fields) {
+    public ProcessedQuestion getQuestionById(String id) {
+        for (ProcessedQuestion question : fields) {
             if (question.getId().equals(id))
                 return question;
         }

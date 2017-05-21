@@ -73,16 +73,15 @@ public class FormController {
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
 
         if (credentials != null) {
-            savedForm = new ProcessedForm(formDto);
-            savedForm.setCreatedBy(credentials.getEmail());
-            savedForm = this.service.save(savedForm);
+            formDto.setCreatedBy(credentials.getEmail());
+            savedForm = this.service.save(formDto);
             return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
         }
         return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity updateForm(HttpServletRequest request, @Valid @RequestBody ProcessedForm updatedForm) {
+    public ResponseEntity updateForm(HttpServletRequest request, @Valid @RequestBody FormDTO updatedForm) {
         ProcessedForm savedForm;
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
@@ -90,8 +89,8 @@ public class FormController {
         if (credentials != null) {
             savedForm = this.service.getById(updatedForm.getId());
             if (savedForm != null) {
-                updatedForm.setCreatedAt(savedForm.getCreatedAt())
-                        .setCreatedBy(savedForm.getCreatedBy());
+                updatedForm.setCreatedAt(savedForm.getCreatedAt());
+                updatedForm.setCreatedBy(savedForm.getCreatedBy());
                 savedForm = this.service.save(updatedForm);
                 return new ResponseEntity<>(savedForm, HttpStatus.CREATED);
             }

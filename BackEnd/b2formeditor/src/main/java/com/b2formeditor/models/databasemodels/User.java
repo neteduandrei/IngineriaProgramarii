@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 
 /**
  * Created by Dorneanu Dragos-Andrei on 29.04.2017.
+ * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 @Document(collection = "Users")
 public class User {

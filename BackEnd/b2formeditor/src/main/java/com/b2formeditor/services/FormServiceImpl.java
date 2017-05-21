@@ -4,7 +4,9 @@ package com.b2formeditor.services;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
+import com.b2formeditor.models.basemodels.BaseForm;
 import com.b2formeditor.models.databasemodels.Form;
+import com.b2formeditor.models.datatransferobjects.FormDTO;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.repositories.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,10 @@ public class FormServiceImpl implements FormService {
     private FormRepository repository;
 
     @Override
-    public ProcessedForm save(ProcessedForm entity) {
-        entity.commit(questionService);
-        entity.setLastModifiedTime(new Date());
-        return this.repository.save(entity);
+    public ProcessedForm save(FormDTO entity) {
+        Form form = entity.commitQuestions(questionService);
+        form.setLastModifiedTime(new Date());
+        return new ProcessedForm(questionService, this.repository.save(form));
     }
 
     @Override

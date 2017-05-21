@@ -204,6 +204,7 @@ UserDTO: {
 
 ```
 FormDTO: {
+	id: String
 	title: String
 	description: String
 	font: String
@@ -230,7 +231,8 @@ QuestionDTO: {
 
 ```
 FormResponseDTO: {
-	formId: Integer
+	id: String
+	formId: String
 	fields: QuestionResponseDTO[]
 }
 ```
@@ -240,7 +242,7 @@ FormResponseDTO: {
 
 ```
 QuestionResponseDTO: {
-	questionId: Integer
+	questionId: String
 	values: String[]
 }
 ```

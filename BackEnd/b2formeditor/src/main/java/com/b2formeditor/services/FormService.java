@@ -4,11 +4,12 @@ package com.b2formeditor.services;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 
+import com.b2formeditor.models.datatransferobjects.FormDTO;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 
 import java.util.List;
 
-public interface FormService extends CrudService<ProcessedForm> {
+public interface FormService extends CrudService<ProcessedForm, FormDTO> {
     List<ProcessedForm> getByUserId(String id);
 
     List<ProcessedForm> getByCreator(String email);

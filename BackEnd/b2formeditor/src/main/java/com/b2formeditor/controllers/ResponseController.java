@@ -5,11 +5,13 @@ package com.b2formeditor.controllers;
  */
 
 import com.b2formeditor.models.authenticationmodels.LoginCredentials;
-import com.b2formeditor.models.databasemodels.Response;
+import com.b2formeditor.models.databasemodels.FormResponse;
+import com.b2formeditor.models.datatransferobjects.FormResponseDTO;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
+import com.b2formeditor.models.responsemodels.ProcessedFormResponse;
 import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
+import com.b2formeditor.services.FormResponseService;
 import com.b2formeditor.services.FormService;
-import com.b2formeditor.services.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,7 @@ import java.util.List;
 @RequestMapping("/v1/responses")
 public class ResponseController {
     @Autowired
-    private ResponseService service;
+    private FormResponseService service;
     @Autowired
     private FormService formService;
 
@@ -43,7 +45,7 @@ public class ResponseController {
     public ResponseEntity getUserResponses(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
         ProcessedLoginCredentials credentials = (ProcessedLoginCredentials) session.getAttribute("credentials");
-        List<Response> responses;
+        List<ProcessedFormResponse> responses;
         String userRole, userEmail;
 
         if (credentials != null) {
@@ -111,30 +113,30 @@ public class ResponseController {
 //        return new ResponseEntity<>("Requested form not found", HttpStatus.NOT_FOUND);
 //    }
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
-    public ResponseEntity addResponse(HttpServletRequest request, HttpServletResponse response, @Valid @RequestBody ProcessedForm formResponse) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity addResponse(HttpServletRequest request, HttpServletResponse response, @Valid @RequestBody FormResponseDTO formResponse) {
         HttpSession session = request.getSession(true);
         LoginCredentials credentials = (LoginCredentials) session.getAttribute("credentials");
         List<Cookie> cookies = Arrays.asList(request.getCookies());
-        Response savedResponse, toSaveResponse;
+        ProcessedFormResponse savedFormResponse, savedResponse;
         ProcessedForm form;
         Boolean formWasEdited;
 
-        form = formService.getById(formResponse.getId());
+        form = formService.getById(formResponse.getFormId());
         if (form != null) {
-            toSaveResponse = new Response(form).setCreatedAt(new Date());
+            savedFormResponse = service.save(formResponse);
+            savedFormResponse.setCreatedAt(new Date());
             if (credentials != null) {
-                toSaveResponse.setCreatedBy(credentials.getEmail());
+                savedFormResponse.setCreatedBy(credentials.getEmail());
             }
             formWasEdited = formWasChanged(cookies, form);
             if (formWasEdited == null) {
                 return new ResponseEntity<>("You must make a request for the form that you respond to", HttpStatus.FORBIDDEN);
             }
             if (!formWasEdited) {
-                savedResponse = this.service.save(toSaveResponse);
-                service.notifyOwner(savedResponse.getForm().getId());
+                service.notifyOwner(savedFormResponse.getFormId());
                 cookies.forEach(response::addCookie);
-                return new ResponseEntity<>(savedResponse, HttpStatus.CREATED);
+                return new ResponseEntity<>(savedFormResponse, HttpStatus.CREATED);
             }
             cookies.forEach(response::addCookie);
             return new ResponseEntity<>("The completed form was edited by owner while you were completing.", HttpStatus.CONFLICT);
@@ -194,15 +196,13 @@ public class ResponseController {
 //        return new ResponseEntity(statistics, HttpStatus.OK);
 //    }
 
-    @RequestMapping(value = "update", method = RequestMethod.PUT)
-    public ResponseEntity updateFormResponse(@Valid @RequestBody Response formResponse) {
-        Response savedResponse = service.getById(formResponse.getId());
-
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity updateFormResponse(@Valid @RequestBody FormResponseDTO formResponse) {
+        FormResponse savedResponse = service.getById(formResponse.getId());
         if (savedResponse != null) {
             formResponse.setCreatedBy(savedResponse.getCreatedBy());
             formResponse.setCreatedAt(new Date());
-            formResponse = service.save(formResponse);
-            return new ResponseEntity<>(formResponse, HttpStatus.OK);
+            return new ResponseEntity<>(service.save(formResponse), HttpStatus.OK);
         }
         return new ResponseEntity<>("Response does not exist", HttpStatus.NOT_FOUND);
     }

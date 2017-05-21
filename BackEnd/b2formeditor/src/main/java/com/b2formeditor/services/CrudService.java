@@ -7,8 +7,8 @@ package com.b2formeditor.services;
 
 import java.util.List;
 
-public interface CrudService<T> {
-    T save(T entity);
+public interface CrudService<T,P> {
+    T save(P entity);
 
     List<T> getAll();
 

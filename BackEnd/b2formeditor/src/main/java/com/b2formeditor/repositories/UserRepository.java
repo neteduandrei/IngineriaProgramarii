@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Dorneanu Dragos-Andrei on 29.04.2017.
+ * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {

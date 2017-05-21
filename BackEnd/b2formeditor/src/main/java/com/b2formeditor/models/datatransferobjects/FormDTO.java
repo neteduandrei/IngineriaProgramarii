@@ -1,56 +1,49 @@
 package com.b2formeditor.models.datatransferobjects;
 
+import com.b2formeditor.models.basemodels.BaseForm;
+import com.b2formeditor.models.databasemodels.Form;
+import com.b2formeditor.models.databasemodels.Question;
+import com.b2formeditor.models.intermediatemodels.FormQuestion;
+import com.b2formeditor.models.responsemodels.ProcessedForm;
+import com.b2formeditor.models.responsemodels.ProcessedQuestion;
+import com.b2formeditor.services.QuestionService;
+import com.fasterxml.jackson.databind.deser.Deserializers;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.Valid;
 
 /**
  * Created by Dorneanu Dragos-Andrei on 08.05.2017.
+ * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
-public class FormDTO {
-    @NotEmpty(message = "Form title should not be empty")
-    protected String title;
-
-    protected String description;
-
+public class FormDTO extends BaseForm {
     @Valid
     protected QuestionDTO[] fields;
 
-    protected String font;
+    public Form commitQuestions (QuestionService questionService) {
+        BaseForm baseForm = (BaseForm)this;
+        Form form = (Form)baseForm;
 
-    public String getTitle() {
-        return title;
+        FormQuestion[] scopeFormQuestions = new FormQuestion[fields.length];
+
+        for (int i = 0; i < fields.length; i++) {
+            Question question = new Question(fields[i]);
+
+            String questionId = ((ProcessedQuestion)questionService.save(question)).getId();
+            scopeFormQuestions[i] = new FormQuestion(questionId, fields[i].getRequired());
+        }
+
+        form.setFormQuestions(scopeFormQuestions);
+
+        return form;
     }
 
-    public FormDTO setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public FormDTO setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public QuestionDTO[] getFields() {
-        return fields;
-    }
-
-    public FormDTO setFields(QuestionDTO[] fields) {
+    public void setFields (QuestionDTO[] fields) {
         this.fields = fields;
-        return this;
     }
 
-    public String getFont() {
-        return font;
-    }
-
-    public FormDTO setFont(String font) {
-        this.font = font;
-        return this;
+    public QuestionDTO[] getFields () {
+        return fields;
     }
 }
