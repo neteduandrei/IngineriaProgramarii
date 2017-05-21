@@ -6,21 +6,26 @@ package com.b2formeditor.controllers;
 
 import com.b2formeditor.models.authenticationmodels.LoginCredentials;
 import com.b2formeditor.models.databasemodels.Response;
-import com.b2formeditor.models.databasemodels.Statistic;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
+import com.b2formeditor.models.responsemodels.ProcessedLoginCredentials;
 import com.b2formeditor.services.FormService;
 import com.b2formeditor.services.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/responses")
@@ -31,17 +36,30 @@ public class ResponseController {
     private FormService formService;
 
     public static boolean isIn(String[] outer, String[] inner) {
-
         return Arrays.asList(outer).containsAll(Arrays.asList(inner));
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Response>> get() {
-        List<Response> forms = this.service.getAll();
-        if (forms.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity getUserResponses(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        ProcessedLoginCredentials credentials = (ProcessedLoginCredentials) session.getAttribute("credentials");
+        List<Response> responses;
+        String userRole, userEmail;
+
+        if (credentials != null) {
+            userRole = credentials.getRole();
+            if (userRole.equals("user")) {
+                userEmail = credentials.getEmail();
+                responses = this.service.findByCreatedBy(userEmail);
+            } else {
+                responses = this.service.getAll();
+            }
+            if (responses.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(responses, HttpStatus.OK);
         }
-        return new ResponseEntity<>(forms, HttpStatus.OK);
+        return new ResponseEntity<>("You must be logged in", HttpStatus.FORBIDDEN);
     }
 
 //    @RequestMapping(value = "add", method = RequestMethod.POST)
@@ -175,6 +193,19 @@ public class ResponseController {
 //        }
 //        return new ResponseEntity(statistics, HttpStatus.OK);
 //    }
+
+    @RequestMapping(value = "update", method = RequestMethod.PUT)
+    public ResponseEntity updateFormResponse(@Valid @RequestBody Response formResponse) {
+        Response savedResponse = service.getById(formResponse.getId());
+
+        if (savedResponse != null) {
+            formResponse.setCreatedBy(savedResponse.getCreatedBy());
+            formResponse.setCreatedAt(new Date());
+            formResponse = service.save(formResponse);
+            return new ResponseEntity<>(formResponse, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Response does not exist", HttpStatus.NOT_FOUND);
+    }
 
     private Boolean formWasChanged(List<Cookie> cookies, ProcessedForm form) {
         int formCompletingCookieIndex = -1;

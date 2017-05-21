@@ -1,7 +1,6 @@
 package com.b2formeditor.models.databasemodels;
 
 import com.b2formeditor.models.responsemodels.ProcessedForm;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

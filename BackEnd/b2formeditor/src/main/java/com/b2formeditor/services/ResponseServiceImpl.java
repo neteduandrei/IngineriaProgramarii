@@ -9,7 +9,6 @@ import com.b2formeditor.models.databasemodels.Form;
 import com.b2formeditor.models.databasemodels.Response;
 import com.b2formeditor.models.responsemodels.ProcessedForm;
 import com.b2formeditor.repositories.FormRepository;
-import com.b2formeditor.repositories.QuestionRepository;
 import com.b2formeditor.repositories.ResponseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -106,5 +105,10 @@ public class ResponseServiceImpl implements ResponseService {
             formTitle = form.getTitle();
             emailService.sendFormResponseNotification(formOwner, formTitle);
         }
+    }
+
+    @Override
+    public List<Response> findByCreatedBy(String owner) {
+        return repository.findByCreatedBy(owner);
     }
 }
