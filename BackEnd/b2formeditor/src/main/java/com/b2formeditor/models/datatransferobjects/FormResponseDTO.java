@@ -10,7 +10,6 @@ import java.util.List;
  * Copyright @ Valentin Rosca <rosca.valentin2012@gmail.com>
  */
 public class FormResponseDTO extends FormResponse {
-    private String formId;
     private QuestionResponseDTO[] fields;
 
     QuestionResponseDTO[] getFields () {
